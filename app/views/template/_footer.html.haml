@@ -1,0 +1,10 @@
+%hr
+= link_to 'トップページ | ', { controller: "/" }
+= link_to 'イベント一覧 | ', { controller: "/events" }
+= link_to 'マイページ | ', { controller: "/users/profile" }
+%br
+= link_to 'バグ報告 | ', "https://spreadshe/ets.google.com/spreadsheet/viewform?hl=ja&authkey=CLKJ6ZsF&formkey=dEVvcWF1cWJKTFpMSzZuSFVvcW9JZFE6MQ#gid=0"
+= link_to 'カンファインについて | ', { controller: "/top/about" } 
+= mail_to $ADMIN_EMAIL, "問い合わせ", |
+          subject: "[#{$SYSTEM_TITLE}]お問い合わせ", |
+          encode: "javascript") |
