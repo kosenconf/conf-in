@@ -1,4 +1,8 @@
 ConfInProcon::Application.routes.draw do
+  devise_for :users
+
+  resources :users
+
 	# root
 	root to: "home#index"
 

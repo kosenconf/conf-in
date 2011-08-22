@@ -64,7 +64,7 @@ Devise.setup do |config|
   config.stretches = 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "b8b3494b5648780fea438ac22e4380fa453b641babb36bf12122c453d138f41951502f5e9a8e501192372a134f9e028ad7748bcf212f732ae9e6307dcf16126c"
+  # config.pepper = "c3e238bd89928a878ce6a3aca0205d86246c07bec5b5aad5a244125346aea72b70b863efb9fd5e2f6e6539edd84fbd867f17e43a03700fe2bd97d2a93ddcda97"
 
   # ==> Configuration for :confirmable
   # The time you want to give your user to confirm his account. During this time
@@ -161,7 +161,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

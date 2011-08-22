@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110815133922) do
+ActiveRecord::Schema.define(:version => 20110822111624) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(:version => 20110815133922) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.text     "memo"
+    t.string   "website"
+    t.string   "qr_secret"
+    t.string   "job"
+    t.string   "office"
+    t.string   "domicile"
+    t.integer  "tw_uid"
+    t.string   "tw_name"
+    t.string   "tw_token"
+    t.string   "tw_secret"
+    t.string   "fb_token"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
