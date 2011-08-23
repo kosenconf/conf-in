@@ -1,0 +1,89 @@
+= form_for @event do |f|
+  -#c= f.error_messages
+  %p
+    = f.label :name
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.text_field :name
+  %p
+    = f.label :date
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.datetime_select :date
+  %p
+    = f.label :summary
+    %br
+    (htmlタグを使えます。改行もhtmlタグを使用してください。)
+    %br
+    = f.text_area :summary
+  %p
+    = f.label :website
+    %br
+    = f.url_field :website
+  %h2 イベント開催場所
+  %p
+    = f.label :place_name
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.text_field :place_name
+  %p
+    = f.label :place_room
+    %br
+    = f.text_field :place_room
+  %p
+    = f.label :place_address
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.text_field :place_address
+  %p
+    = f.label :place_website
+    %br
+    = f.url_field :place_website
+  %h2 参加に関して
+  %p
+    = f.label :capacity（半角数字）
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.number_field :capacity
+  %p
+    = f.label :expense
+    （半角数字）
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.text_field :expense
+  %p
+    = f.label :joinable_period_begin, '参加受付期間'
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.datetime_select :joinable_period_begin
+    　〜　
+    = f.datetime_select :joinable_period_end
+  %h2 主催者情報
+  %p
+    = f.label :hosting_group
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.text_field :hosting_group
+  %p
+    = f.label :hosting_email
+    %span{ style: "color: red; font-weight: bold;" }
+      ※必須
+    %br
+    = f.email_field :hosting_email
+  %h2 関連イベント
+  %p
+    = f.label :main_event_id
+    %br
+    = f.text_field :main_event_id
+  -#= render partial: 'select_question', locals: { f: f }
+  -#= render partial: 'free_question', locals: { f: f }
+  %p
+    = f.submit f.object.new_record? ? '作成':'変更を保存', disable_with: '処理中...'

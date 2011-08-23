@@ -1,0 +1,25 @@
+.maintable
+  %h1= @event.name
+  %hr
+  
+  %h2 イベント概要
+  %hr
+  = render partial: 'detail'
+  -#= render partial: 'sub_events'
+  
+  %h2 このイベントに関連するツイート
+  %hr
+  -# TODO : 関連ツイートJavaScript埋め込み
+  
+  %hr
+  %br
+  = link_to 'イベント一覧ページに戻る', events_path
+
+.sidetable
+  %div{ align: 'center' }
+    -# TODO : ツイートボタンの設置
+    -# TODO : 管理者向けリンクの表示
+    -# = render(partial: "admin_link") if (!current_user.nil?) && (current_user.id == @event.host_id)
+    -#= render partial: 'join_link'
+    -#= render partial: 'status'
+    -#= render partial: 'entries'

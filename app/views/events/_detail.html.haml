@@ -1,0 +1,42 @@
+%h2 イベント詳細
+%hr
+%table{ align: "center", cellpadding: "5" }
+  %tr  
+    %th{ scope: "row", align: "right" } 日時
+    %td= I18n.l @event.date, format: :long
+  %tr  
+    %th{ scope: "row", align: "right" } 場所
+    %td  
+      = @event.place_name
+      = @event.place_room
+      %br
+      住所：
+      = @event.place_address
+      %br
+      Web：
+      = link_to @event.place_website, @event.place_website
+      %br
+      -#<iframe src: "/events/map/= h @event.id" height=400 width=400 frameborder=0></iframe>
+  %tr  
+    %th{ scope: "row", align: "right" } 参加費
+    %td= number_to_currency(@event.expense, unit: "円", precision: 0, format: "%n %u")
+  %tr  
+    %th{ scope: "row", align: "right" } 定員
+    %td
+      = @event.capacity
+      = ' 人'
+  %tr  
+    %th{ scope: "row", align: "right" } 申し込み期間
+    %td
+      = I18n.l @event.joinable_period_begin, format: :long
+      〜
+      = I18n.l @event.joinable_period_end, format: :long
+  %tr  
+    %th{ scope: "row", align: "right" } website
+    %td= link_to @event.website, @event.website
+  %tr  
+    %th{ align: "right" } 主催者
+    -#%td= link_to @host_user.nickname, @host_user
+  %tr  
+    %th{ scope: "row", align: "right" } 連絡先
+    %td= mail_to(@event.hosting_email, @event.hosting_group, subject: "[#{@event.name}]お問い合わせ", encode: "javascript")

@@ -1,0 +1,8 @@
+%h1
+  イベント編集：
+  = @event.name
+  = link_to "<h3>このイベントを削除する</h3>", event_url(:id => @event), | 
+    { :method => :delete, |
+    :confirm => "本当に削除しますか？\n※ユーザからの参加登録も同時に削除されます"}
+= render partial: 'edit_form'
+= link_to 'イベント一覧', events_path
