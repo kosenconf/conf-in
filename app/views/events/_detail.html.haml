@@ -19,7 +19,8 @@
       -#<iframe src: "/events/map/= h @event.id" height=400 width=400 frameborder=0></iframe>
   %tr  
     %th{ scope: "row", align: "right" } 参加費
-    %td= number_to_currency(@event.expense, unit: "円", precision: 0, format: "%n %u")
+    %td= number_to_currency(@event.expense, unit: "円", 
+      precision: 0, format: "%n %u")
   %tr  
     %th{ scope: "row", align: "right" } 定員
     %td
@@ -39,4 +40,5 @@
     -#%td= link_to @host_user.nickname, @host_user
   %tr  
     %th{ scope: "row", align: "right" } 連絡先
-    %td= mail_to(@event.hosting_email, @event.hosting_group, subject: "[#{@event.name}]お問い合わせ", encode: "javascript")
+    %td= mail_to(@event.hosting_email, @event.hosting_group,
+      subject: "[#{@event.name}]お問い合わせ", encode: "javascript")
