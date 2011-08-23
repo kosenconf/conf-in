@@ -1,6 +1,5 @@
 ConfInProcon::Application.routes.draw do
-  resources :users
-
+	resources :users
 	# root
 	root to: "home#index"
 	get "home/index"
@@ -9,4 +8,6 @@ ConfInProcon::Application.routes.draw do
 	devise_for :users
 	get "users", to: "users#show", as: :user_root
 
+	#match ':controller(/:action(/:id(.:format)))'
+	resources :events
 end

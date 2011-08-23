@@ -1,0 +1,74 @@
+@charset "utf-8";
+
+.img {
+    border: none;
+}
+.comments {
+    font-size: small;
+    color: #666;
+}
+.container {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.column {
+    width: 100%;
+    float: left;
+    padding: 10px 0;
+}
+.header {
+    width: 100%;
+    margin: 0 0 15px;
+    float: left;
+}
+.headlarge {
+    width: 80%;
+    float:left;
+}
+.headtitle {
+    width: 35%;
+    float: left;
+}
+.headsub {
+    width: 40%;
+    float: left;
+}
+.headlogin {
+    width: 25%;
+    float: left;
+}
+.maintable {
+    width: 69%;
+    float: left;
+    padding: 0 5px 0 0;
+    margin: 20px 0;
+}
+.sidetable {
+    width: 29%;
+    float: left;
+    padding: 0 0 0 5px;
+}
+.footer {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.topmain {
+    width: 80%;
+    float: left;
+}
+#map_canvas {
+    position: relative;
+}
+.bignickname {
+    font-size: 3em;
+}
+.about{
+    width: 55%;
+    margin: 30px auto;
+}
+.flash{
+    background: yellow;
+    
+}

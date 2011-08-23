@@ -1,0 +1,19 @@
+%h1 イベント一覧
+
+%table
+  %tr
+    %th イベント名
+    %th 開催日
+    %th 開催場所
+    %th 定員
+    %th 申込期限
+    %th 主催者
+
+- @events.each do |event|
+  %tr
+    %td= link_to event.name, event
+    %td= I18n.l event.date, :format => :short
+    %td= event.placename
+    %td= event.capacity
+    %td= I18n.l event.join_end, :format => :short
+    %td= event.hosting_group

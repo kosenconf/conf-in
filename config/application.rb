@@ -1,3 +1,4 @@
+# coding: utf-8
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -40,5 +41,8 @@ module ConfInProcon
     config.filter_parameters += [:password]
 
 		config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+		$SYSTEM_TITLE = 'カンファイン'
+		$ADMIN_EMAIL = 'webmaster@falconsrv.net'
   end
 end
