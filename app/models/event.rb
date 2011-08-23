@@ -1,10 +1,9 @@
 # coding: utf-8
 class Event < ActiveRecord::Base
-  
-	# TODO: Entryを作成したらコメントアウトを外すこと
+
   #エントリー
-  #has_many :entries,
-  #  :dependent => :delete_all #イベントを消去した際，そのエントリをすべて抹消
+  has_many :entries,
+    :dependent => :delete_all #イベントを消去した際，そのエントリをすべて抹消
   #主催者ユーザ
   belongs_to :owner_user,
     :class_name => "User",
