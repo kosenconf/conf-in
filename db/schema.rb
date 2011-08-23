@@ -10,7 +10,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110822234059) do
+ActiveRecord::Schema.define(:version => 20110823075356) do
+
+  create_table "entries", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.string   "select1"
+    t.string   "select2"
+    t.string   "select3"
+    t.string   "select4"
+    t.string   "select5"
+    t.text     "free1"
+    t.text     "free2"
+    t.text     "free3"
+    t.text     "free4"
+    t.text     "free5"
+    t.text     "comment"
+    t.integer  "received"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
