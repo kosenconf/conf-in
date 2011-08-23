@@ -1,4 +1,7 @@
+# coding: utf-8
 class UsersController < ApplicationController
+  before_filter :authenticate_user!, :only => [ :profile, :update ]
+  
   # GET /users
   # GET /users.json
   def index
@@ -14,15 +17,23 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
+    @page_title = "#{@user.name} のプロフィール"
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
     end
   end
 
+  #個人設定ページ（要認証）
+  def profile
+    @user = current_user
+    @page_title = "プロフィール設定"
+  end
+  
   # GET /users/new
   # GET /users/new.json
+=begin
   def new
     @user = User.new
 
@@ -31,12 +42,16 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end
   end
+=end
 
+=begin
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
+=end
 
+=begin
   # POST /users
   # POST /users.json
   def create
@@ -52,11 +67,12 @@ class UsersController < ApplicationController
       end
     end
   end
+=end
 
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+    @user = current_user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -72,7 +88,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
+    @user = current_user
     @user.destroy
 
     respond_to do |format|

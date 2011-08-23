@@ -20,6 +20,6 @@
     -# TODO : ツイートボタンの設置
     -# TODO : 管理者向けリンクの表示
     -# = render(partial: "admin_link") if (!current_user.nil?) && (current_user.id == @event.host_id)
-    -#= render partial: 'join_link'
-    -#= render partial: 'status'
-    -#= render partial: 'entries'
+    = render partial: 'join_link'
+    = render partial: 'status'
+    = render partial: 'entries'

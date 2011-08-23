@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   #before_filter :auth, :only => [:new, :create, :admin, :csv, :xml]
   #before_filter :login_from_basic_auth, :only => [:index, :show],
   #  :if => :is_format_xml?
+  before_filter :authenticate_user!, :except => [:index, :show, :map, :admin, :csv, :xml]
   
   #layout "events", :except => [:map]
 
@@ -40,13 +41,13 @@ class EventsController < ApplicationController
     #サブイベント取得（無いときnil）
     @sub_events = @event.sub_events
     #アクセスしたこのイベントにユーザが参加しているか
-    #@entry = current_user.entries.find_by_event_id(@event.id) if logged_in?
+    @entry = current_user.entries.find_by_event_id(@event.id) if user_signed_in?
     #エントリー
-    #@entries = @event.entries
+    @entries = @event.entries
     #主催者の取得
-    #@owner_user = @event.owner_user
+    @owner_user = @event.owner_user
     #残り参加可能人数計算
-    #@remain = @event.capacity - @event.entries.all.count
+    @remain = @event.capacity - @event.entries.all.count
 
     #イベントの状態
     @status = if Time.now < @event.joinable_period_begin then "準備中"
@@ -66,15 +67,16 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @page_title = "新規イベント作成"
-    #@event.host_id = current_user.id
+    @event.owner_user_id = current_user.id
   end
 
   # GET /events/1/edit
   def edit
     id = params[:id]
     #カレントユーザのホストイベントから検索
-    #@event = current_user.hosted_events.find(id)
-    @event = Event.find(id)
+    @event = current_user.hosted_events.find(id)
+    p current_user
+    #@event = Event.find(id)
     @page_title = "イベント編集 | #{@event.name}"
   rescue
     #失敗orアクセス権限なし
@@ -86,8 +88,8 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-    #@event.host_id = current_user.id
-    @event.owner_user_id = 1
+    @event.owner_user_id = current_user.id
+    #@event.owner_user_id = 1
     
     respond_to do |format|
       if @event.save
@@ -106,8 +108,8 @@ class EventsController < ApplicationController
   def update
     id = params[:id]
     #カレントユーザのホストイベントから検索
-    #@event = current_user.hosted_events.find(id)
-    @event = Event.find(id)
+    @event = current_user.hosted_events.find(id)
+    #@event = Event.find(id)
     
     respond_to do |format|
       if @event.update_attributes(params[:event])
@@ -132,8 +134,8 @@ class EventsController < ApplicationController
     #パラメータ
     id = params[:id]
     #カレントユーザのホストイベントから検索
-    #@event = current_user.hosted_events.find(id)
-    @event = Event.find(id)
+    @event = current_user.hosted_events.find(id)
+    #@event = Event.find(id)
     
     #イベント削除
     @event.destroy
@@ -146,7 +148,7 @@ class EventsController < ApplicationController
     redirect_to :action => "show"
   end
 
-=begin
+
   def map
     @event = Event.find(params[:id])
   end
@@ -161,7 +163,7 @@ class EventsController < ApplicationController
   rescue
     redirect_to "/"
   end
-=end
+
 
 =begin
   def csv

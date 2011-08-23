@@ -1,3 +1,4 @@
+# coding: utf-8
 class Entry < ActiveRecord::Base
   #イベント
   belongs_to :event,

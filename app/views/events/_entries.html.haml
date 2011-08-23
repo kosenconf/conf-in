@@ -1,16 +1,16 @@
 %h3 イベント参加者
 %hr
-%table{:cellpadding => "5px"}
+%table{ cellpadding: "5px"}
   - @entries.each do |entry|
     %tr
       %td
         / twicon
-        - unless entry.user.twitter_id.blank?
-          = image_tag("http://api.dan.co.jp/twicon/#{entry.user.twitter_id}/mini", align: 'bottom')
+        - unless entry.user.tw_name.blank?
+          = image_tag("http://api.dan.co.jp/twicon/#{entry.user.twitter_name}/mini", align: 'bottom')
         - else
           = image_tag("24.png")
       %td
-        %b= link_to entry.user.nickname,   |
+        %b= link_to entry.user.name,   |
             user_url(id: entry.user_id) |
         %br
         = entry.comment
