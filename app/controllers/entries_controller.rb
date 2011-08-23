@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
   before_filter :find_event
   #定員に達したか？
   before_filter :entries_filled,
-    :only => [ :new, :create, :confirm, :complete, :destroy ]
+    :only => [ :new, :create, :confirm, :complete ]
   #受付期間内か？
   before_filter :can_entry,
     :only => [ :new, :create, :confirm, :complete, :destroy ]
@@ -113,7 +113,7 @@ class EntriesController < ApplicationController
     redirect_to event_url(@event)
   rescue
     #トップページへリダイレクト
-    redirect_back_or_default('/')
+    redirect_to ('/')
   end
 
   private
@@ -122,13 +122,52 @@ class EntriesController < ApplicationController
     @event_id = params[:event_id]
     return(redirect_to(events_url)) unless @event_id
     @event = Event.find(@event_id)
-
+    
+    @select_form = [
+      { :answer => :select1,
+        :question => @event.select1,
+        :content => @event.select_content1,
+        :setting => @event.select_setting1 },
+      { :answer => :select2,
+        :question => @event.select2,
+        :content => @event.select_content2,
+        :setting => @event.select_setting2 },
+      { :answer => :select3,
+        :question => @event.select3,
+        :content => @event.select_content3,
+        :setting => @event.select_setting3 },
+      { :answer => :select4,
+        :question => @event.select4,
+        :content => @event.select_content4,
+        :setting => @event.select_setting4 },
+      { :answer => :select5,
+        :question => @event.select5,
+        :content => @event.select_content5,
+        :setting => @event.select_setting5 }
+    ]
+    @free_form = [
+      { :answer => :free1,
+        :question => @event.free1,
+        :setting => @event.free_setting1 },
+      { :answer => :free2,
+        :question => @event.free2,
+        :setting => @event.free_setting2 },
+      { :answer => :free3,
+        :question => @event.free3,
+        :setting => @event.free_setting3 },
+      { :answer => :free4,
+        :question => @event.free4,
+        :setting => @event.free_setting4 },
+      { :answer => :free5,
+        :question => @event.free5,
+        :setting => @event.free_setting5 }
+    ]
   end
 
   #定員に達したか？
   def entries_filled
     if @event.entries.all.count >= @event.capacity
-      return (redirect_back_or_default(@event))
+      return (redirect_to (@event))
     end
   end
   

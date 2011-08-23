@@ -1,0 +1,7 @@
+%h1
+  = @event.name
+  参加登録
+%hr
+= form_for [ :confirm, @event, @entry ] do |f|
+  = render :partial => 'form', :locals => { :f => f }
+= link_to '戻る', @event

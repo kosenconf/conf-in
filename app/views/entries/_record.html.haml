@@ -1,0 +1,17 @@
+%table.attributes{:align => "center", :cellpadding => "5"}
+  %tr
+    %th{:align => "right", :scope => "row"}= I18n.t 'activerecord.attributes.event.name'
+    %td= @entry.event.name
+  %tr
+    %th{:align => "right", :scope => "row"}= I18n.t 'activerecord.attributes.entry.comment'
+    %td= @entry.comment
+  - @select_form.each do |f|
+    - if f[:setting] > 0
+      %tr
+        %th{:align => "right", :scope => "row"}= f[:question]
+        %td= @entry[f[:answer]]
+  - @free_form.each do |f|
+    - if f[:setting] > 0
+      %tr
+        %th{:align => "right", :scope => "row"}= f[:question]
+        %td= @entry[f[:answer]]

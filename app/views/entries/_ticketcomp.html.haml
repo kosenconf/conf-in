@@ -1,0 +1,13 @@
+%table{:align => "center", :cellpadding => "0", :height => "230", :width => "600px"}
+  %tr
+    %th
+      %h1= @event.name
+      %br
+      %h2
+        %U= User.find(@entry.user_id).name
+        様
+    %th
+      %br
+        = qrimg_tag User.find(@entry.user_id).qr_secret
+      %br
+      %small= I18n.t 'activerecord.attributes.entry.qr_secret'

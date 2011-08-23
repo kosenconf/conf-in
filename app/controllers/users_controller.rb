@@ -44,12 +44,12 @@ class UsersController < ApplicationController
   end
 =end
 
-=begin
+
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
-=end
+
 
 =begin
   # POST /users

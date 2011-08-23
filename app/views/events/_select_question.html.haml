@@ -1,0 +1,13 @@
+%h2 選択入力アンケート
+%table
+  %tr
+    %th
+    %th 質問
+    %th 項目（半角カンマで区切ってください）
+    %th 設定
+  - $select_form.each do |i|
+    %tr
+      %th= f.label i[:question]
+      %td= f.text_field i[:question]
+      %td= f.text_field i[:content]
+      %td= f.select i[:setting], [["表示しない", 0], ["任意回答", 1], ["必須項目", 2]]
