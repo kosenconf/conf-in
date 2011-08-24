@@ -10,6 +10,6 @@
       = User.find(@entry.user_id).name
       様
   %tr
-    %th= I18n.t 'activerecord.attributes.entry.qr_secret'
+    %th= I18n.t 'activerecord.attributes.user.qr_secret'
     %td
       = qrimg_tag User.find(@entry.user_id).qr_secret

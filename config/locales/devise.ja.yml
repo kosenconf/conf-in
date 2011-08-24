@@ -1,6 +1,6 @@
 # Additional translations at http://github.com/plataformatec/devise/wiki/I18n
 
-en:
+ja:
   errors:
     messages:
       expired: "has expired, please request a new one"
