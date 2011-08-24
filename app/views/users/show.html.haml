@@ -1,9 +1,6 @@
 .maintable
   .bignickname
-    - unless @user.tw_name.blank?
-      = image_tag("http://api.dan.co.jp/twicon/#{@user.tw_name}/bigger", :align => 'bottom')
-    - else
-      = image_tag ("73.png")
+    = twicon_tag current_user.tw_name, :bigger
     = h @user.name
   %hr/
   %table{:align => "center", :cellpadding => "5", :width => "70%"}

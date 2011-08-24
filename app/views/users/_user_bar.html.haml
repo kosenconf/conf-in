@@ -1,10 +1,7 @@
 - if user_signed_in?
   #user-bar-greeting
     Logged in as
-    - unless current_user.tw_name.blank?
-      = image_tag("http://api.dan.co.jp/twicon/#{current_user.tw_name}/mini", :align => 'bottom')
-    - else
-      = image_tag ("24.png")
+    = twicon_tag current_user.tw_name, :mini
     = link_to current_user.name, user_path(current_user.id), :content_method => :login
   #user-bar-action
     = link_to 'ユーザ設定', profile_users_path
