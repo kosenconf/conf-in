@@ -46,4 +46,8 @@ ConfInProcon::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.action_mailer.smtp_settings = {
+    delivery_method: :sendmail
+  }
 end
