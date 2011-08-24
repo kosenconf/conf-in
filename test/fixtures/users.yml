@@ -9,8 +9,12 @@ one:
   encrypted_password: "aiueo"
   confirmation_token: "aiueo"
   reset_password_token: "aiueo"
+  qr_secret: "aiueo"
+  name: "aiueo"
 two:
   email: "user2@falconsrv.net"
   encrypted_password: "aiueo2"
   confirmation_token: "aiueo2"
   reset_password_token: "aiueo2"
+  qr_secret: "aiueo2"
+  name: "aiueo2"

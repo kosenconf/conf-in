@@ -5,6 +5,7 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
 	# 正しいレスポンスの検証
 	test "should get index" do
     get :index
