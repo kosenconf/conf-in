@@ -1,4 +1,11 @@
 ja:
+  errors:
+    template:
+      header:
+        one:    "エラーが1箇所あります。"
+        other:  "エラーが%{count}箇所あります。"
+      body: "エラーがあります。次の項目を確認してください。"
+
   activerecord:
     models:
       event:  "イベントテーブル"
