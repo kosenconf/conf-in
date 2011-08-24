@@ -46,8 +46,8 @@ ja:
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: '[カンファイン]仮登録完了のお知らせ'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: '[カンファイン]パスワードリセットのお知らせ'
       unlock_instructions:
         subject: 'Unlock Instructions'
