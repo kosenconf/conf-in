@@ -1,11 +1,36 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+sp1:
+  name: 'Test Event1'
+  date: '2011-08-24 20:00'
+  place_name: 'place hoge'
+  place_address: 'hogehogeaddress'
+  capacity: 100
+  expense: 100
+  joinable_period_begin: '2011-08-24 19:00'
+  joinable_period_end: '2011-08-24 20:00'
+  hosting_group: 'hostGroup'
+  hosting_email: 'hoge@hoge.com'
+  owner_user_id: 1
+sp1:
+  name: 'Test Event2'
+  date: '2011-08-24 20:00'
+  place_name: 'place hoge'
+  place_address: 'hogehogeaddress'
+  capacity: 100
+  expense: 100
+  joinable_period_begin: '2011-08-24 19:00'
+  joinable_period_end: '2011-08-24 20:00'
+  hosting_group: 'hostGroup'
+  hosting_email: 'hoge@hoge.com'
+  owner_user_id: 1
+fp2: # Each have blank error
+  name: ''
+  date: ''
+  place_name: ''
+  place_address: ''
+  capacity: # Has 3 Errors
+  expense: # Has 3 Errors
+  joinable_period_begin: ''
+  joinable_period_end: ''
+  hosting_group: ''
+  hosting_email: ''
+  owner_user_id: 
