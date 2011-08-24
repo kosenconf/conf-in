@@ -1,7 +1,7 @@
 %hr
 = link_to 'トップページ | ', '/'
 = link_to 'イベント一覧 | ', { controller: '/events' }
--#= link_to 'マイページ | ', { controller: '/users/profile' }
+= link_to 'マイページ', { controller: '/users', action: :profile }
 %br
 = link_to 'バグ報告 | ', "https://spreadsheets.google.com/spreadsheet/viewform?hl=ja&authkey=CLKJ6ZsF&formkey=dEVvcWF1cWJKTFpMSzZuSFVvcW9JZFE6MQ#gid=0"
 -#= link_to 'カンファインについて | ', { controller: '/top/about' } 

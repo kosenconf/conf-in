@@ -1,0 +1,37 @@
+.maintable
+  .bignickname
+    - unless @user.tw_name.blank?
+      = image_tag("http://api.dan.co.jp/twicon/#{@user.tw_name}/bigger", :align => 'bottom')
+    - else
+      = image_tag ("73.png")
+    = h @user.name
+  %hr/
+  %table{:align => "center", :cellpadding => "5", :width => "70%"}
+    %tr
+      %th{:align => "right", :scope => "row", :width => "21%"} 自己紹介
+      %td= h @user.memo
+    %tr
+      %th{:align => "right", :scope => "row"} Twitter
+      %td= link_to "@"+@user.tw_name,"http://twitter.com/#{@user.tw_name}",:target => '_blank' unless @user.tw_name.blank?
+    %tr
+      %th{:align => "right", :scope => "row"} Webサイト
+      %td= link_to h(@user.website), @user.website
+    %tr
+      %th{:align => "right", :scope => "row"} 職業
+      %td= h @user.job
+    %tr
+      %th{:align => "right", :scope => "row"} 勤務先・学校
+      %td= h @user.office
+.sidetable
+  %h3 このユーザが参加したイベント
+  %hr/
+  %ul
+    - unless @user.entries.blank?
+      - @user.entries.each do |entry|
+        %li= link_to entry.event.name, entry.event
+  %h3 このユーザが主催したイベント
+  %hr/
+  %ul
+    - unless @user.hosted_events.blank?
+      - @user.hosted_events.each do |hosted_event|
+        %li= link_to hosted_event.name, hosted_event

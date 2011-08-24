@@ -1,5 +1,8 @@
 # coding: utf-8
+require 'securerandom'
 class User < ActiveRecord::Base
+  before_validation :init_qr_secret
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
@@ -34,4 +37,9 @@ class User < ActiveRecord::Base
     :name, :memo, :website, :qr_secret, :job, :office, :domicile,
     :tw_uid, :tw_name, :tw_token, :tw_secret,
     :fb_token
+    
+protected
+  def init_qr_secret
+    self.qr_secret = SecureRandom.base64(16)
+  end
 end

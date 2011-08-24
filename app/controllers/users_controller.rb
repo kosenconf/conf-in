@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'securerandom'
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :only => [ :profile, :update ]
   
@@ -15,6 +16,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
+
   def show
     @user = User.find(params[:id])
     @page_title = "#{@user.name} のプロフィール"
@@ -25,15 +27,16 @@ class UsersController < ApplicationController
     end
   end
 
+
   #個人設定ページ（要認証）
   def profile
     @user = current_user
     @page_title = "プロフィール設定"
   end
   
+=begin
   # GET /users/new
   # GET /users/new.json
-=begin
   def new
     @user = User.new
 
@@ -44,12 +47,12 @@ class UsersController < ApplicationController
   end
 =end
 
-
+=begin
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
-
+=end
 
 =begin
   # POST /users
@@ -85,6 +88,7 @@ class UsersController < ApplicationController
     end
   end
 
+=begin
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
@@ -96,4 +100,5 @@ class UsersController < ApplicationController
       format.json { head :ok }
     end
   end
+=end
 end

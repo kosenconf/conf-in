@@ -1,0 +1,34 @@
+= form_for(@user) do |f|
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :website
+    %br/
+    = f.text_field :website
+  %p
+    = f.label :job
+    %br/
+    = f.text_field :job
+  %p
+    = f.label :office
+    %br/
+    = f.text_field :office
+  %p
+    = f.label :memo
+    %br/
+    = f.text_area :memo
+  %p
+    = f.label :qr_secret
+    %br/
+    = qrimg_tag @user.qr_secret
+  %p
+    = f.submit '更新', :disable_with => '処理中...'
+%hr/
+%h3
+  = link_to "登録解除",                                     |
+          {controller: 'user/registrations', action: :destroy }, { :method => :delete, |
+          :confirm => "ユーザ登録を解除します。\n本当によろしいですか？\n     |
+    ※「参加登録」，「主催イベント」，「主催イベントの参加者登録」など                  |
+    ユーザに関連する情報すべてが抹消されます。" }                            |
