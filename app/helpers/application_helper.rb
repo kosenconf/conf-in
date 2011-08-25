@@ -15,9 +15,14 @@ module ApplicationHelper
 		end
 	end
 
+  # QRコードのURL生成
+  def url_for_qr(str)
+    "http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=#{CGI.escape(str)}"
+  end
+
 	# QRコードの生成
 	def qrimg_tag(str)
-	  image_tag "http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=#{CGI.escape(str)}"
+	  image_tag url_for_qr(str)
 	end
 
 	# Twitterアイコンの表示
