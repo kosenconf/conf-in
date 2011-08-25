@@ -20,4 +20,6 @@ ConfInProcon::Application.routes.draw do
 			end
 		end
 	end
+	
+	get 'home/about', to: 'home#about'
 end
