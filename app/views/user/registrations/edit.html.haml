@@ -1,0 +1,58 @@
+%h1
+  登録情報の変更
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  = devise_error_messages!
+  %p
+    = f.label :email
+    %br/
+    = f.email_field :email
+  %p
+    = f.label :current_password
+    %i (we need your current password to confirm your changes)
+    %br/
+    = f.password_field :current_password
+  %p
+    = f.label :password, '新しいパスワード'
+    %i (leave blank if you don't want to change it)
+    %br/
+    = f.password_field :password
+  %p
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation
+  %p
+    = f.label :name
+    %br/
+    = f.text_field :name
+  %p
+    = f.label :website
+    %br/
+    = f.text_field :website
+  %p
+    = f.label :job
+    %br/
+    = f.text_field :job
+  %p
+    = f.label :office
+    %br/
+    = f.text_field :office
+  %p
+    = f.label :domicile
+    %br/
+    = f.text_field :domicile
+  %p
+    = f.label :memo
+    %br/
+    = f.text_area :memo
+  %p
+    = f.label :qr_secret
+    %br/
+    = qrimg_tag resource.qr_secret
+  %p= f.submit
+%hr
+%h1 登録を解除する
+%h3= link_to "登録解除", registration_path(resource_name), :method => :delete, |
+  :confirm => "ユーザ登録を解除します。\n本当によろしいですか？\n |
+  ※「参加登録」，「主催イベント」，「主催イベントの参加者登録」など |
+    ユーザに関連する情報すべてが抹消されます。" |
+= link_to "戻る", :back
