@@ -1,0 +1,9 @@
+%h1 パスワード再発行申請
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  = devise_error_messages!
+  %p
+    = f.label :email
+    %br/
+    = f.email_field :email
+  %p= f.submit "申請する"
+= render :partial => "user/shared/links"

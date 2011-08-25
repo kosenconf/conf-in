@@ -1,0 +1,9 @@
+%h1 仮登録通知メールの再送信
+= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+  = devise_error_messages!
+  %p
+    = f.label :email
+    %br/
+    = f.email_field :email
+  %p= f.submit "再送信"
+= render :partial => "user/shared/links"

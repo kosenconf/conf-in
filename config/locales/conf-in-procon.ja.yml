@@ -25,6 +25,7 @@ ja:
         tw_name: "Twitter表示名"
         password:  "パスワード"
         password_confirmation:  "確認入力"
+        current_password: "古いパスワード"
         remember_me: "パスワードを保存する"
       entry:
         event_id: "イベントID"

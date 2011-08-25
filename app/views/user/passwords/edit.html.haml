@@ -1,0 +1,14 @@
+%h1 新しいパスワードを設定してください
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+  = devise_error_messages!
+  = f.hidden_field :reset_password_token
+  %p
+    = f.label :password, "新しいパスワード"
+    %br/
+    = f.password_field :password
+  %p
+    = f.label :password_confirmation, "確認入力"
+    %br/
+    = f.password_field :password_confirmation
+  %p= f.submit "パスワードを設定する"
+= render :partial => "user/shared/links"
