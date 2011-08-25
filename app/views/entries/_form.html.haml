@@ -9,12 +9,15 @@
     %p
       = "Q: #{i[:question]}"
       %br
-      = "A: #{f.select i[:answer], content}"
+      = "A:"
+      = f.select i[:answer], content
 - @free_form.each do |i|
   - if i[:setting] >= 1 then
     %p
-      = "Q: #{i[:question]}"
+      = "Q:"
+      = i[:question]
       %br
-      = "A: #{f.text_area i[:answer]}"
+      = "A:"
+      = f.text_area i[:answer]
 %p
   = f.submit f.object.new_record? ? '次へ' : '変更', :disable_with => '処理中...'
