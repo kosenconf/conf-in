@@ -1,7 +1,6 @@
 # coding: utf-8
-require 'securerandom'
-class UsersController < ApplicationController
 
+class UsersController < ApplicationController
   # ユーザの公開プロフィール表示
   def show
     @user = User.find(params[:id])
