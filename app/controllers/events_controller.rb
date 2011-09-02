@@ -3,27 +3,12 @@ class EventsController < ApplicationController
   #SSL Required
   #ssl_required :admin, :csv, :xml if RAILS_ENV == "production"
   #認証要求（一覧と表示以外）
-  #before_filter :login_required, :except => [:index, :show, :map, :admin, :csv, :xml]
-  #before_filter :auth, :only => [:new, :create, :admin, :csv, :xml]
-  #before_filter :login_from_basic_auth, :only => [:index, :show],
-  #  :if => :is_format_xml?
   before_filter :authenticate_user!, :except => [:index, :show, :map, :admin, :csv, :xml]
-  
+  before_filter :find_event_by_token, only: [:edit, :update]
   #layout "events", :except => [:map]
 
 
-  #データ
-=begin
-  def xml
-    #@user = User.find(params[:id])
-    @events = Event.all()
-    render :layout => false
-    #render :xml => events
-  end
-=end
-
   # GET /events
-  # GET /events.xml
   def index
     @events = Event.all
     @page_title = "イベント一覧"
@@ -34,7 +19,6 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1
-  # GET /events/1.xml
   def show
     @event = Event.find(params[:id]) #1行取得
     @page_title = @event.name
@@ -63,29 +47,13 @@ class EventsController < ApplicationController
   end
 
   # GET /events/new
-  # GET /events/new.xml
   def new
     @event = Event.new
     @page_title = "新規イベント作成"
     @event.owner_user_id = current_user.id
   end
 
-  # GET /events/1/edit
-  def edit
-    id = params[:id]
-    #カレントユーザのホストイベントから検索
-    @event = current_user.hosted_events.find(id)
-    p current_user
-    #@event = Event.find(id)
-    @page_title = "イベント編集 | #{@event.name}"
-  rescue
-    #失敗orアクセス権限なし
-    #showページへリダイレクト
-    redirect_to :action => "show"
-  end
-
   # POST /events
-  # POST /events.xml
   def create
     @event = Event.new(params[:event])
     @event.owner_user_id = current_user.id
@@ -103,38 +71,41 @@ class EventsController < ApplicationController
     end
   end
 
-  # PUT /events/1
-  # PUT /events/1.xml
-  def update
-    id = params[:id]
-    #カレントユーザのホストイベントから検索
-    @event = current_user.hosted_events.find(id)
-    #@event = Event.find(id)
-    
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html {
-          redirect_to(@event, :notice => 'イベントは編集されました。') }
-        #format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        #format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-      end
-    end
+	# GET /events/admin_token
+	# admin_tokenをIDとして利用
+	def edit
+		@page_title = "イベント編集 | #{@event.name}"
 
-  rescue
-    #失敗orアクセス権限なし
-    #showページへリダイレクト
-    redirect_to action: "show"
-  end
+		@is_current_user_admin = current_user.hosted_events.find_by_id(@event.id)
+	end
 
-  # DELETE /events/1
-  # DELETE /events/1.xml
+	# PUT /events/admin_token
+	# admin_tokenをIDとして利用
+	def update
+		respond_to do |format|
+			if @event.update_attributes(params[:event])
+				format.html {
+					redirect_to(@event, notice: 'イベントは編集されました。')
+				}
+			else
+				format.html {
+					render action: :edit
+				}
+			end
+		end
+	rescue
+		redirect_to action: 'index'
+	end
+
+
+  # DELETE /events/admin_token
+	# admin_tokenがパラメータ
   def destroy
     #パラメータ
-    id = params[:id]
+    token = params[:id]
     #カレントユーザのホストイベントから検索
-    @event = current_user.hosted_events.find(id)
+    @event = current_user.hosted_events.find_by_admin_token(token) or
+			raise ActiveRecord::RecordNotFound
     #@event = Event.find(id)
     
     #イベント削除
@@ -148,89 +119,22 @@ class EventsController < ApplicationController
     redirect_to :action => "show"
   end
 
-
+	# Google Mapsによる地図表示
   def map
     @event = Event.find(params[:id])
+
+		render layout: false
   end
 
 
-  def admin
-    id = params[:id]
-    #@event = RAILS_ENV == "production" ? current_user.hosted_events.find(id) : Event.find(params[:id])
-    @event = Event.find(id)
-    @page_title = "イベント管理 | #{@event.name}"
+private
 
-  rescue
-    redirect_to "/"
-  end
-
-
-=begin
-  def csv
-    require 'csv'
-    id = params[:id]
-    @event = Event.find(id)
-    CSV::Writer.generate(output = "") do |csv|
-      subevents = []
-      @event.sub_events.each do |subevent|
-        subevents << subevent.name
-      end
-      select = []
-      $select_form.each do |sel|
-        select << @event[sel[:question]]  unless @event[sel[:setting]] == 0
-      end
-      free = []
-      $free_form.each do |fre|
-        free << @event[fre[:question]] unless @event[fre[:setting]] == 0
-      end
-      csv << ['エントリID', 'ニックネーム', 'E-Mail', 'ひと言'] + subevents + select + free
-
-      @event.entries.each do |entry|
-        subevent = []
-        @event.sub_events.each do |sub|
-          subevent << (sub.entries.find_by_user_id(entry.user_id) ? '○':'×')
-        end
-        
-        select = []
-        $select_form.each do |sel|
-          select << entry[sel[:question]]  unless @event[sel[:setting]] == 0
-        end
-        free = []
-        $free_form.each do |fre|
-          free << entry[fre[:question]] unless @event[fre[:setting]] == 0
-        end
-        
-        csv << [
-          entry.id, entry.user.nickname, entry.user.email,
-          entry.comment
-        ] + subevent + select + free
-
-
-      end
-
-    end
-
-    #output = Iconv.conv('SJIS', 'UTF-8', output)
-    output = NKF.nkf('-U -s -Lw', output)
-    send_data(output, :type=>'text/csv', 
-      :filename=>"#{@event.name}_#{Time.now.strftime('%Y%m%d_%H%M%S')}.csv")
-
-  #rescue
-  # redirect_to "/"
-  end
-=end
-
-  private
-=begin
-  def is_format_xml?
-    params[:format] == "xml"
-  end
-
-  def auth
-    authenticate_or_request_with_http_basic do |user, pass|
-      user == $ADMIN_USER && pass == $ADMIN_PASS
-    end
-  end
-=end
-
+	# admin_tokenでイベントを検索
+	def find_event_by_token
+		@event = Event.find_by_admin_token(params[:id]) or
+			raise ActiveRecord::RecordNotFound
+	rescue
+		redirect_to '/'
+	end
 end
+

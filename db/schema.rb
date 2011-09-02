@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110823075356) do
+ActiveRecord::Schema.define(:version => 20110831040315) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -75,7 +75,10 @@ ActiveRecord::Schema.define(:version => 20110823075356) do
     t.integer  "free_setting5"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "admin_token"
   end
+
+  add_index "events", ["admin_token"], :name => "index_events_on_admin_token", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

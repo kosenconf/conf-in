@@ -1,9 +1,10 @@
 %h1
   イベント編集：
   = @event.name
+  -# イベント管理者のみ削除ボタンを表示
   %h3
-    = button_to "このイベントを削除する", event_url(id: @event), |
+    = button_to( "このイベントを削除する", event_url(@event.admin_token), |
         { method: :delete, |
-          confirm: "本当に削除しますか？\n※ユーザからの参加登録も同時に削除されます" }
+          confirm: "本当に削除しますか？\n※ユーザからの参加登録も同時に削除されます" }) if @is_current_user_admin |
 = render partial: 'edit_form'
 = link_to 'イベント一覧', events_path

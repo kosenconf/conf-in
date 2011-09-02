@@ -19,6 +19,10 @@ ConfInProcon::Application.routes.draw do
 				post :ticket
 			end
 		end
+		member do
+			# Google Maps
+			get :map # /events/:id/map
+		end
 	end
 	
 	get 'home/about', to: 'home#about'

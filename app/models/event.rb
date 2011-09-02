@@ -1,7 +1,10 @@
 # coding: utf-8
+require 'securerandom'
 class Event < ActiveRecord::Base
-
-  #エントリー
+	# 作成前の処理
+	before_create :init_admin_token
+  
+	#エントリー
   has_many :entries,
     :dependent => :delete_all #イベントを消去した際，そのエントリをすべて抹消
   #主催者ユーザ
@@ -38,4 +41,12 @@ class Event < ActiveRecord::Base
   validates_numericality_of :capacity,
     :greater_than => 0, #0 より大きくなければならない
     :message => "0より大きい値を入力してください。"
+
+	# 偽造フォームによるフィールドの保護
+	attr_protected :owner_user_id, :admin_token
+
+protected
+	def init_admin_token
+		self.admin_token = SecureRandom.hex(16).encode('UTF-8')
+	end
 end
