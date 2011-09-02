@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'securerandom'
 class User < ActiveRecord::Base
-  before_validation :init_qr_secret
+  before_create :init_qr_secret
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     :dependent => :delete_all #ユーザを消去した際，主催イベントを抹消
 
   #必須入力
-  validates_presence_of :name, :qr_secret
+  validates_presence_of :name
 
   #ニックネームがユニークになるように
   validates_uniqueness_of :name,
@@ -34,9 +34,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-    :name, :memo, :website, :qr_secret, :job, :office, :domicile,
-    :tw_uid, :tw_name, :tw_token, :tw_secret,
-    :fb_token
+    :name, :memo, :website, :job, :office, :domicile
     
 protected
   def init_qr_secret
