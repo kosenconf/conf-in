@@ -16,7 +16,7 @@
       Web：
       = link_to @event.place_website, @event.place_website
       %br
-      -#<iframe src: "/events/map/= h @event.id" height=400 width=400 frameborder=0></iframe>
+      <iframe src="/events/#{@event.id}/map" height=400 width=400 frameborder=0></iframe>
   %tr  
     %th{ scope: "row", align: "right" } 参加費
     %td= number_to_currency(@event.expense, unit: "円", 

@@ -1,2 +1,2 @@
 .admin_link{:align => "center"}
-  %h3= link_to('このイベントを編集する', edit_event_path(@event))
+  %h3= link_to('このイベントを編集する', edit_event_url(@event.admin_token))
