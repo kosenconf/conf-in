@@ -37,7 +37,7 @@
     %td= link_to @event.website, @event.website
   %tr  
     %th{ align: "right" } 主催者
-    -#%td= link_to @host_user.nickname, @host_user
+    %td= link_to @owner_user.name, @owner_user
   %tr  
     %th{ scope: "row", align: "right" } 連絡先
     %td= mail_to(@event.hosting_email, @event.hosting_group,
