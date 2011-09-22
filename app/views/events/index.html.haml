@@ -9,11 +9,11 @@
     %th 申込期限
     %th 主催者
 
-- @events.each do |event|
-  %tr
-    %td= link_to event.name, event
-    %td= I18n.l event.date, :format => :short
-    %td= event.place_name
-    %td= event.capacity
-    %td= I18n.l event.joinable_period_end, :format => :short
-    %td= event.hosting_group
+  - @events.each do |event|
+    %tr
+      %td= link_to event.name, event
+      %td= I18n.l event.date, :format => :short
+      %td= event.place_name
+      %td= event.capacity
+      %td= I18n.l event.joinable_period_end, :format => :short
+      %td= event.hosting_group
