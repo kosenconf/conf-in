@@ -2,10 +2,10 @@
   %h1 簡単カンファレンスチェックイン！
   %h3 高専カンファレンスの参加をバックアップします
   %p 締切り間近のカンファ
-  -#= render partial: 'top_events', locals: { |
+  = render partial: 'top_events', locals: { |
      events: @near_closing_events } |
 .sidetable
   %p お知らせ
   %p 近日開催されるカンファ
-  -#= render partial: 'top_events', locals: { |
+  = render partial: 'top_events', locals: { |
           events: @near_events } |
