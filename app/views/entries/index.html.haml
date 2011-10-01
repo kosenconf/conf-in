@@ -1,0 +1,29 @@
+%h1
+  = "#{@event.name} 参加者一覧"
+%hr
+%table
+  %tr
+    %th 登録名
+    %th= @event.select1
+    %th= @event.select2
+    %th= @event.select3
+    %th= @event.select4
+    %th= @event.select5
+    %th= @event.free1
+    %th= @event.free2
+    %th= @event.free3
+    %th= @event.free4
+    %th= @event.free5
+  - @event.entries.each do |entry|
+    %tr
+      %td= link_to entry.user.name, entry.user
+      %td= entry.select1
+      %td= entry.select2
+      %td= entry.select3
+      %td= entry.select4
+      %td= entry.select5
+      %td= entry.free1
+      %td= entry.free2
+      %td= entry.free3
+      %td= entry.free4
+      %td= entry.free5

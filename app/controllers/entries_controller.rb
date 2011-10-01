@@ -7,7 +7,8 @@ class EntriesController < ApplicationController
   before_filter :authenticate_user!
   
   # イベント情報を引っ張る
-  before_filter :find_event
+  before_filter :find_event, except: [:index]
+  before_filter :find_event_by_admin_token, only: [:index]
   
   # 定員に達したか？
   before_filter :entries_filled,
@@ -88,7 +89,16 @@ class EntriesController < ApplicationController
     #トップページへリダイレクト
     redirect_to ('/')
   end
-
+  
+  
+  # DELETE /events/:event_id/entries
+  # イベント参加者一覧（管理者向け）
+  # :event_idはadmin_tokenを使う
+  # filterを通してイベント取得
+  def index
+    @page_title = "参加者一覧 | #{@event.name}"
+  end
+  
 private
   # パラメータからイベントを取得
   def find_event
@@ -149,5 +159,13 @@ private
     unless @event.joinable_period_begin <= Time.now && Time.now <= @event.joinable_period_end
       return redirect_back_or_default(@event)
     end
+  end
+  
+  # admin_tokenでイベントを検索
+  def find_event_by_admin_token
+    @event = Event.find_by_admin_token(params[:event_id]) or
+      raise ActiveRecord::RecordNotFound
+  rescue
+    redirect_to '/'
   end
 end
