@@ -9,6 +9,6 @@
 %br
 = link_to 'バグ報告', "https://spreadsheets.google.com/spreadsheet/viewform?hl=ja&authkey=CLKJ6ZsF&formkey=dEVvcWF1cWJKTFpMSzZuSFVvcW9JZFE6MQ#gid=0"
 = ' | '
-= link_to 'カンファインについて', controller: '/home', action: 'about'
+= link_to 'カンファインについて', about_url
 = ' | '
 = mail_to $ADMIN_EMAIL, "問い合わせ", subject: "[#{$SYSTEM_TITLE}]お問い合わせ", encode: "javascript"
