@@ -12,11 +12,4 @@
   %br
   %br
   当日はこのページを印刷、またはQRコードを携帯等の画面に表示できるようにして持ってきてください。
-%br
-- unless @sub_events.blank?
-  %h1 サブイベント
-  %hr
-  %br
-  %p このイベントには以下のサブイベントがあります。参加する場合は忘れずに参加登録してください。
-  = render :partial => 'sub_events', :locals => { :events => @sub_events }
 = link_to 'イベントページに戻る', @event

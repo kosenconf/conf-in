@@ -46,7 +46,6 @@ class EntriesController < ApplicationController
   # POST /entries/complete
   # 参加登録完了
   def complete
-    @sub_events = @event.sub_events
 
     @entry = Entry.new(params[:entry])
     @entry.user_id = current_user.id

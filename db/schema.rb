@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831040315) do
+ActiveRecord::Schema.define(:version => 20111002152703) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20110831040315) do
     t.datetime "joinable_period_end"
     t.string   "hosting_group"
     t.string   "hosting_email"
-    t.integer  "main_event_id"
     t.integer  "owner_user_id"
     t.string   "select1"
     t.string   "select2"

@@ -78,11 +78,6 @@
       ※必須
     %br
     = f.email_field :hosting_email
-  %h2 関連イベント
-  %p
-    = f.label :main_event_id
-    %br
-    = f.text_field :main_event_id
   = render partial: 'select_question', locals: { f: f }
   = render partial: 'free_question', locals: { f: f }
   %p

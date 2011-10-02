@@ -11,14 +11,6 @@ class Event < ActiveRecord::Base
   belongs_to :owner_user,
     :class_name => "User",
     :foreign_key => "owner_user_id"
-  #サブイベント
-  has_many :sub_events,
-    :class_name => "Event",
-    :foreign_key => "main_event_id"
-  #メインイベント
-  belongs_to :main_event,
-    :class_name => "Event",
-    :foreign_key => "main_event_id"
   #一意であるべき値
   validates_uniqueness_of :name,
     :message => "既に存在します。"
