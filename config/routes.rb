@@ -22,6 +22,7 @@ ConfInProcon::Application.routes.draw do
 		member do
 			# Google Maps
 			get :map # /events/:id/map
+			get :admin
 		end
 	end
 	

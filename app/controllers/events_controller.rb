@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   #ssl_required :admin, :csv, :xml if RAILS_ENV == "production"
   #認証要求（一覧と表示以外）
   before_filter :authenticate_user!, :except => [:index, :show, :map, :admin, :csv, :xml]
-  before_filter :find_event_by_token, only: [:edit, :update]
+  before_filter :find_event_by_admin_token, only: [:edit, :update, :admin]
   #layout "events", :except => [:map]
 
 
@@ -116,7 +116,7 @@ class EventsController < ApplicationController
   rescue
     #失敗orアクセス権限なし
     #showページへリダイレクト
-    redirect_to :action => "show"
+    redirect_to action: :show, notice: "イベント作成者以外はイベントを削除することはできません．"
   end
 
 	# Google Mapsによる地図表示
@@ -125,12 +125,17 @@ class EventsController < ApplicationController
 
 		render layout: false
   end
-
+  
+  # GET /events/:admin_token/admin
+  # イベント管理者ページ
+  # 機能としてはリンクページのみ
+  def admin
+  end
 
 private
 
 	# admin_tokenでイベントを検索
-	def find_event_by_token
+	def find_event_by_admin_token
 		@event = Event.find_by_admin_token(params[:id]) or
 			raise ActiveRecord::RecordNotFound
 	rescue
