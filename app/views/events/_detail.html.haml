@@ -19,8 +19,21 @@
       <iframe src="/events/#{@event.id}/map" height=400 width=400 frameborder=0></iframe>
   %tr  
     %th{ scope: "row", align: "right" } 参加費
-    %td= number_to_currency(@event.expense, unit: "円", 
-      precision: 0, format: "%n %u")
+    %td= %table{ border: "2", align: "center", cellpadding: "3" }
+            %tr
+              %td 内容
+              %td 参加費
+              %td 説明
+
+           - @event_fees.each do
+
+            %tr
+              %td = @event_fee.name
+              %td = @event_fee.sum
+              %td = @event_fee.sammary
+
+            end
+
   %tr  
     %th{ scope: "row", align: "right" } 定員
     %td

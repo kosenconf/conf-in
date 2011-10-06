@@ -39,6 +39,9 @@ class Entry < ActiveRecord::Base
   validates_length_of :free4, :maximum => 400, :allow_nil => true
   validates_length_of :free5, :maximum => 400, :allow_nil => true
 
+  has_many :entry_fees,
+    dependent: :delete_all
+
 =begin
 private
   def user_exsist?

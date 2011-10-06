@@ -34,6 +34,9 @@ class Event < ActiveRecord::Base
     :greater_than => 0, #0 より大きくなければならない
     :message => "0より大きい値を入力してください。"
 
+  has_many :event_fees,
+    dependent: :delete_all
+
 	# 偽造フォームによるフィールドの保護
 	attr_protected :owner_user_id, :admin_token
 
