@@ -4,6 +4,7 @@
   
   %h2 イベント概要
   %hr
+  = sanitize @event.summary
   = render partial: 'detail'
   
   %h2 このイベントに関連するツイート
