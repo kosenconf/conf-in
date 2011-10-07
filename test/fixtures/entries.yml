@@ -1,11 +1,54 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+entry1:
+  id: 100001
+  event_id: 10001
+  user_id: 10001
+  select1: ''
+  select2: ''
+  select3: ''
+  select4: ''
+  select5: ''
+  free1: ''
+  free2: ''
+  free3: ''
+  free4: ''
+  free5: ''
+  comment: 'test1'
+  received: !!null 
+  created_at: 2011-10-07 15:35:44.919916000Z
+  updated_at: 2011-10-07 15:35:44.919916000Z
+entry2:
+  id: 100002
+  event_id: 10001
+  user_id: 10002
+  select1: ''
+  select2: ''
+  select3: ''
+  select4: ''
+  select5: ''
+  free1: ''
+  free2: ''
+  free3: ''
+  free4: ''
+  free5: ''
+  comment: 'test2'
+  received: !!null 
+  created_at: 2011-10-07 15:35:44.919916000Z
+  updated_at: 2011-10-07 15:35:44.919916000Z
+entry3:
+  id: 100003
+  event_id: 10001
+  user_id: 10003
+  select1: ''
+  select2: ''
+  select3: ''
+  select4: ''
+  select5: ''
+  free1: ''
+  free2: ''
+  free3: ''
+  free4: ''
+  free5: ''
+  comment: 'test3'
+  received: !!null 
+  created_at: 2011-10-07 15:35:44.919916000Z
+  updated_at: 2011-10-07 15:35:44.919916000Z

@@ -1,36 +1,45 @@
-sp1:
-  name: 'Test Event1'
-  date: '2011-08-24 20:00'
-  place_name: 'place hoge'
-  place_address: 'hogehogeaddress'
-  capacity: 100
+user1:
+  id: 10001
+  name: テストイベント1
+  date: 2011-10-11 15:30:00.000000000Z
+  summary: ''
+  website: ''
+  place_name: 長野高専
+  place_room: ''
+  place_address: 長野市徳間716
+  place_website: ''
+  capacity: 10
   expense: 100
-  joinable_period_begin: '2011-08-24 19:00'
-  joinable_period_end: '2011-08-24 20:00'
-  hosting_group: 'hostGroup'
-  hosting_email: 'hoge@hoge.com'
-  owner_user_id: 1
-sp1:
-  name: 'Test Event2'
-  date: '2011-08-24 20:00'
-  place_name: 'place hoge'
-  place_address: 'hogehogeaddress'
-  capacity: 100
-  expense: 100
-  joinable_period_begin: '2011-08-24 19:00'
-  joinable_period_end: '2011-08-24 20:00'
-  hosting_group: 'hostGroup'
-  hosting_email: 'hoge@hoge.com'
-  owner_user_id: 1
-fp2: # Each have blank error
-  name: ''
-  date: ''
-  place_name: ''
-  place_address: ''
-  capacity: # Has 3 Errors
-  expense: # Has 3 Errors
-  joinable_period_begin: ''
-  joinable_period_end: ''
-  hosting_group: ''
-  hosting_email: ''
-  owner_user_id: 
+  joinable_period_begin: 2011-10-07 15:30:00.000000000Z
+  joinable_period_end: 2011-10-08 15:30:00.000000000Z
+  hosting_group: falcon
+  hosting_email: falcon@falconsrv.net
+  owner_user_id: 10001
+  select1: ''
+  select2: ''
+  select3: ''
+  select4: ''
+  select5: ''
+  select_content1: ''
+  select_content2: ''
+  select_content3: ''
+  select_content4: ''
+  select_content5: ''
+  select_setting1: 0
+  select_setting2: 0
+  select_setting3: 0
+  select_setting4: 0
+  select_setting5: 0
+  free1: ''
+  free2: ''
+  free3: ''
+  free4: ''
+  free5: ''
+  free_setting1: 0
+  free_setting2: 0
+  free_setting3: 0
+  free_setting4: 0
+  free_setting5: 0
+  created_at: 2011-10-07 15:31:16.454572000Z
+  updated_at: 2011-10-07 15:35:37.566986000Z
+  admin_token: f7aaa578aaa536e16e616bf7dea1b24b
