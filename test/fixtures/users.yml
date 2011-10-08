@@ -1,20 +1,36 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one:
-  email: "user1@falconsrv.net"
-  encrypted_password: "aiueo"
-  confirmation_token: "aiueo"
-  reset_password_token: "aiueo"
-  qr_secret: "aiueo"
-  name: "aiueo"
-two:
-  email: "user2@falconsrv.net"
-  encrypted_password: "aiueo2"
-  confirmation_token: "aiueo2"
-  reset_password_token: "aiueo2"
-  qr_secret: "aiueo2"
-  name: "aiueo2"
+user01:
+  id: 10001
+  email: falcon+1@falconsrv.net
+  encrypted_password: $2a$10$qSUVuCQ3YIWgjJxPcuufMO1MZR15Fe4K1ATbDOMmVXoYRW3.IbHjm
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user1
+  qr_secret: 0J5Ar+ihBRFFGllJJx4cuA==
+user02:
+  id: 10002
+  email: falcon+2@falconsrv.net
+  encrypted_password: $2a$10$BgNslBh5s987a3BetV2Y5.mm/JdlAzlgkFAvRjXtwqadav17pq6WC
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user2
+  qr_secret: vTNoqq/16+R9DNPEBXAqbA==
+user03:
+  id: 10003
+  email: falcon+3@falconsrv.net
+  encrypted_password: $2a$10$KadniUCs43OLJHlA4ntyiOLQn7j8HE9zeO/4JKapG0U5eQnJXtp/m
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user3
+  qr_secret: r6OVwsePLn0UUR+eOfhe2w==
+user04:
+  id: 10004
+  email: falcon+4@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user4
+  qr_secret: YDwqQdsx1riVtu8DsLpTGg==
