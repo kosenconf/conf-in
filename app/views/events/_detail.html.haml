@@ -1,9 +1,12 @@
 %h2 イベント詳細
 %hr
 %table{ align: "center", cellpadding: "5" }
+  -# 日時
   %tr  
     %th{ scope: "row", align: "right" } 日時
     %td= I18n.l @event.date, format: :long
+
+  -# 場所
   %tr  
     %th{ scope: "row", align: "right" } 場所
     %td  
@@ -17,40 +20,44 @@
       = link_to @event.place_website, @event.place_website
       %br
       <iframe src="/events/#{@event.id}/map" height=400 width=400 frameborder=0></iframe>
+
+  -# 参加費
   %tr  
     %th{ scope: "row", align: "right" } 参加費
-    %td= %table{ border: "2", align: "center", cellpadding: "3" }
-            %tr
-              %td 内容
-              %td 参加費
-              %td 説明
+    %td
+      -# EventFee
+      %table
+        - @fees.each do |fee|
+          %tr
+            %th= fee.name
+            %td= number_to_currency(fee.sum, unit: "円", precision: 0, format: "%n %u")
 
-           - @event_fees.each do
-
-            %tr
-              %td = @event_fee.name
-              %td = @event_fee.sum
-              %td = @event_fee.sammary
-
-            end
-
+  -# 定員
   %tr  
     %th{ scope: "row", align: "right" } 定員
     %td
       = @event.capacity
       = ' 人'
+
+  -# 申込期間
   %tr  
     %th{ scope: "row", align: "right" } 申し込み期間
     %td
       = I18n.l @event.joinable_period_begin, format: :long
       〜
       = I18n.l @event.joinable_period_end, format: :long
+
+  -# WebSite
   %tr  
-    %th{ scope: "row", align: "right" } website
+    %th{ scope: "row", align: "right" } WebSite
     %td= link_to @event.website, @event.website
+
+  -# 主催者
   %tr  
-    %th{ align: "right" } 主催者
+    %th{ align: "right" } 主催ユーザー
     %td= link_to @owner_user.name, @owner_user
+
+  -# 連絡先
   %tr  
     %th{ scope: "row", align: "right" } 連絡先
     %td= mail_to(@event.hosting_email, @event.hosting_group,

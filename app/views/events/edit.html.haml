@@ -6,5 +6,4 @@
     = link_to_if @event.owner_user_id == current_user.id, |
     'イベントを削除する', event_url(@event.admin_token), method: :delete, |
     confirm: "本当に削除しますか？\n※ユーザからの参加登録も同時に削除されます" |
-= render partial: 'edit_form'
-= link_to 'イベント一覧', events_path
+= render partial: 'form'

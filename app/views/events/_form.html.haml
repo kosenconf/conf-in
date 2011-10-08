@@ -1,4 +1,4 @@
-= form_for @event do |f|
+= form_for @event, url: (params[:action]=='edit' ? {action: :update, id: @event.admin_token}:{action: :create}) do |f|
   = f.error_messages
   %p
     = f.label :name
@@ -45,18 +45,17 @@
     = f.url_field :place_website
   %h2 参加に関して
   %p
-    = f.label :capacity（半角数字）
+    = f.label :capacity
+    （半角数字）
     %span{ style: "color: red; font-weight: bold;" }
       ※必須
     %br
     = f.number_field :capacity
   %p
-    = f.label :expense
-    （半角数字）
-    %span{ style: "color: red; font-weight: bold;" }
-      ※必須
-    %br
-    = f.text_field :expense
+    = f.label :fees, '参加費用'
+    = f.fields_for :fees do |b|
+      = render 'fee_fields', :f => b
+    %p= link_to_add_fields "参加費用を追加", f, :fees
   %p
     = f.label :joinable_period_begin, '参加受付期間'
     %span{ style: "color: red; font-weight: bold;" }
@@ -82,3 +81,5 @@
   = render partial: 'free_question', locals: { f: f }
   %p
     = f.submit f.object.new_record? ? '作成':'変更を保存', disable_with: '処理中...'
+
+= link_to 'イベント一覧', events_path

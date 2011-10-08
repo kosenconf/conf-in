@@ -1,0 +1,12 @@
+.fields
+  %p
+    = f.label :name, '摘要'
+    = f.text_field :name, size: 20
+    = link_to_remove_fields '削除', f
+    %br
+    = f.label :sum, '金額'
+    = f.text_field :sum, size: 4
+    円
+    %br
+    = f.label :summary, '備考'
+    = f.text_field :summary

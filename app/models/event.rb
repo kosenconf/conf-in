@@ -17,27 +17,30 @@ class Event < ActiveRecord::Base
   
 	#空の値をはじく
 	validates_presence_of :name, :date, :place_name, :place_address,
-    :capacity, :expense, :joinable_period_begin, :joinable_period_end, 
+    :capacity, :joinable_period_begin, :joinable_period_end, 
 		:hosting_group, :hosting_email, :owner_user_id,
     :message => "は必須項目です。"
 
   #整数であるべき値
-  validates_numericality_of :expense, :capacity,
+  validates_numericality_of :capacity,
     :only_integer => true, #整数でなければならない
     :message => "整数（半角数字）で入力してください。"
-
-  validates_numericality_of :expense,
-    :greater_than_or_equal_to => 0, #0 以上でなければならない
-    :message => "0以上の値を入力してください。"
 
   validates_numericality_of :capacity,
     :greater_than => 0, #0 より大きくなければならない
     :message => "0より大きい値を入力してください。"
 
-  has_many :event_fees,
-    dependent: :delete_all
-
-	# 偽造フォームによるフィールドの保護
+  # 参加費情報
+  has_many :fees, class_name: "EventFee",
+    foreign_key: :event_id, dependent: :delete_all
+  
+  # 参加費フォーム
+  # 名前と金額が空なら削除
+  accepts_nested_attributes_for :fees,
+    :reject_if => lambda { |f| f[:name].blank? && f[:sum].blank? },
+    :allow_destroy => true
+  
+	# 偽造フォームからのフィールドの保護
 	attr_protected :owner_user_id, :admin_token
 
 protected

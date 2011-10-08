@@ -30,7 +30,9 @@ class EventsController < ApplicationController
     @owner_user = @event.owner_user
     #残り参加可能人数計算
     @remain = @event.capacity - @event.entries.all.count
-
+    # 参加費用リスト
+    @fees = @event.fees
+    
     #イベントの状態
     @status = if Time.now < @event.joinable_period_begin then "準備中"
         elsif Time.now < @event.joinable_period_end then "申込受付中"
@@ -49,6 +51,11 @@ class EventsController < ApplicationController
     @event = Event.new
     @page_title = "新規イベント作成"
     @event.owner_user_id = current_user.id
+    
+    # 1つ参加費用のフィールドを用意
+    1.times do
+      @event.fees.build
+    end
   end
 
   # POST /events

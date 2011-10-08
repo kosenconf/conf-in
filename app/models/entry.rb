@@ -39,8 +39,9 @@ class Entry < ActiveRecord::Base
   validates_length_of :free4, :maximum => 400, :allow_nil => true
   validates_length_of :free5, :maximum => 400, :allow_nil => true
 
-  has_many :entry_fees,
-    dependent: :delete_all
+  # 参加費
+  has_many :fees, class_name: "EntryFee",
+    foreign_key: :entry_fee_id, dependent: :delete_all
 
 =begin
 private

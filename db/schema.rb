@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111002152703) do
+ActiveRecord::Schema.define(:version => 20111008151443) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -32,6 +32,23 @@ ActiveRecord::Schema.define(:version => 20111002152703) do
     t.datetime "updated_at"
   end
 
+  create_table "entry_fees", :force => true do |t|
+    t.integer  "entry_id"
+    t.integer  "entry_fee_id"
+    t.boolean  "paid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_fees", :force => true do |t|
+    t.integer  "event_id"
+    t.string   "name"
+    t.integer  "sum"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.datetime "date"
@@ -42,7 +59,6 @@ ActiveRecord::Schema.define(:version => 20111002152703) do
     t.string   "place_address"
     t.string   "place_website"
     t.integer  "capacity"
-    t.decimal  "expense"
     t.datetime "joinable_period_begin"
     t.datetime "joinable_period_end"
     t.string   "hosting_group"
