@@ -11,6 +11,17 @@ class Event < ActiveRecord::Base
   belongs_to :owner_user,
     :class_name => "User",
     :foreign_key => "owner_user_id"
+
+  # 参加費情報
+  has_many :fees, class_name: "EventFee",
+    foreign_key: :event_id, dependent: :delete_all
+  
+  # 参加費フォーム
+  # 名前と金額が空なら削除
+  accepts_nested_attributes_for :fees,
+    :reject_if => lambda { |f| f[:name].blank? && f[:sum].blank? },
+    :allow_destroy => true
+
   #一意であるべき値
   validates_uniqueness_of :name,
     :message => "既に存在します。"
@@ -30,16 +41,6 @@ class Event < ActiveRecord::Base
     :greater_than => 0, #0 より大きくなければならない
     :message => "0より大きい値を入力してください。"
 
-  # 参加費情報
-  has_many :fees, class_name: "EventFee",
-    foreign_key: :event_id, dependent: :delete_all
-  
-  # 参加費フォーム
-  # 名前と金額が空なら削除
-  accepts_nested_attributes_for :fees,
-    :reject_if => lambda { |f| f[:name].blank? && f[:sum].blank? },
-    :allow_destroy => true
-  
 	# 偽造フォームからのフィールドの保護
 	attr_protected :owner_user_id, :admin_token
 

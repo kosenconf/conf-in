@@ -25,6 +25,13 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @user_id = current_user.id
     @page_title = "イベントに参加 | #{@event.name}"
+    # EventFeeを取得
+    @fees = @event.fees
+    
+    # EventFee分作成
+    @fees.each do
+      @entry.fees.build
+    end
   end
   
   # POST /entries/confirm

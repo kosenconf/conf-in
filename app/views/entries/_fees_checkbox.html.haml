@@ -1,0 +1,7 @@
+-# @fee(EventFee)をシフト（popの反対）
+- fee = @fees.shift
+= f.check_box :event_fee_id, {}, fee.id, ""
+= fee.name
+= number_to_currency(fee.sum, unit: "円", precision: 0, format: "%n %u")
+= fee.summary
+%br

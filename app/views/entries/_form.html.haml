@@ -1,8 +1,12 @@
 = f.error_messages
-= f.label :comment
-(30文字以内でお願いします)
-%br
-= f.text_field :comment ,:size => 60
+%h3 参加費用
+= f.fields_for :fees do |b|
+  = render 'fees_checkbox', f: b
+%p
+  = f.label :comment
+  (30文字以内でお願いします)
+  %br
+  = f.text_field :comment ,:size => 60
 - @select_form.each do |i|
   - if i[:setting] >= 1 then
     - content = [''] + i[:content].split(',')

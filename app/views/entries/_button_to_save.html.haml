@@ -1,4 +1,7 @@
 = form_for [:complete, @event, @entry] do |f|
-  - [ :event_id, :user_id, :comment, :select1, :select2, :select3, :select4, :select5, :free1, :free2, :free3, :free4, :free5 ].each do |attr|
+  - [ :event_id, :user_id, :comment, :select1, :select2, :select3, :select4, :select5, |
+    :free1, :free2, :free3, :free4, :free5 ].each do |attr| |
     = f.hidden_field attr
+  = f.fields_for :fees do |i|
+    = i.hidden_field :event_fee_id
   = f.submit '登録', :disable_with => '処理中...'

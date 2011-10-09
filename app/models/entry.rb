@@ -1,14 +1,18 @@
 # coding: utf-8
 class Entry < ActiveRecord::Base
   #イベント
-  belongs_to :event,
-    :foreign_key => "event_id"
-  
+  belongs_to :event
   #参加ユーザ
-  belongs_to :user,
-    :class_name => "User",
-    :foreign_key => "user_id"
-
+  belongs_to :user
+  
+  # 参加費
+  has_many :fees, class_name: "EntryFee",
+    foreign_key: :entry_id, dependent: :delete_all
+  # 参加費フォーム
+  # 名前と金額が空なら削除
+  accepts_nested_attributes_for :fees,
+    :reject_if => lambda { |f| f[:event_fee_id].blank? }
+  
   #空の値をはじく
   validates_presence_of :event_id, :user_id,
     :message => "は必須項目です。"
@@ -38,16 +42,5 @@ class Entry < ActiveRecord::Base
   validates_length_of :free3, :maximum => 400, :allow_nil => true
   validates_length_of :free4, :maximum => 400, :allow_nil => true
   validates_length_of :free5, :maximum => 400, :allow_nil => true
-
-  # 参加費
-  has_many :fees, class_name: "EntryFee",
-    foreign_key: :entry_fee_id, dependent: :delete_all
-
-=begin
-private
-  def user_exsist?
-    errors.add(:user_id, "ユーザは存在しません。") unless User.find_by_id(user_id)
-  end
-=end
 
 end
