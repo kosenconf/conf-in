@@ -32,17 +32,17 @@
       %td= entry.free5
       %td
         - entry.received = 1
-        = form_for([@event, entry], :method => :put) do |f|
+        = form_for([@event, entry], url: {action: :update, event_id: @event.admin_token, id: entry.id} ) do |f|
           = f.hidden_field :received
           = f.submit '出席'
         - entry.received = 2
       %td
-        = form_for([@event, entry], :method => :put) do |f|
+        = form_for([@event, entry], url: {action: :update, event_id: @event.admin_token, id: entry.id}) do |f|
           = f.hidden_field :received
           = f.submit '欠席'
       %td  
         - entry.received = 0
-        = form_for([@event, entry], :method => :put) do |f|
+        = form_for([@event, entry], url: {action: :update, event_id: @event.admin_token, id: entry.id}) do |f|
           = f.hidden_field :received
           = f.submit '未確認に戻す'
 

@@ -7,8 +7,8 @@ class EntriesController < ApplicationController
   before_filter :authenticate_user!
   
   # イベント情報を引っ張る
-  before_filter :find_event, except: [:index]
-  before_filter :find_event_by_admin_token, only: [:index]
+  before_filter :find_event, except: [:index, :update]
+  before_filter :find_event_by_admin_token, only: [:index, :update]
   
   # 定員に達したか？
   before_filter :entries_filled,
