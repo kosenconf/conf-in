@@ -68,6 +68,13 @@ class EntriesController < ApplicationController
       redirect_to event_url(@event)
     end
   end
+
+  # PUT /entries/1
+  # 当日受付情報の更新
+  def update
+    Entry.update(params[:id], params[:entry])
+    redirect_to :back
+  end
   
   # POST /entries/ticket
   # チケットの描画
@@ -77,7 +84,7 @@ class EntriesController < ApplicationController
 
     render :action => 'ticket'
   end
-  
+
   # DELETE /entries/1
   # 参加登録の解除
   def destroy
@@ -97,7 +104,7 @@ class EntriesController < ApplicationController
   end
   
   
-  # DELETE /events/:event_id/entries
+  # GET /events/:event_id/entries
   # イベント参加者一覧（管理者向け）
   # :event_idはadmin_tokenを使う
   # filterを通してイベント取得

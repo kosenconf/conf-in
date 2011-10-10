@@ -43,4 +43,17 @@ class Entry < ActiveRecord::Base
   validates_length_of :free4, :maximum => 400, :allow_nil => true
   validates_length_of :free5, :maximum => 400, :allow_nil => true
 
+  # receivedの整形
+  def received_to_s
+    i = self.received || 0
+    %w(未確認 出席 欠席)[i]
+  end
+
+=begin
+private
+  def user_exsist?
+    errors.add(:user_id, "ユーザは存在しません。") unless User.find_by_id(user_id)
+  end
+=end
+
 end

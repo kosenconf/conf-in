@@ -4,6 +4,7 @@
 %table
   %tr
     %th 登録名
+    %th 出席
     %th= @event.select1
     %th= @event.select2
     %th= @event.select3
@@ -14,9 +15,11 @@
     %th= @event.free3
     %th= @event.free4
     %th= @event.free5
+    %th
   - @event.entries.each do |entry|
     %tr
       %td= link_to entry.user.name, entry.user
+      %td= entry.received_to_s
       %td= entry.select1
       %td= entry.select2
       %td= entry.select3
@@ -27,3 +30,19 @@
       %td= entry.free3
       %td= entry.free4
       %td= entry.free5
+      %td
+        - entry.received = 1
+        = form_for([@event, entry], :method => :put) do |f|
+          = f.hidden_field :received
+          = f.submit '出席'
+        - entry.received = 2
+      %td
+        = form_for([@event, entry], :method => :put) do |f|
+          = f.hidden_field :received
+          = f.submit '欠席'
+      %td  
+        - entry.received = 0
+        = form_for([@event, entry], :method => :put) do |f|
+          = f.hidden_field :received
+          = f.submit '未確認に戻す'
+
