@@ -3,4 +3,6 @@ class EntryFee < ActiveRecord::Base
   belongs_to :event_fee
   # Entryに属する
   belongs_to :entry
+
+  include ActiveRecord::Calculations
 end

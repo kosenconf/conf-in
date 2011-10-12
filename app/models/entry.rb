@@ -1,5 +1,7 @@
 # coding: utf-8
 class Entry < ActiveRecord::Base
+
+  include ActiveRecord::Calculations
   #イベント
   belongs_to :event
   #参加ユーザ

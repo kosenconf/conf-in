@@ -5,7 +5,7 @@
 <%= url_for controller: 'events', action: 'show', id: @event.id, only_path: false %>
 開催日時： <%= I18n.l @event.date, :format => :long %>
 会場： <%= @event.place_name %>
-参加費用： 
+参加費用： <%= @feeresult %> 円
 連絡先： <%= @event.hosting_email %>
 
 

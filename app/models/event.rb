@@ -48,4 +48,6 @@ protected
 	def init_admin_token
 		self.admin_token = SecureRandom.hex(16).encode('UTF-8')
 	end
+
+  include ActiveRecord::Calculations
 end
