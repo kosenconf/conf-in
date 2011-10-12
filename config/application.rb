@@ -40,7 +40,6 @@ module ConfInProcon
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-		config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
 		$SYSTEM_TITLE = 'カンファイン'
 		$ADMIN_EMAIL = 'webmaster@falconsrv.net'

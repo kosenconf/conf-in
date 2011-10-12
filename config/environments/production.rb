@@ -49,5 +49,8 @@ ConfInProcon::Application.configure do
   
   config.action_mailer.smtp_settings = {
     delivery_method: :sendmail
-  }
+ 	}
+
+	config.action_mailer.default_url_options = { host: 'falconsrv.net' }
+
 end
