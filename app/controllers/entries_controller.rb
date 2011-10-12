@@ -27,11 +27,11 @@ class EntriesController < ApplicationController
     @page_title = "イベントに参加 | #{@event.name}"
     # EventFeeを取得
     @fees = @event.fees
-    
-    # EventFee分作成
-    @fees.each do
-      @entry.fees.build
+    @fee_ids = []
+    @entry.fees.each do |f|
+      @fee_ids << f.event_fee_id
     end
+    
   end
   
   # POST /entries/confirm
@@ -43,6 +43,13 @@ class EntriesController < ApplicationController
     @entry.event_id = @event_id
     @entry.user_id = current_user.id
 
+    # EventFeeを取得
+    @fees = @event.fees
+    @fee_ids = []
+    @entry.fees.each do |f|
+      @fee_ids << f.event_fee_id
+    end
+    
     if @entry.valid?
       render :action => 'confirm'
     else
