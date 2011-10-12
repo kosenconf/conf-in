@@ -42,6 +42,7 @@ class EntriesController < ApplicationController
 
     @entry.event_id = @event_id
     @entry.user_id = current_user.id
+    @fees = entry.fees
 
     if @entry.valid?
       render :action => 'confirm'
