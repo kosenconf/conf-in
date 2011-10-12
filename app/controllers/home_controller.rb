@@ -8,11 +8,11 @@ class HomeController < ApplicationController
       :limit => 5 #5件
     )
 
-		#向こう２週間に開催されるイベント
+		#開催されるイベント
     @near_events = Event.find(
       :all,
       :order => "date DESC", #降順で
-      :conditions => ["date <= ? AND date >= ?", 14.day.since, Time.now.utc],
+      :conditions => ["date >= ?", Time.now.utc],
       :limit => 5 #5件
     )
 	end

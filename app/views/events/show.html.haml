@@ -1,3 +1,5 @@
+= render partial: 'like_init'
+
 .maintable
   %h1= @event.name
   %hr
@@ -7,7 +9,11 @@
   = sanitize @event.summary
   = render partial: 'detail'
   
-  %h2 このイベントに関連するツイート
+  %h2 
+    このイベントに関連するツイート
+    = render partial: 'tweet_button'
+    = render partial: 'like_button'
+  
   %hr
   -# TODO : 関連ツイートJavaScript埋め込み
   
