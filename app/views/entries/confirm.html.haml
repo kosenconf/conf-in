@@ -6,8 +6,8 @@
       %table
         - @fees.each do |fee|
           %tr
-            %th= fee.name
-            %td= number_to_currency(fee.sum, unit: "円", precision: 0, format: "%n %u")
+            %th= fee.event_fee.name
+            %td= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u")
 
 = render :partial => 'button_to_save'
 = link_to 'イベントページに戻る', @event
