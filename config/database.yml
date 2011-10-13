@@ -16,7 +16,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
+  adapter: mysql2
   database: conf_in
   host: localhost
   username: conf-in
