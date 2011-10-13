@@ -16,7 +16,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql
+  database: conf_in
+  host: localhost
+  username: conf-in
+  password: H8j0qD2nZuZ2
   pool: 5
   timeout: 5000
