@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111009051629) do
+ActiveRecord::Schema.define(:version => 20111014082934) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20111009051629) do
     t.string   "tw_token"
     t.string   "tw_secret"
     t.string   "fb_token"
+    t.string   "tw_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

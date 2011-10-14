@@ -1,6 +1,6 @@
 .maintable
   .bignickname
-    = twicon_tag @user.tw_name, :bigger
+    = twicon_tag @user.tw_id, :bigger
     = h @user.name
   %hr/
   %table{:align => "center", :cellpadding => "5", :width => "70%"}
@@ -9,7 +9,7 @@
       %td= h @user.memo
     %tr
       %th{:align => "right", :scope => "row"} Twitter
-      %td= link_to "@"+@user.tw_name,"http://twitter.com/#{@user.tw_name}",:target => '_blank' unless @user.tw_name.blank?
+      %td= link_to "@"+@user.tw_id,"http://twitter.com/#{@user.tw_id}",:target => '_blank' unless @user.tw_id.blank?
     %tr
       %th{:align => "right", :scope => "row"} Webサイト
       %td= link_to h(@user.website), @user.website

@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-    :name, :memo, :website, :job, :office, :domicile
+    :name, :memo, :website, :job, :office, :domicile, :tw_id
     
 protected
   def init_qr_secret

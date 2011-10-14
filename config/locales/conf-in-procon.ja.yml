@@ -22,6 +22,7 @@ ja:
         job:  "職業"
         office:  "学校・会社"
         domicile: "居住地"
+        tw_id: "Twitter ID"
         tw_name: "Twitter表示名"
         password:  "パスワード"
         password_confirmation:  "確認入力"

@@ -5,7 +5,7 @@
     %tr
       %td
         / twicon
-        = twicon_tag entry.user.tw_name, :mini
+        = twicon_tag entry.user.tw_id, :mini
       %td
         %b= link_to entry.user.name,   |
             user_url(id: entry.user_id) |
