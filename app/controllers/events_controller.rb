@@ -33,7 +33,10 @@ class EventsController < ApplicationController
     # 参加費用リスト
     @fees = @event.fees
     # 参加費用合計
-    @feesum = fees.event_fee.sum("sum")
+    @entrysum = 0
+    @entry.fees.each do|fee|
+      @entrysum += fee.event_fee.sum
+    end
     
     #イベントの状態
     @status = if Time.now < @event.joinable_period_begin then "準備中"
