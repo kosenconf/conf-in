@@ -4,6 +4,5 @@ class EntryFee < ActiveRecord::Base
   # Entryに属する
   belongs_to :entry
 
-  include ActiveRecord::Calculations
   validates_presence_of :event_fee_id
 end

@@ -42,7 +42,6 @@ class EntriesController < ApplicationController
 
     @entry.event_id = @event_id
     @entry.user_id = current_user.id
-    @fees = entry.fees
 
     # EventFeeを取得
     @fees = @event.fees
@@ -64,7 +63,7 @@ class EntriesController < ApplicationController
 
     @entry = Entry.new(params[:entry])
     @entry.user_id = current_user.id
-    @fees = entry.fees
+    @fees = @entry.fees
 
     @page_title = "参加登録完了 | #{@event.name}"
     
