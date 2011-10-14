@@ -5,4 +5,5 @@ class EntryFee < ActiveRecord::Base
   belongs_to :entry
 
   include ActiveRecord::Calculations
+  validates_presence_of :event_fee_id
 end

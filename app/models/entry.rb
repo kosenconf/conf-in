@@ -45,4 +45,25 @@ class Entry < ActiveRecord::Base
   validates_length_of :free4, :maximum => 400, :allow_nil => true
   validates_length_of :free5, :maximum => 400, :allow_nil => true
 
+  # receivedの整形
+  def received_to_s
+    i = self.received || 0
+    %w(未確認 出席 欠席)[i]
+  end
+  
+  # 参加費用が１つ以上選択されているか
+  validates_each :fees do |record, attr, value|
+    if value.size == 0
+      record.errors.add attr, "１つ以上項目を選択してください"
+    end
+  end
+
+
+=begin
+private
+  def user_exsist?
+    errors.add(:user_id, "ユーザは存在しません。") unless User.find_by_id(user_id)
+  end
+=end
+
 end

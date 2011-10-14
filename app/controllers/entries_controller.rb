@@ -7,8 +7,8 @@ class EntriesController < ApplicationController
   before_filter :authenticate_user!
   
   # イベント情報を引っ張る
-  before_filter :find_event, except: [:index]
-  before_filter :find_event_by_admin_token, only: [:index]
+  before_filter :find_event, except: [:index, :update]
+  before_filter :find_event_by_admin_token, only: [:index, :update]
   
   # 定員に達したか？
   before_filter :entries_filled,
@@ -27,11 +27,11 @@ class EntriesController < ApplicationController
     @page_title = "イベントに参加 | #{@event.name}"
     # EventFeeを取得
     @fees = @event.fees
-    
-    # EventFee分作成
-    @fees.each do
-      @entry.fees.build
+    @fee_ids = []
+    @entry.fees.each do |f|
+      @fee_ids << f.event_fee_id
     end
+    
   end
   
   # POST /entries/confirm
@@ -44,6 +44,13 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     @fees = entry.fees
 
+    # EventFeeを取得
+    @fees = @event.fees
+    @fee_ids = []
+    @entry.fees.each do |f|
+      @fee_ids << f.event_fee_id
+    end
+    
     if @entry.valid?
       render :action => 'confirm'
     else
@@ -70,6 +77,13 @@ class EntriesController < ApplicationController
       redirect_to event_url(@event)
     end
   end
+
+  # PUT /entries/1
+  # 当日受付情報の更新
+  def update
+    Entry.update(params[:id], params[:entry])
+    redirect_to :back
+  end
   
   # POST /entries/ticket
   # チケットの描画
@@ -79,7 +93,7 @@ class EntriesController < ApplicationController
 
     render :action => 'ticket'
   end
-  
+
   # DELETE /entries/1
   # 参加登録の解除
   def destroy
@@ -99,7 +113,7 @@ class EntriesController < ApplicationController
   end
   
   
-  # DELETE /events/:event_id/entries
+  # GET /events/:event_id/entries
   # イベント参加者一覧（管理者向け）
   # :event_idはadmin_tokenを使う
   # filterを通してイベント取得

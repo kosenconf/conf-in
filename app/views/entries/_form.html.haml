@@ -1,7 +1,6 @@
 = f.error_messages
 %h3 参加費用
-= f.fields_for :fees do |b|
-  = render 'fees_checkbox', f: b
+= render 'fees_checkbox'
 %p
   = f.label :comment
   (30文字以内でお願いします)

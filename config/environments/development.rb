@@ -17,8 +17,15 @@ ConfInProcon::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    delivery_method: :sendmail
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "falconsrv.net",
+    user_name: "webmaster@falconsrv.net",
+    password: "fSrvMaster",
+    authentication: :plain,
+    enable_starttls_auto: true
   }
+	config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
