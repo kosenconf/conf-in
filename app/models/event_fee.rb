@@ -18,4 +18,5 @@ class EventFee < ActiveRecord::Base
 
   # 偽造フォームからのフィールドの保護
   attr_protected :paid
+
 end

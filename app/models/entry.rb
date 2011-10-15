@@ -1,5 +1,7 @@
 # coding: utf-8
 class Entry < ActiveRecord::Base
+
+  include ActiveRecord::Calculations
   #イベント
   belongs_to :event
   #参加ユーザ
@@ -48,6 +50,14 @@ class Entry < ActiveRecord::Base
     i = self.received || 0
     %w(未確認 出席 欠席)[i]
   end
+  
+  # 参加費用が１つ以上選択されているか
+  validates_each :fees do |record, attr, value|
+    if value.size == 0
+      record.errors.add attr, "１つ以上項目を選択してください"
+    end
+  end
+
 
 =begin
 private
