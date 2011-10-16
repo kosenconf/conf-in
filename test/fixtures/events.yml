@@ -1,7 +1,7 @@
 user1:
   id: 10001
   name: テストイベント1
-  date: 2011-10-11 15:30:00.000000000Z
+  date: 2013-10-11 15:30:00.000000000Z
   summary: ''
   website: ''
   place_name: 長野高専
@@ -9,9 +9,8 @@ user1:
   place_address: 長野市徳間716
   place_website: ''
   capacity: 10
-  expense: 100
   joinable_period_begin: 2011-10-07 15:30:00.000000000Z
-  joinable_period_end: 2011-10-08 15:30:00.000000000Z
+  joinable_period_end: 2012-10-08 15:30:00.000000000Z
   hosting_group: falcon
   hosting_email: falcon@falconsrv.net
   owner_user_id: 10001
