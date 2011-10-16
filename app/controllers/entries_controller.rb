@@ -71,7 +71,7 @@ class EntriesController < ApplicationController
     if (@event.entries << @entry)
       render :action => 'complete'
       EntryMailer.new_entry_user(@entry).deliver
-      EntryMailer.notify_new_entry_to_owner(@entry).deliver
+      #EntryMailer.notify_new_entry_to_owner(@entry).deliver
     else
       #render :action => :new
       redirect_to event_url(@event)
