@@ -2,10 +2,10 @@
 
 one:
   entry_id: 1
-  entry_fee_id: 1
+  event_fee_id: 1
   paid: false
 
 two:
   entry_id: 1
-  entry_fee_id: 1
+  event_fee_id: 1
   paid: false
