@@ -1,13 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
 one:
-  event_id: 1
+  id: 10001
   name: MyString
-  sum: 1
-  summary: MyText
-
-two:
-  event_id: 1
-  name: MyString
-  sum: 1
+  sum: 100
   summary: MyText

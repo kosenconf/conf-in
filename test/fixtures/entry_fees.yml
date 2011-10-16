@@ -1,11 +1,18 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
-
 one:
-  entry_id: 1
+  id: 1
   event_fee_id: 1
+  entry_id: 100001
   paid: false
 
 two:
-  entry_id: 1
+  id: 2
   event_fee_id: 1
+  entry_id: 100002
   paid: false
+
+three:
+  id: 3
+  event_fee_id: 1
+  entry_id: 100003
+  paid: false
+
