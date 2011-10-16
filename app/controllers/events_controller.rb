@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show, :map, :admin, :csv, :xml]
   before_filter :find_event_by_admin_token, only: [:edit, :update, :admin]
   #layout "events", :except => [:map]
-
+	before_filter :basic_auth, only: [:new]
 
   # GET /events
   def index
@@ -155,6 +155,13 @@ private
 			raise ActiveRecord::RecordNotFound
 	rescue
 		redirect_to '/'
+	end
+	
+	# Basic認証
+	def basic_auth
+		authenticate_or_request_with_http_basic do |user, pass|
+			user == 'kc035NagaokaAdmin' && pass == 'A6JkSLxBg3EPTtPu'
+		end
 	end
 end
 
