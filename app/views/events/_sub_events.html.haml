@@ -1,0 +1,6 @@
+- unless @sub_events.blank?
+  %h2 サブイベント
+  %hr
+  %ul
+    - @sub_events.each do |sub_event|
+      %li= link_to sub_event.name, sub_event

@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20111014082934) do
     t.datetime "joinable_period_end"
     t.string   "hosting_group"
     t.string   "hosting_email"
+    t.integer  "main_event_id"
     t.integer  "owner_user_id"
     t.string   "select1"
     t.string   "select2"

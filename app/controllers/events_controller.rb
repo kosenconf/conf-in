@@ -22,6 +22,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id]) #1行取得
     @page_title = @event.name
+    #サブイベント取得（無いときnil）
+    @sub_events = @event.sub_events
     #アクセスしたこのイベントにユーザが参加しているか
     @entry = current_user.entries.find_by_event_id(@event.id) if user_signed_in?
     #エントリー
