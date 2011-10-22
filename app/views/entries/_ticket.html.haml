@@ -1,20 +1,20 @@
-%h3 チケット
-%hr
-%table{:align => "center"}
-  %tr
-    %th= I18n.t 'activerecord.attributes.event.name'
-    %td= @event.name
-  %tr
-    %th= I18n.t 'activerecord.attributes.user.name'
-    %td
-      = User.find(@entry.user_id).name
-      様
-  %tr
-    %th 合計参加費用
-    %td
-      = @entrysum
-      円
-  %tr
-    %th= I18n.t 'activerecord.attributes.user.qr_secret'
-    %td
-      = qrimg_tag User.find(@entry.user_id).qr_secret
+.sideTitle チケット
+.side
+  %table
+    %tr
+      %th= I18n.t 'activerecord.attributes.event.name'
+      %td= @event.name
+    %tr
+      %th= I18n.t 'activerecord.attributes.user.name'
+      %td
+        = User.find(@entry.user_id).name
+        様
+    %tr
+      %th 合計参加費用
+      %td
+        = @entrysum
+        円
+    %tr
+      %th= I18n.t 'activerecord.attributes.user.qr_secret'
+      %td
+        = qrimg_tag User.find(@entry.user_id).qr_secret
