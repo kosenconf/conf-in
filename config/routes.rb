@@ -17,6 +17,7 @@ ConfInProcon::Application.routes.draw do
 				post :confirm
 				post :complete
 				post :ticket
+				get :qr_receive
 			end
 		end
 		member do

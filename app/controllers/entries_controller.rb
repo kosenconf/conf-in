@@ -7,8 +7,8 @@ class EntriesController < ApplicationController
   before_filter :authenticate_user!
   
   # イベント情報を引っ張る
-  before_filter :find_event, except: [:index, :update]
-  before_filter :find_event_by_admin_token, only: [:index, :update]
+  before_filter :find_event, except: [:index, :update, :qr_receive]
+  before_filter :find_event_by_admin_token, only: [:index, :update, :qr_receive]
   
   # 定員に達したか？
   before_filter :entries_filled,
@@ -119,6 +119,18 @@ class EntriesController < ApplicationController
   # filterを通してイベント取得
   def index
     @page_title = "参加者一覧 | #{@event.name}"
+  end
+  
+  def qr_receive
+    @user = @event.users.find_by_qr_secret(params[:qr_secret])
+    @entry = @event.entries.find_by_user_id(@user.id)
+
+    @page_title = "受付情報 | #{@event.name}"
+    
+    
+    
+  rescue
+    redirect_to root_path
   end
   
 private

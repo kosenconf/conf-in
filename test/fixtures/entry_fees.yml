@@ -1,18 +1,18 @@
 one:
   id: 1
   event_fee_id: 1
-  entry_id: 100001
+  entry_id: 10001
   paid: false
 
 two:
   id: 2
   event_fee_id: 1
-  entry_id: 100002
+  entry_id: 10002
   paid: false
 
 three:
   id: 3
   event_fee_id: 1
-  entry_id: 100003
+  entry_id: 10003
   paid: false
 
