@@ -1,15 +1,15 @@
-%h3 イベントの状態
-%hr
-%table{ align: "center", cellpadding: "5" }
-  %tr
-    %th 状態
-    %td= @status 
-  %tr
-    %th 申込数
-    %td
-      %b= "#{@event.entries.all.count}/#{@event.capacity}"
-      人
-  %tr
-    %th
-      %br
-    %td= "(残り#{@remain}人)"
+.sideTitle イベントの状態
+.side
+  %table{ align: "center", cellpadding: "5" }
+    %tr
+      %th 状態
+      %td= @status 
+    %tr
+      %th 申込数
+      %td
+        %b= "#{@event.entries.all.count}/#{@event.capacity}"
+        人
+    %tr
+      %th
+        %br
+      %td= "(残り#{@remain}人)"

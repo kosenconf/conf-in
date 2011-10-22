@@ -1,13 +1,13 @@
-%h3 イベント参加者
-%hr
-%table{ cellpadding: "5px"}
-  - @entries.each do |entry|
-    %tr
-      %td
-        / twicon
-        = twicon_tag entry.user.tw_id, :mini
-      %td
-        %b= link_to entry.user.name,   |
-            user_url(id: entry.user_id) |
-        %br
-        = entry.comment
+.sideTitle イベント参加者
+.side
+  %table.entryTable
+    - @entries.each do |entry|
+      %tr
+        %td.entryTable
+          / twicon
+          = twicon_tag entry.user.tw_id, :mini
+        %td.entryTable
+          %b= link_to entry.user.name,   |
+              user_url(id: entry.user_id) |
+          %br
+          = entry.comment
