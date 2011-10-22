@@ -1,4 +1,67 @@
 @charset "utf-8";
-
-
-
+.eventTitle {
+	margin:0px;
+	color:#000000;
+	font-size:xx-large;
+	font-weight:bolder;
+	padding: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.indexTable {
+	text-align: left;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	border-collapse: collapse;
+}
+th.indexTable {
+	padding-right: 5px;
+	text-align: center;
+	background:#EEEEEE;
+}
+td.indexTable {
+	text-align: left;
+	padding: 5px;
+}
+.entryTable {
+	text-align: center;
+	padding: 5px;
+}
+td.entryTable {
+	text-align:left;
+}
+.sideTitle {
+	margin: 0;
+	background:#CCFFFF;
+	color: #000000;
+	font-size:large;
+	border-width: 0px 1px 0 1px;
+	border-style: solid;
+	font-weight: bold;
+	padding-top: 8px;
+	padding-right: 0px;
+	padding-bottom: 8px;
+	padding-left: 0px;
+}
+.side {
+	margin: 0;
+	padding: 0;
+	border-width: 1px 1px 1px 1px;
+	border-style: solid;
+}
+#map_canvas {
+	position: relative;
+}
+.joinLink {
+	background:#0099FF;
+	padding-top: 15px;
+	padding-right: 0px;
+	padding-bottom: 15px;
+	padding-left: 0px;
+}
+#joinLink {
+	color: #FFFFFF;
+	font-size: x-large;
+	font-weight: bolder;
+}

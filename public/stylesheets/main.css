@@ -1,74 +1,88 @@
 @charset "utf-8";
-
+body {
+	margin: 0;
+	padding: 0;
+	background:#FFFFFF;
+	color: #000;
+}
 .img {
-    border: none;
+	border: none;
 }
 .comments {
-    font-size: small;
-    color: #666;
+	font-size: small;
+	color: #666;
 }
 .container {
-    width: 900px;
-    margin: 0 auto;
+	width: 920px;
+	background: #FFFFFF;
+	margin: 0 auto 10px auto;
+	padding:0;
+	font-family: "ヒラギノ角ゴ Pro W3", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-size: 14px;
 }
-
+.content {
+	padding: 0px;
+}
 .column {
-    width: 100%;
-    float: left;
-    padding: 10px 0;
+	width: 100%;
+	float: left;
+	margin: 10px 0 10px 0;
+	padding: 20px 0 20px 0;
+	border-width: 1px 0 1px 0;
+	border-style: solid;
 }
 .header {
-    width: 100%;
-    margin: 0 0 15px;
-    float: left;
+	width: 100%;
+	margin: 0 0;
+	padding: 100;
+	float: left;
 }
 .headlarge {
-    width: 80%;
-    float:left;
+	width: 80%;
+	float:left;
 }
 .headtitle {
-    width: 35%;
-    float: left;
+	width: 30%;
+	float: left;
+	text-align:center;
 }
 .headsub {
-    width: 40%;
-    float: left;
+	width: 40%;
+	float: left;
+	text-align:center;
 }
 .headlogin {
-    width: 25%;
-    float: left;
+	width: 30%;
+	float: left;
+	text-align: center;
 }
 .maintable {
-    width: 69%;
-    float: left;
-    padding: 0 5px 0 0;
-    margin: 20px 0;
+	width: 62%;
+	float: left;
+	padding: 0 5px 0 10px;
+ //margin: 0px 0;
 }
 .sidetable {
-    width: 29%;
-    float: left;
-    padding: 0 0 0 5px;
+	width: 34%;
+	float: left;
+	margin: 0;
+	padding: 0 5px 0 10px;
+	text-align:center;
 }
 .footer {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
+	text-align: center;
 }
 .topmain {
-    width: 80%;
-    float: left;
-}
-#map_canvas {
-    position: relative;
+	width: 80%;
+	float: left;
 }
 .bignickname {
-    font-size: 3em;
+	font-size: 3em;
 }
-.about{
-    width: 55%;
-    margin: 30px auto;
+.about {
+	width: 55%;
+	margin: 30px auto;
 }
-.flash{
-    background: yellow;
-    
+.flash {
+	background: yellow;
 }

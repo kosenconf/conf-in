@@ -1,15 +1,15 @@
 %h2 イベント詳細
 %hr
-%table{ align: "center", cellpadding: "5" }
+%table.indexTable
   -# 日時
   %tr  
-    %th{ scope: "row", align: "right" } 日時
-    %td= I18n.l @event.date, format: :long
+    %th.indexTable 日時
+    %td.indexTable= I18n.l @event.date, format: :long
 
   -# 場所
   %tr  
-    %th{ scope: "row", align: "right" } 場所
-    %td  
+    %th.indexTable 場所
+    %td.indexTable
       = @event.place_name
       = @event.place_room
       %br
@@ -23,8 +23,8 @@
 
   -# 参加費
   %tr  
-    %th{ scope: "row", align: "right" } 参加費
-    %td
+    %th.indexTable 参加費
+    %td.indexTable
       -# EventFee
       %table
         - @fees.each do |fee|
@@ -34,31 +34,31 @@
 
   -# 定員
   %tr  
-    %th{ scope: "row", align: "right" } 定員
-    %td
+    %th.indexTable 定員
+    %td.indexTable
       = @event.capacity
       = ' 人'
 
   -# 申込期間
   %tr  
-    %th{ scope: "row", align: "right" } 申し込み期間
-    %td
+    %th.indexTable 申し込み期間
+    %td.indexTable
       = I18n.l @event.joinable_period_begin, format: :long
       〜
       = I18n.l @event.joinable_period_end, format: :long
 
   -# WebSite
   %tr  
-    %th{ scope: "row", align: "right" } WebSite
-    %td= link_to @event.website, @event.website
+    %th.indexTable WebSite
+    %td.indexTable= link_to @event.website, @event.website
 
   -# 主催者
   %tr  
-    %th{ align: "right" } 主催ユーザー
-    %td= link_to @owner_user.name, @owner_user
+    %th.indexTable 主催ユーザー
+    %td.indexTable= link_to @owner_user.name, @owner_user
 
   -# 連絡先
   %tr  
-    %th{ scope: "row", align: "right" } 連絡先
-    %td= mail_to(@event.hosting_email, @event.hosting_group,
+    %th.indexTable 連絡先
+    %td.indexTable= mail_to(@event.hosting_email, @event.hosting_group,
       subject: "[#{@event.name}]お問い合わせ", encode: "javascript")

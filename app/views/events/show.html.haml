@@ -1,8 +1,7 @@
 = render partial: 'like_init'
 
 .maintable
-  %h1= @event.name
-  %hr
+  %h1.eventTitle= @event.name
   
   %h2 イベント概要
   %hr
@@ -23,9 +22,8 @@
   = link_to 'イベント一覧ページに戻る', events_path
 
 .sidetable
-  %div{ align: 'center' }
-    -# TODO : ツイートボタンの設置
-    = render(partial: "admin_link") if (!current_user.nil?) && (current_user.id == @event.owner_user_id)
-    = render partial: 'join_link'
-    = render partial: 'status'
-    = render partial: 'entries'
+  -# TODO : ツイートボタンの設置
+  = render(partial: "admin_link") if (!current_user.nil?) && (current_user.id == @event.owner_user_id)
+  = render partial: 'join_link'
+  = render partial: 'status'
+  = render partial: 'entries'
