@@ -3,3 +3,4 @@ one:
   name: MyString
   sum: 100
   summary: MyText
+  event_id: 10001
