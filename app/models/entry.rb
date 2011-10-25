@@ -8,11 +8,12 @@ class Entry < ActiveRecord::Base
   belongs_to :user
   
   # 参加費
-  has_many :fees, class_name: "EntryFee",
-    foreign_key: :entry_id, dependent: :delete_all
+  has_many :entry_fees, dependent: :delete_all
+	has_many :event_fees, through: :entry_fees
+
   # 参加費フォーム
   # 名前と金額が空なら削除
-  accepts_nested_attributes_for :fees,
+  accepts_nested_attributes_for :entry_fees,
     :reject_if => lambda { |f| f[:event_fee_id].blank? }
   
   #空の値をはじく
@@ -52,12 +53,16 @@ class Entry < ActiveRecord::Base
   end
   
   # 参加費用が１つ以上選択されているか
-  validates_each :fees do |record, attr, value|
+  validates_each :entry_fees do |record, attr, value|
     if value.size == 0
       record.errors.add attr, "１つ以上項目を選択してください"
     end
   end
 
+	# 参加費用の合計
+	def fees_sum
+		return self.event_fees.sum(:sum)
+	end
 
 =begin
 private

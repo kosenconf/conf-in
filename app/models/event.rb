@@ -13,12 +13,11 @@ class Event < ActiveRecord::Base
     :foreign_key => "owner_user_id"
 
   # 参加費情報
-  has_many :fees, class_name: "EventFee",
-    foreign_key: :event_id, dependent: :delete_all
+  has_many :event_fees, dependent: :delete_all
   
   # 参加費フォーム
   # 名前と金額が空なら削除
-  accepts_nested_attributes_for :fees,
+  accepts_nested_attributes_for :event_fees,
     :reject_if => lambda { |f| f[:name].blank? && f[:sum].blank? },
     :allow_destroy => true
 

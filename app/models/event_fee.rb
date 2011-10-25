@@ -1,3 +1,4 @@
+# coding: utf-8
 class EventFee < ActiveRecord::Base
   # EntryFeesを持つ
   has_many :entry_fees, dependent: :delete_all

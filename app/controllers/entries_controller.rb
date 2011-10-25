@@ -26,9 +26,9 @@ class EntriesController < ApplicationController
     @user_id = current_user.id
     @page_title = "イベントに参加 | #{@event.name}"
     # EventFeeを取得
-    @fees = @event.fees
+    @event_fees = @event.event_fees
     @fee_ids = []
-    @entry.fees.each do |f|
+    @entry.entry_fees.each do |f|
       @fee_ids << f.event_fee_id
     end
     
@@ -44,9 +44,9 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
 
     # EventFeeを取得
-    @fees = @event.fees
+    @event_fees = @event.event_fees
     @fee_ids = []
-    @entry.fees.each do |f|
+    @entry.entry_fees.each do |f|
       @fee_ids << f.event_fee_id
     end
     
@@ -64,7 +64,7 @@ class EntriesController < ApplicationController
 
     @entry = Entry.new(params[:entry])
     @entry.user_id = current_user.id
-    @fees = @entry.fees
+    @entry_fees = @entry.entry_fees
 
     @page_title = "参加登録完了 | #{@event.name}"
     

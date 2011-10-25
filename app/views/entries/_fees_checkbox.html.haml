@@ -1,5 +1,5 @@
-- @fees.each_with_index do |ev_fee, i|
-  = check_box_tag "entry[fees_attributes][#{i}][event_fee_id]", ev_fee.id, @fee_ids.index(ev_fee.id)
+- @event_fees.each_with_index do |ev_fee, i|
+  = check_box_tag "entry[entry_fees_attributes][#{i}][event_fee_id]", ev_fee.id, @fee_ids.index(ev_fee.id)
   = ev_fee.name
   = number_to_currency(ev_fee.sum, unit: "円", precision: 0, format: "%n %u")
   = ev_fee.summary

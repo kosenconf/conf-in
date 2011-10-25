@@ -9,10 +9,13 @@
   参加料金は以下のようになります。
   -# EventFee
   %table
-    - @entry.fees.each do |fee|
+    - @entry.entry_fees.each do |fee|
       %tr
         %th= fee.event_fee.name
         %td= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u")
+    %tr
+      %th 合計
+      %td= number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
   %br
   ご登録いただいたメールアドレスに登録完了メールと当日受付用QRコードが送信されました。
   %br

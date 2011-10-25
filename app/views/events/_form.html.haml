@@ -52,10 +52,10 @@
     %br
     = f.number_field :capacity
   %p
-    = f.label :fees, '参加費用'
-    = f.fields_for :fees do |b|
-      = render 'fee_fields', :f => b
-    %p= link_to_add_fields "参加費用を追加", f, :fees
+    = f.label :event_fees, '参加費用'
+    = f.fields_for :event_fees do |b|
+      = render 'event_fee_fields', :f => b
+    %p= link_to_add_fields "参加費用を追加", f, :event_fees
   %p
     = f.label :joinable_period_begin, '参加受付期間'
     %span{ style: "color: red; font-weight: bold;" }

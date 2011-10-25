@@ -25,7 +25,7 @@
     %td.indexTable
       -# EventFee
       %table
-        - @fees.each do |fee|
+        - @event_fees.each do |fee|
           %tr
             %th= fee.name
             %td= number_to_currency(fee.sum, unit: "円", precision: 0, format: "%n %u")
