@@ -2,13 +2,13 @@
   #user-bar-greeting
     Logged in as
     = twicon_tag current_user.tw_id, :mini
-    = link_to current_user.name, user_path(current_user.id), :content_method => :login
+    = link_to current_user.name, user_path(current_user.id), content_method: :login
   #user-bar-action
     = link_to 'ユーザ設定', edit_user_registration_path
     |
-    \#{link_to "ログアウト", {controller: 'devise/sessions', action: :destroy}, { title: "ログアウト", method: :delete}}
+    \#{link_to "ログアウト", destroy_user_session_path, method: :delete }
 - else
   #user-bar-action
-    = link_to "新規ユーザ作成", {controller: 'devise/registrations', action: :new}, { title: "新規ユーザ作成" }
+    = link_to "新規ユーザ作成", new_user_registration_path
     |
-    \#{link_to "ログイン",  new_user_session_path,  { title: "ログイン" }}
+    \#{link_to "ログイン",  new_user_session_path}
