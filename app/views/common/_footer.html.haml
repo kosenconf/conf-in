@@ -1,9 +1,9 @@
 .footerLink
-  = link_to 'トップページ', '/'
+  = link_to 'トップページ', root_path
   = ' | '
   = link_to '新規イベント作成', new_event_path
   = ' | '
-  = link_to 'イベント一覧', { controller: '/events' }
+  = link_to 'イベント一覧', events_path
   = ' | ' 
   = link_to 'マイページ', edit_user_registration_path
   %br
