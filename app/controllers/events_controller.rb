@@ -1,26 +1,34 @@
 # coding: utf-8
 class EventsController < ApplicationController
-  #SSL Required
-  #ssl_required :admin, :csv, :xml if RAILS_ENV == "production"
-  #認証要求（一覧と表示以外）
-  before_filter :authenticate_user!, :except => [:index, :show, :map, :admin, :csv, :xml]
-  before_filter :find_event_by_admin_token, only: [:edit, :update, :admin]
-  #layout "events", :except => [:map]
-	before_filter :basic_auth, only: [:new, :create]
+  #認証要求
+  before_filter :authenticate_user!, :except => [:index, :show, :map, :admin]
+  
+  # idによるイベント検索
+  before_filter :find_event, except: [:index, :new, :create, :destroy]
+  
+  # admin_tokenによる認証
+  # ミス防止のために，フィルタしないものを指定
+  before_filter :authenticate_by_admin_token!,
+    except: [:index, :show, :new, :create, :destroy, :map]
 
+  # BASIC認証
+	before_filter :basic_auth, only: [:new, :create] if ENV['RAILS_ENV'] == 'production'
+  
+  # レスポンス
+  respond_to :html
+  
   # GET /events
   def index
     @events = Event.all
     @page_title = "イベント一覧"
-    respond_to do |format|
-      format.html # index.html.erb
-      #format.xml  { render :xml => @events.to_xml(:include => [:entries] ) }
-    end
+    
+    # レスポンス
+    respond_with @events
   end
 
   # GET /events/1
   def show
-    @event = Event.find(params[:id]) #1行取得
+    #@event = Event.find(params[:id]) #1行取得
     @page_title = @event.name
     #サブイベント取得（無いときnil）
     @sub_events = @event.sub_events
@@ -44,11 +52,9 @@ class EventsController < ApplicationController
         elsif Time.now < @event.date then "申込受付終了"
         else "イベント終了"
       end
-
-    respond_to do |format|
-      format.html # show.html.erb
-#      format.xml  { render :xml => @event.to_xml(:include => [:entries] )}
-    end
+    
+    # レスポンス
+    respond_with @event
   end
 
   # GET /events/new
@@ -59,98 +65,86 @@ class EventsController < ApplicationController
     
     # 1つ参加費用のフィールドを用意
     1.times do
-      @event.fees.build
+      @event.event_fees.build
     end
+    
+    # レスポンス
+    respond_with @event
   end
 
   # POST /events
   def create
     @event = Event.new(params[:event])
     @event.owner_user_id = current_user.id
-    #@event.owner_user_id = 1
     
-    respond_to do |format|
+    # レスポンス
+    respond_with @event do |format|
       if @event.save
-        format.html {
-          redirect_to(@event, :notice => 'イベントは作成されました。') }
-        #format.xml  { render :xml => @event, :status => :created, :location => @event }
-      else
-        format.html { render :action => "new" }
-        #format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.html { redirect_to @event, notice: 'イベントは作成されました。' }
       end
     end
   end
 
-	# GET /events/admin_token
-	# admin_tokenをIDとして利用
+	# GET /events/:id/?admin_token=:admin_token
 	def edit
 		@page_title = "イベント編集 | #{@event.name}"
 
 		@is_current_user_admin = current_user.hosted_events.find_by_id(@event.id)
+		
+		# レスポンス
+		respond_with @event
 	end
 
-	# PUT /events/admin_token
-	# admin_tokenをIDとして利用
+	# PUT /events/:id
 	def update
-		respond_to do |format|
-			if @event.update_attributes(params[:event])
-				format.html {
-					redirect_to(@event, notice: 'イベントは編集されました。')
-				}
-			else
-				format.html {
-					render action: :edit
-				}
-			end
-		end
-	rescue
-		redirect_to action: 'index'
+	  # レスポンス
+    respond_with @event do |format|
+      if @event.update_attributes(params[:event])
+        # 正常時はイベントページへリダイレクト
+        format.html { redirect_to @event, notice: 'イベントは編集されました。' }
+      end
+    end
 	end
 
 
-  # DELETE /events/admin_token
-	# admin_tokenがパラメータ
+  # DELETE /events/:id
   def destroy
-    #パラメータ
-    token = params[:id]
     #カレントユーザのホストイベントから検索
-    @event = current_user.hosted_events.find_by_admin_token(token) or
-			raise ActiveRecord::RecordNotFound
-    #@event = Event.find(id)
-    
+    @event = current_user.hosted_events.find(params[:id])
+
     #イベント削除
     @event.destroy
 
     #トップページへリダイレクト
-    redirect_to "/"
+    redirect_to root_path
   rescue
     #失敗orアクセス権限なし
     #showページへリダイレクト
-    redirect_to action: :show, notice: "イベント作成者以外はイベントを削除することはできません．"
+    redirect_to action: :show,
+      notice: "イベント作成者以外はイベントを削除することはできません．"
   end
 
 	# Google Mapsによる地図表示
   def map
-    @event = Event.find(params[:id])
-
 		render layout: false
   end
   
-  # GET /events/:admin_token/admin
+  # GET /events/:id/admin?admin_token=:admin_token
   # イベント管理者ページ
   # 機能としてはリンクページのみ
   def admin
   end
 
 private
-
-	# admin_tokenでイベントを検索
-	def find_event_by_admin_token
-		@event = Event.find_by_admin_token(params[:id]) or
-			raise ActiveRecord::RecordNotFound
-	rescue
-		redirect_to '/'
-	end
+  # イベントIDからイベントを取得
+  def find_event
+    @event = Event.find(params[:id])
+  end
+  
+  # イベント管理者ページのトークン認証
+  def authenticate_by_admin_token!
+    redirect_to root_path unless @event.admin_token == params[:admin_token]
+  end
 	
 	# Basic認証
 	def basic_auth

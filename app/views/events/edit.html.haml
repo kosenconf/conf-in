@@ -2,8 +2,5 @@
   イベント編集：
   = @event.name
   -# イベント管理者のみ削除ボタンを表示
-  %h3
-    = link_to_if @event.owner_user_id == current_user.id, |
-    'イベントを削除する', event_url(@event.admin_token), method: :delete, |
-    confirm: "本当に削除しますか？\n※ユーザからの参加登録も同時に削除されます" |
+  %h3= link_to_destroy_event 'このイベントを削除する'
 = render partial: 'form'

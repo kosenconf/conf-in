@@ -2,8 +2,6 @@
 このページのURLからは，イベント作成者以外もアクセスすることができます．
 %hr
 %ui
-  %li= link_to '参加者一覧', event_entries_url(@event.admin_token)
-  %li= link_to 'イベントを編集する', edit_event_url(@event.admin_token)
-  %li= link_to_if @event.owner_user_id == current_user.id, |
-    'イベントを削除する', event_url(@event.admin_token), method: :delete, |
-    confirm: "本当に削除しますか？\n※ユーザからの参加登録も同時に削除されます" |
+  %li= link_to '参加者一覧', event_entries_url(@event, admin_token: @event.admin_token)
+  %li= link_to_edit_event 'このイベントを編集する'
+  %li= link_to_destroy_event 'このイベントを削除する'

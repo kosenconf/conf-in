@@ -1,14 +1,15 @@
 # coding: utf-8
 class EntriesController < ApplicationController
-  # SSLへリダイレクト
-  #ssl_required :new, :confirm, :complete, :ticket, :xml if RAILS_ENV == "production"
-  
   # 認証要求
   before_filter :authenticate_user!
   
   # イベント情報を引っ張る
-  before_filter :find_event, except: [:index, :update]
-  before_filter :find_event_by_admin_token, only: [:index, :update]
+  before_filter :find_event
+  
+  # admin_tokenによる認証
+  # ミス防止のために，フィルタしないものを指定
+  before_filter :authenticate_by_admin_token!,
+    except: [:new, :confirm, :complete, :ticket, :destroy]
   
   # 定員に達したか？
   before_filter :entries_filled,
@@ -25,13 +26,13 @@ class EntriesController < ApplicationController
     @entry = Entry.new
     @user_id = current_user.id
     @page_title = "イベントに参加 | #{@event.name}"
+    
     # EventFeeを取得
     @event_fees = @event.event_fees
     @fee_ids = []
     @entry.entry_fees.each do |f|
       @fee_ids << f.event_fee_id
     end
-    
   end
   
   # POST /entries/confirm
@@ -109,7 +110,7 @@ class EntriesController < ApplicationController
     redirect_to event_url(@event)
   rescue
     #トップページへリダイレクト
-    redirect_to ('/')
+    redirect_to root_path
   end
   
   
@@ -183,11 +184,8 @@ private
     end
   end
   
-  # admin_tokenでイベントを検索
-  def find_event_by_admin_token
-    @event = Event.find_by_admin_token(params[:event_id]) or
-      raise ActiveRecord::RecordNotFound
-  rescue
-    redirect_to '/'
+  # イベント管理者ページのトークン認証
+  def authenticate_by_admin_token!
+    redirect_to root_path unless @event.admin_token == params[:admin_token]
   end
 end
