@@ -11,7 +11,7 @@ set :deploy_to,  "/var/www/rails/#{application}"
 
 # Git
 set :scm, :git
-set :branch, "master"
+set :branch, "release-conf-in-falconsrv"
 set :scm_verbose, true
 
 # 設置するアカウント
