@@ -1,3 +1,8 @@
+# coding: utf-8
+require 'rubygems'
+require 'RMagick'
+require 'net/http'
+
 module ApplicationHelper
   SIZE = {
       mini: 'mini',
@@ -23,6 +28,18 @@ module ApplicationHelper
 	# QRコードの生成
 	def qrimg_tag(str)
 	  image_tag url_for_qr(str)
+	end
+
+	# JPGに変換したQRコードのバイナリを返す
+	def qr_jpg_binary(qr_str)
+	  qr_url = url_for_qr(qr_str)
+
+	  blob = Net::HTTP.get_response(URI.parse(qr_url)).body
+    img = Magick::ImageList.new
+    img.from_blob(blob)
+    img.format = "JPG"
+
+    return img.to_blob
 	end
 
 	# Twitterアイコンの表示

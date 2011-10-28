@@ -5,6 +5,7 @@ gem 'rails', '3.1.0'
 gem 'devise'
 gem 'haml-rails'
 gem 'rails-i18n'
+gem 'rmagick'
 
 group :production do
 	gem 'mysql2'
