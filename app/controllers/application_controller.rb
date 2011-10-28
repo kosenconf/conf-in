@@ -1,4 +1,5 @@
 require 'cgi'
+
 class ApplicationController < ActionController::Base
   $select_form = [
     { question: :select1, content: :select_content1,
