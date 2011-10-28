@@ -1,6 +1,7 @@
 # coding: utf-8
 class EntryMailer < ActionMailer::Base
-  helper :application
+  include ApplicationHelper
+  helper ApplicationHelper
   
   default from: $ADMIN_EMAIL
 
@@ -13,6 +14,9 @@ class EntryMailer < ActionMailer::Base
     @entry = entry
     @event = @entry.event
     @user = @entry.user
+
+    # 添付ファイル
+    attachments.inline['qrcode.jpg'] = qr_jpg_binary(@user.qr_secret)
     
     mail to: @user.email, 
       subject: "[カンファイン]#{@event.name}への参加登録が完了しました！"

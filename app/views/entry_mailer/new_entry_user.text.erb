@@ -2,8 +2,9 @@
 下記のイベントへの参加登録を完了しました。
 
 「<%= @event.name %>」
-<%= url_for controller: 'events', action: 'show', id: @event.id, only_path: false %>
-開催日時： <%= I18n.l @event.date, :format => :long %>
+<%= event_url(@event) %>
+
+開催日時： <%= I18n.l @event.date, format: :long %>
 会場： <%= @event.place_name %>
 参加費用： <% @entry.entry_fees.each do |fee| %>
 	<%= fee.event_fee.name %>: <%= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u") %><% end %>
@@ -12,11 +13,11 @@
 
 
 ***************************************************************************************************
-【当日受付用QRコード画像URL】
+【当日受付用QRコード】
 
-<%=raw url_for_qr(@user.qr_secret) %>
- ※当日はこの「QRコード」を「印刷」や「モバイル端末の画面に表示」するなどして，
- 提示可能な状態でお持ちください。
+ ※当日はこのメールに「添付」されている「QRコード」を
+ 	「印刷する」または「モバイル端末の画面に表示する」などして，
+ 提示可能な状態で忘れずにお持ちください。
 ***************************************************************************************************
 
 
