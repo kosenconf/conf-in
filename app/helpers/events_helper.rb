@@ -11,7 +11,7 @@ module EventsHelper
   
   # イベント削除リンク
   def link_to_destroy_event(label='このイベントを削除する')
-    link_to_if @event.owner_user_id == current_user.id,
+    link_to_if current_user && @event.owner_user_id == current_user.id,
     label, event_url(@event), method: :delete, 
     confirm: "本当に削除しますか？（ユーザからの参加登録も同時に削除されます）"
   end

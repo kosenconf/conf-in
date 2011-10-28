@@ -1,7 +1,7 @@
 # coding: utf-8
 class EventsController < ApplicationController
   #認証要求
-  before_filter :authenticate_user!, :except => [:index, :show, :map, :admin]
+  before_filter :authenticate_user!, except: [:index, :show, :map]
   
   # idによるイベント検索
   before_filter :find_event, except: [:index, :new, :create, :destroy]
