@@ -17,7 +17,7 @@ set :scm_verbose, true
 # 設置するアカウント
 set :user, "falcon"
 set :use_sudo, false
-set :rvm_ruby_string, "ruby-1.9.2-p290@rails3.1.0"
+set :rvm_ruby_string, "ruby-1.9.2-p290@rails3.1.1"
 set :rvm_type, :system
 
 # 公開先
