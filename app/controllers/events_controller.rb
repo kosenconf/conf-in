@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # ミス防止のために，フィルタしないものを指定
   before_filter :authenticate_by_admin_token!,
     except: [:index, :show, :new, :create, :destroy, :map]
+	before_filter :basic_auth, only: [:new]
 
   # BASIC認証
 	before_filter :basic_auth, only: [:new, :create] if ENV['RAILS_ENV'] == 'production'
@@ -145,6 +146,13 @@ private
   def authenticate_by_admin_token!
     redirect_to root_path unless @event.admin_token == params[:admin_token]
   end
+	
+	# Basic認証
+	def basic_auth
+		authenticate_or_request_with_http_basic do |user, pass|
+			user == 'kc035NagaokaAdmin' && pass == 'A6JkSLxBg3EPTtPu'
+		end
+	end
 	
 	# Basic認証
 	def basic_auth
