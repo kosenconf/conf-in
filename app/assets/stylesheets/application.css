@@ -1,4 +1,9 @@
+/* Main Style Sheet
+ *= require_self
+ *= require_tree .
+*/
 @charset "utf-8";
+
 body {
 	margin: 0;
 	padding: 0;
