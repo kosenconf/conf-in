@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   # ミス防止のために，フィルタしないものを指定
   before_filter :authenticate_by_admin_token!,
     except: [:index, :show, :new, :create, :destroy, :map]
-	before_filter :basic_auth, only: [:new]
+	before_filter :basic_auth, only: [:new, :create]
 
   # BASIC認証
 	before_filter :basic_auth, only: [:new, :create] if ENV['RAILS_ENV'] == 'production'
