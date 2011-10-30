@@ -6,7 +6,7 @@ class Entry < ActiveRecord::Base
   belongs_to :event
   #参加ユーザ
   belongs_to :user
-  
+
   # 参加費
   has_many :entry_fees, dependent: :delete_all
 	has_many :event_fees, through: :entry_fees
@@ -51,7 +51,7 @@ class Entry < ActiveRecord::Base
     i = self.received || 0
     %w(未確認 出席 欠席)[i]
   end
-  
+
   # 参加費用が１つ以上選択されているか
   validates_each :entry_fees do |record, attr, value|
     if value.size == 0

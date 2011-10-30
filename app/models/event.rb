@@ -15,6 +15,9 @@ class Event < ActiveRecord::Base
   # 参加費情報
   has_many :event_fees, dependent: :delete_all
   
+  # 参加費
+  has_many :entry_fees, dependent: :delete_all, through: :event_fees
+  
   # 参加費フォーム
   # 名前と金額が空なら削除
   accepts_nested_attributes_for :event_fees,
@@ -51,7 +54,17 @@ class Event < ActiveRecord::Base
 
 	# 偽造フォームからのフィールドの保護
 	attr_protected :owner_user_id, :admin_token
-
+  
+  # 参加者から徴収する全金額
+  def all_entry_fees_sum
+    sum = 0
+    self.event_fees.each do |ev_fee|
+      # 金額 x 人数
+      sum += ev_fee.sum * ev_fee.entry_fees.all.count
+    end
+    return sum
+  end
+  
 protected
 	def init_admin_token
 		self.admin_token = SecureRandom.hex(16).encode('UTF-8')
