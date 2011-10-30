@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014082934) do
+ActiveRecord::Schema.define(:version => 20111030154228) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(:version => 20111014082934) do
     t.string   "name"
     t.integer  "sum"
     t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_mails", :force => true do |t|
+    t.integer  "event_id"
+    t.string   "subject"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

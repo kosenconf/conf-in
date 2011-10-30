@@ -65,6 +65,9 @@ class Event < ActiveRecord::Base
     return sum
   end
   
+  # 一斉送信メールを持つ（ログとして残すのでイベントを消しても消さない）
+  has_many :event_mails
+  
 protected
 	def init_admin_token
 		self.admin_token = SecureRandom.hex(16).encode('UTF-8')
