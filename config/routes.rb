@@ -19,6 +19,15 @@ ConfInProcon::Application.routes.draw do
 				post :ticket
 			end
 		end
+
+		# mails
+		resources :mails, only: [:index, :show, :new, :create], controller: :events_mails do
+		  collection do
+		    post :confirm
+		  end
+		end
+    
+    
 		member do
 			# Google Maps
 			get :map # /events/:id/map
