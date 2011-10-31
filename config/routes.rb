@@ -21,7 +21,7 @@ ConfInProcon::Application.routes.draw do
 		end
 
 		# mails
-		resources :mails, only: [:index, :show, :new, :create], controller: :events_mails do
+		resources :mails, only: [:index, :show, :new, :create], controller: 'events/mails' do
 		  collection do
 		    post :confirm
 		  end
