@@ -1,6 +1,8 @@
+# coding: utf-8
 class Events::MailsController < ApplicationController
   before_filter :find_event
-  
+  # TODO: admin_tokenによる認証
+
   # GET /events/:event_id/mails
   # 送信済みメール一覧
   def index
