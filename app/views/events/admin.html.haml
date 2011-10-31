@@ -2,6 +2,7 @@
 このページのURLからは，イベント作成者以外もアクセスすることができます．
 %hr
 %ui
-  %li= link_to '参加者一覧', event_entries_url(@event, admin_token: @event.admin_token)
+  %li= link_to '参加者一覧', event_entries_path(@event, admin_token: @event.admin_token)
+  %li= link_to 'メール一斉送信機能', event_event_mails_path(@event, admin_token: @event.admin_token)
   %li= link_to_edit_event 'このイベントを編集する'
   %li= link_to_destroy_event 'このイベントを削除する'

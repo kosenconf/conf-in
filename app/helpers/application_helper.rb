@@ -64,4 +64,10 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, '#{association}', '#{escape_javascript(fields)}')")
   end
+
+	# htmlエスケープ後に改行コードを<br>に変換する
+	def hbr(str)
+		str = html_escape(str)
+		raw str.gsub(/\r\n|\r|\n/, "<br />")
+	end
 end

@@ -1,0 +1,19 @@
+%h1= "#{@event.name} 参加者へのメール一斉送信"
+%hr
+= form_for [ :confirm, @event, @mail ],
+  url: confirm_event_event_mails_path(@event, admin_token: @event.admin_token) do |f|
+  = f.error_messages
+  %table
+    %tr
+      %th 送信先
+      %td 参加者全員
+    %tr
+      %th= f.label :subject, '件名'
+      %td= f.text_field :subject, size: 30
+    %tr
+      %th= f.label :text, '本文'
+      %td= f.text_area :text, cols: 40
+    %tr
+      %td{colspan: 2, align: :right}
+        = link_to '一覧に戻る', event_event_mails_path(@event, admin_token: @event.admin_token)
+        = f.submit '確認', disable_with: '処理中...'

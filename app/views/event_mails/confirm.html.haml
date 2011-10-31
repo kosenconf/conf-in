@@ -1,0 +1,19 @@
+%h1= "確認 | #{@event.name} 参加者へのメール一斉送信"
+%hr
+= form_for [ @event, @mail ],
+  url: event_event_mails_path(@event, admin_token: @event.admin_token) do |f|
+  = f.error_messages
+  %table
+    %tr
+      %th 送信先
+      %td 参加者全員
+    %tr
+      %th= f.label :subject, '件名'
+      %td= @mail.subject
+    %tr
+      %th= f.label :text, '本文'
+      %td
+        %pre= hbr @mail.text
+    %tr
+      %td{colspan: 2, align: :right}
+        = f.submit '送信', disable_with: '処理中...'

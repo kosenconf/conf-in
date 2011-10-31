@@ -74,3 +74,6 @@ ja:
         free_setting3:  "設定3"
         free_setting4:  "設定4"
         free_setting5:  "設定5"
+      event_mail:
+        subject: "件名"
+        text: "本文"

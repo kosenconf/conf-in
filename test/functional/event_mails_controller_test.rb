@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Events::MailsControllerTest < ActionController::TestCase
+class EventMailsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
