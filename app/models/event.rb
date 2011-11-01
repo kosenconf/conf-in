@@ -7,6 +7,9 @@ class Event < ActiveRecord::Base
 	#エントリー
   has_many :entries,
     :dependent => :delete_all #イベントを消去した際，そのエントリをすべて抹消
+  # 参加者
+  has_many :users, through: :entries
+  
   #主催者ユーザ
   belongs_to :owner_user,
     :class_name => "User",

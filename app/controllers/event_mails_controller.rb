@@ -49,13 +49,18 @@ class EventMailsController < ApplicationController
   def create
     # セッションから取得
     @mail = session[:event_mail]
-
+    # セッションに保存していた値をクリア
     session[:event_mail] = nil
-    if @mail.save
-      # TODO: Mailer.deliver
-      redirect_to event_event_mail_path(@event, @mail, admin_token: @event.admin_token),
-        notice: 'メールは送信されました。'
-    end
+    
+    # 保存（失敗時は例外）
+    @mail.save!
+    # メール送信
+    EventMailer.all_entry_users(@mail).deliver
+    
+    redirect_to event_event_mail_path(@event, @mail, admin_token: @event.admin_token),
+      notice: 'メールは送信されました。'
+  rescue
+    redirect_to root_path, notice: '問題が発生しました．'
   end
 
 private

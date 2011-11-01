@@ -16,7 +16,7 @@ class EntryMailer < ActionMailer::Base
     @user = @entry.user
 
     # 添付ファイル
-    attachments.inline['qrcode.jpg'] = qr_jpg_binary(@user.qr_secret)
+    attachments.inline["#{@user.id}.jpg"] = qr_jpg_binary(@user.qr_secret)
     
     mail to: @user.email, 
       subject: "[カンファイン]#{@event.name}への参加登録が完了しました！"
