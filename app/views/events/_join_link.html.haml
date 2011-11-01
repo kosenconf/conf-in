@@ -5,7 +5,7 @@
         = render(:partial => "entries/ticket") unless @entry.nil?
         - if @event.joinable_period_begin < Time.now && Time.now < @event.joinable_period_end
           = link_to "キャンセルする",                                           |
-                event_entry_url(:id => @entry, :event_id => @entry.event), |
+                event_entry_path(:id => @entry, :event_id => @entry.event), |
                 { :method => :delete,                                      |
                 :confirm => "本当にキャンセルしますか？                                 |
               ※再度参加登録する際に，満員であっても優先されません。"}                                |
@@ -13,12 +13,12 @@
       - if @event.joinable_period_begin < Time.now && Time.now < @event.joinable_period_end
         .joinLink
           - if @remain > 0 ##残り人数によって表示を変更
-            = link_to "このイベントに参加する", new_event_entry_url(@event), id: 'joinLink'
+            = link_to "このイベントに参加する", new_event_entry_path(@event), id: 'joinLink'
   - else
     - if @event.joinable_period_begin < Time.now && Time.now < @event.joinable_period_end
       .joinLink
         - if @remain > 0 ##残り人数によって表示を変更
-          = link_to 'ログインして参加登録', new_event_entry_url(@event), id: 'joinLink'
+          = link_to 'ログインして参加登録', new_event_entry_path(@event), id: 'joinLink'
   - unless @remain > 0
     %h3 このイベントの参加者は満員となりました。
 - else

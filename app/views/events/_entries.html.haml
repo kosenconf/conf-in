@@ -8,6 +8,6 @@
           = twicon_tag entry.user.tw_id, :mini
         %td.entryTable
           %b= link_to entry.user.name,   |
-              user_url(id: entry.user_id) |
+              user_path(id: entry.user_id) |
           %br
           = entry.comment
