@@ -32,7 +32,7 @@
 </table>
 
 <h2>【当日受付用QRコード画像】</h2>
-<%= image_tag attachments['qrcode.jpg'].url %>
+<%= image_tag attachments["#{@user.id}.jpg"].url %>
 <p>
 	※当日はこの「QRコード」を「印刷」または「モバイル端末の画面に表示」するなどして，
 	提示可能な状態で<b>忘れずに</b>お持ちください。
