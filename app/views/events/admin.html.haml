@@ -5,3 +5,5 @@
   %li= link_to '参加者一覧', event_entries_url(@event, admin_token: @event.admin_token)
   %li= link_to_edit_event 'このイベントを編集する'
   %li= link_to_destroy_event 'このイベントを削除する'
+%p
+  = link_to 'イベントページに戻る', event_path(@event)
