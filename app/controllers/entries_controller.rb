@@ -122,6 +122,16 @@ class EntriesController < ApplicationController
     @page_title = "参加者一覧 | #{@event.name}"
   end
   
+  def qr_receive
+    @user = @event.users.find_by_qr_secret(params[:qr_secret])
+    @entry = @event.entries.find_by_user_id(@user.id)
+
+    @page_title = "受付情報 | #{@event.name}"
+
+  rescue
+    redirect_to root_path
+  end
+
 private
   # パラメータからイベントを取得
   def find_event
