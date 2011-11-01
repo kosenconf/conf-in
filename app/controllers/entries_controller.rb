@@ -75,7 +75,7 @@ class EntriesController < ApplicationController
       #EntryMailer.notify_new_entry_to_owner(@entry).deliver
     else
       #render :action => :new
-      redirect_to event_url(@event)
+      redirect_to event_path(@event)
     end
   end
 
@@ -107,7 +107,7 @@ class EntriesController < ApplicationController
     @entry.destroy
     #@entry.save!
     #イベントページへリダイレクト
-    redirect_to event_url(@event)
+    redirect_to event_path(@event)
   rescue
     #トップページへリダイレクト
     redirect_to root_path
@@ -126,7 +126,7 @@ private
   # パラメータからイベントを取得
   def find_event
     @event_id = params[:event_id]
-    return(redirect_to(events_url)) unless @event_id
+    return(redirect_to(events_path)) unless @event_id
     @event = Event.find(@event_id)
     
     @select_form = [
