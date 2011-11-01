@@ -6,3 +6,5 @@
   %li= link_to 'メール一斉送信機能', event_event_mails_path(@event, admin_token: @event.admin_token)
   %li= link_to_edit_event 'このイベントを編集する'
   %li= link_to_destroy_event 'このイベントを削除する'
+%p
+  = link_to 'イベントページに戻る', event_path(@event)
