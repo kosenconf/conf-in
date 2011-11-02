@@ -14,3 +14,14 @@ td.indexTable {
 	text-align: left;
 	padding: 5px;
 }
+#paid {
+	color: blue;
+}
+#not_paid {
+	color: red;
+	font-weight: bolder;
+}
+#fees_sum {
+	font-size: x-large;
+	font-weight: bolder;
+}

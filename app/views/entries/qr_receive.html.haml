@@ -2,5 +2,69 @@
   = "#{@event.name} 受付"
 %hr
 
-= @entry.user.name
-さま
+%h1
+  %i= "#{@entry.user.name} 様"
+%hr
+%h2 参加費用
+%table.indexTable
+  %tr
+    %th.indexTable 領収
+    %th.indexTable 支払状況
+    %th.indexTable 項目
+    %th.indexTable 料金
+    
+  - @entry.entry_fees.each_with_index do |fee, i|
+    %tr
+      -# 徴収チェックボックス
+      %td.indexTable
+        -#= checkbox_field
+      - if fee.paid
+        %td.indexTable#paid 領収済
+      - else
+        %td.indexTable#not_paid 未領収
+      %td.indexTable= fee.event_fee.name
+      %td.indexTable= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u")
+
+  %tr
+    %th.indexTable{ colspan:2 } 合計
+    %td.indexTable{ colspan:2 }= "#{number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")}"
+  -#
+    %tr
+      %th.indexTable{ colspan:2 } 未徴収金額
+      %td.indexTable{ colspan:2 }= "#{number_to_currency(@entry.not_paid_sum, unit: "円", precision: 0, format: "%n %u")}"
+
+%h2 アンケートの回答状況
+%table.indexTable
+  %tr
+    %th.indexTable 質問
+    %th.indexTable 回答
+  %tr
+    = raw que_survey(@event.select_setting1, @event.select1)
+    = raw ans_survey(@event.select_setting1, @entry.select1)
+  %tr
+    = raw que_survey(@event.select_setting2, @event.select2)
+    = raw ans_survey(@event.select_setting2, @entry.select2)
+  %tr
+    = raw que_survey(@event.select_setting3, @event.select3)
+    = raw ans_survey(@event.select_setting3, @entry.select3)
+  %tr
+    = raw que_survey(@event.select_setting4, @event.select4)
+    = raw ans_survey(@event.select_setting4, @entry.select4)
+  %tr  
+    = raw que_survey(@event.select_setting5, @event.select5)
+    = raw ans_survey(@event.select_setting5, @entry.select5)
+  %tr  
+    = raw que_survey(@event.free_setting1, @event.free1)
+    = raw ans_survey(@event.free_setting1, @entry.free1)
+  %tr  
+    = raw que_survey(@event.free_setting2, @event.free2)
+    = raw ans_survey(@event.free_setting2, @entry.free2)
+  %tr  
+    = raw que_survey(@event.free_setting3, @event.free3)
+    = raw ans_survey(@event.free_setting3, @entry.free3)
+  %tr  
+    = raw que_survey(@event.free_setting4, @event.free4)
+    = raw ans_survey(@event.free_setting4, @entry.free4)
+  %tr  
+    = raw que_survey(@event.free_setting5, @event.free5)
+    = raw ans_survey(@event.free_setting5, @entry.free5)
