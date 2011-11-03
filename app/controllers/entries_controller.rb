@@ -1,7 +1,7 @@
 # coding: utf-8
 class EntriesController < ApplicationController
   # 認証要求
-  before_filter :authenticate_user!, except: [ :qr_receive, :update ]
+  before_filter :authenticate_user!, except: [ :qr_receive, :update, :index ]
   
   # イベント情報を引っ張る
   before_filter :find_event

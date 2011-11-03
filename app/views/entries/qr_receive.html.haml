@@ -47,3 +47,5 @@
   %tr  
     = raw que_survey(@event.free_setting5, @event.free5)
     = raw ans_survey(@event.free_setting5, @entry.free5)
+
+%p= link_to '参加者一覧', event_entries_path(@event, admin_token: @event.admin_token)
