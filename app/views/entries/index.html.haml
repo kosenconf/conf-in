@@ -28,9 +28,9 @@
           = (entry_fee = entry.entry_fees.find_by_event_fee_id(fee.id)) ? '○':'×'
           - if entry_fee
             - if entry_fee.paid
-              %span#paid 領収済
+              %span#paid 済
             - else
-              %span#not_paid 未領収
+              %span#not_paid 未
       %td.indexTable= number_to_currency(entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
       = raw ans_survey(@event.select_setting1, entry.select1)
       = raw ans_survey(@event.select_setting2, entry.select2)
