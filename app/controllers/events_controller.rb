@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   # admin_tokenによる認証
   # ミス防止のために，フィルタしないものを指定
   before_filter :authenticate_by_admin_token!,
-    except: [:index, :show, :new, :create, :destroy, :map]
+    except: [:index, :show, :new, :create, :destroy, :map, :resend_entry_mail]
 	before_filter :basic_auth, only: [:new, :create]
 
   # BASIC認証
@@ -134,6 +134,16 @@ class EventsController < ApplicationController
   # イベント管理者ページ
   # 機能としてはリンクページのみ
   def admin
+  end
+  
+  # 参加登録完了メール再送信
+  def resend_entry_mail
+    @entry = current_user.entries.find_by_event_id(@event.id)
+    EntryMailer.new_entry_user(@entry).deliver
+    
+    redirect_to @event, notice: '参加登録完了メールが再送信されました．'
+  rescue
+    redirect_to @event, notice: 'あなたはこのイベントに参加していません．'
   end
 
 private
