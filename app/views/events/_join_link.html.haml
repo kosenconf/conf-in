@@ -1,7 +1,9 @@
 - if Time.now < @event.date
   - unless @entry.nil?
     = render(:partial => "entries/ticket")
+    = link_to 'QRコードを登録アドレスに送信する', resend_entry_mail_event_path(@event), confirm: '登録されているメールアドレスへQRコード付きの参加登録完了メールが再送信されます．よろしいですか？'
     - if @event.joinable_period_begin < Time.now && Time.now < @event.joinable_period_end
+      %br
       = link_to "キャンセルする", |
             event_entry_path(:id => @entry, :event_id => @entry.event), |
             { :method => :delete, |
