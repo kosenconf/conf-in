@@ -1,7 +1,7 @@
 # coding: utf-8
 class EntriesController < ApplicationController
   # 認証要求
-  before_filter :authenticate_user!, except: [ :qr_receive ]
+  before_filter :authenticate_user!, except: [ :qr_receive, :update ]
   
   # イベント情報を引っ張る
   before_filter :find_event
@@ -82,8 +82,15 @@ class EntriesController < ApplicationController
   # PUT /entries/1
   # 当日受付情報の更新
   def update
-    Entry.update(params[:id], params[:entry])
-    redirect_to :back
+    @user = @event.users.find_by_qr_secret(params[:qr_secret])
+    @entry = @event.entries.find_by_user_id(@user.id)
+    
+    @entry.update_attributes(params[:entry])
+    
+    #redirect_to :back
+    render "entry_fees_table.js"
+  rescue
+    redirect_to root_path
   end
   
   # POST /entries/ticket

@@ -18,6 +18,7 @@ ConfInProcon::Application.routes.draw do
 				post :complete
 				post :ticket
 				get :qr_receive
+				post :receive
 			end
 		end
 

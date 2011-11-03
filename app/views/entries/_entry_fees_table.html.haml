@@ -1,0 +1,28 @@
+%table.indexTable
+  %tr
+    %th.indexTable 領収
+    %th.indexTable 支払状況
+    %th.indexTable 項目
+    %th.indexTable 料金
+  
+  - @entry.entry_fees.each_with_index do |fee, i|
+    = hidden_field 'entry[entry_fees_attributes]', 'id', index: i, value: fee.id
+    = hidden_field 'entry[entry_fees_attributes]', 'event_fee_id', index: i, value: fee.event_fee_id
+    %tr
+      -# 徴収チェックボックス
+      %td.indexTable
+        = check_box 'entry[entry_fees_attributes]', 'paid', {index: i, checked: fee.paid}
+      - if fee.paid
+        %td.indexTable#paid 領収済
+      - else
+        %td.indexTable#not_paid 未領収
+      %td.indexTable= fee.event_fee.name
+      %td.indexTable= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u")
+  
+  %tr
+    %th.indexTable{ colspan:2 } 合計
+    %td.indexTable{ colspan:2 }= "#{number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")}"
+  -#
+    %tr
+      %th.indexTable{ colspan:2 } 未徴収金額
+      %td.indexTable{ colspan:2 }= "#{number_to_currency(@entry.not_paid_sum, unit: "円", precision: 0, format: "%n %u")}"

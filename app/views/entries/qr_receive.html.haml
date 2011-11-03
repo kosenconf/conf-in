@@ -6,32 +6,11 @@
   %i= "#{@entry.user.name} 様"
 %hr
 %h2 参加費用
-%table.indexTable
-  %tr
-    %th.indexTable 領収
-    %th.indexTable 支払状況
-    %th.indexTable 項目
-    %th.indexTable 料金
-    
-  - @entry.entry_fees.each_with_index do |fee, i|
-    %tr
-      -# 徴収チェックボックス
-      %td.indexTable
-        -#= checkbox_field
-      - if fee.paid
-        %td.indexTable#paid 領収済
-      - else
-        %td.indexTable#not_paid 未領収
-      %td.indexTable= fee.event_fee.name
-      %td.indexTable= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u")
-
-  %tr
-    %th.indexTable{ colspan:2 } 合計
-    %td.indexTable{ colspan:2 }= "#{number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")}"
-  -#
-    %tr
-      %th.indexTable{ colspan:2 } 未徴収金額
-      %td.indexTable{ colspan:2 }= "#{number_to_currency(@entry.not_paid_sum, unit: "円", precision: 0, format: "%n %u")}"
+= form_for [@event, @entry], url: { action: :update, id: @entry.id,
+    admin_token: @event.admin_token, qr_secret: @entry.user.qr_secret }, remote: true do |f|
+  #entry_fees_table
+    = render partial: 'entry_fees_table'
+  = f.submit disable_with: '処理中...'
 
 %h2 アンケートの回答状況
 %table.indexTable
