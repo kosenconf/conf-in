@@ -11,20 +11,34 @@ set :deploy_to,  "/var/www/rails/#{application}"
 
 # Git
 set :scm, :git
-set :branch, "release-conf-in-falconsrv"
 set :scm_verbose, true
 
 # 設置するアカウント
-set :user, "falcon"
 set :use_sudo, false
-set :rvm_ruby_string, "ruby-1.9.2-p290@rails3.1.1"
 set :rvm_type, :system
 
 # 公開先
-set :domain, "conf-in.falconsrv.net"
-role :web, domain # 公開サーバ
-role :app, domain # 設置サーバ
-role :db,  domain, :primary => true # プライマリDBサーバ
+# テスト環境
+task :staging do
+	set :domain, "10.0.0.5"
+	set :user, "falcon"
+	set :rvm_ruby_string, "ruby-1.9.2-p290@rails3.1.1"
+	set :branch, "release-localsrv"
+	role :web, domain # 公開サーバ
+	role :app, domain # 設置サーバ
+	role :db,  domain, :primary => true # プライマリDBサーバ
+end
+
+# 本番環境
+task :production do
+	set :domain, "conf-in.falconsrv.net"
+	set :user, "falcon"
+	set :rvm_ruby_string, "ruby-1.9.2-p290@rails3.1.1"
+	set :branch, "release-conf-in-falconsrv"
+	role :web, domain # 公開サーバ
+	role :app, domain # 設置サーバ
+	role :db,  domain, :primary => true # プライマリDBサーバ
+end
 
 # デプロイ時の動作
 namespace :deploy do
