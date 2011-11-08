@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
     :foreign_key => "owner_user_id",
     :dependent => :delete_all #ユーザを消去した際，主催イベントを抹消
 
+  #参加イベント
+  has_many :events, through: :entries
+
   #必須入力
   validates_presence_of :name
 

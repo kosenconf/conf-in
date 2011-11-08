@@ -19,6 +19,7 @@
     %tr
       %th{:align => "right", :scope => "row"} 勤務先・学校
       %td= h @user.office
+  %iframe{src: "/users/#{@user.id}/map", height: 400, width: 400, frameborder: 0}
 .sidetable
   %h3 このユーザが参加したイベント
   %hr/

@@ -10,4 +10,10 @@ class UsersController < ApplicationController
       format.html # show.html.erb
     end
   end
+
+	# Google Mapsによる地図表示
+  def map
+    @events = User.find(params[:id]).events
+		render layout: false
+  end
 end

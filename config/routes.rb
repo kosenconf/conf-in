@@ -3,7 +3,12 @@ ConfInProcon::Application.routes.draw do
 	root to: "home#index"
   
   # Userリソース
-  resources :users, only: [ :show ]
+  resources :users, only: [ :show ] do
+    member do
+			# Google Maps
+      get :map # /users/:id/map
+    end
+  end
 
 	# deviseの設定
 	devise_for :user
