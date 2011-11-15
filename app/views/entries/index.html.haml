@@ -1,73 +1,75 @@
 %h1
   = "#{@event.name} 参加者一覧"
 %hr
-%table.indexTable
-  %tr
-    %th.indexTable 受付
-    %th.indexTable 登録名
-    - @event.event_fees.each do |fee|
-      %th.indexTable= fee.name
-    %th.indexTable 合計費用
-    = raw que_survey(@event.select_setting1, @event.select1)
-    = raw que_survey(@event.select_setting2, @event.select2)
-    = raw que_survey(@event.select_setting3, @event.select3)
-    = raw que_survey(@event.select_setting4, @event.select4)
-    = raw que_survey(@event.select_setting5, @event.select5)
-    = raw que_survey(@event.free_setting1, @event.free1)
-    = raw que_survey(@event.free_setting2, @event.free2)
-    = raw que_survey(@event.free_setting3, @event.free3)
-    = raw que_survey(@event.free_setting4, @event.free4)
-    = raw que_survey(@event.free_setting5, @event.free5)
-    -# ここからインデント以下コメント
-      %th.indexTable 出席状態
-      %th.indexTable{colspan: 3} 出席状態の変更
-  - @event.entries.each do |entry|
+%table.zebra-striped#myTable
+  %thead
     %tr
-      %td.indexTable= link_to "受付", qr_receive_event_entries_path(@event, admin_token: @event.admin_token, qr_secret: entry.user.qr_secret)
-      %td.indexTable= link_to entry.user.name, entry.user
+      %th 受付
+      %th 登録名
       - @event.event_fees.each do |fee|
-        %td.indexTable
-          = (entry_fee = entry.entry_fees.find_by_event_fee_id(fee.id)) ? '○':'×'
-          - if entry_fee
-            - if entry_fee.paid
-              %span#paid 済
-            - else
-              %span#not_paid 未
-      %td.indexTable= number_to_currency(entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
-      = raw ans_survey(@event.select_setting1, entry.select1)
-      = raw ans_survey(@event.select_setting2, entry.select2)
-      = raw ans_survey(@event.select_setting3, entry.select3)
-      = raw ans_survey(@event.select_setting4, entry.select4)
-      = raw ans_survey(@event.select_setting5, entry.select5)
-      = raw ans_survey(@event.free_setting1, entry.free1)
-      = raw ans_survey(@event.free_setting2, entry.free2)
-      = raw ans_survey(@event.free_setting3, entry.free3)
-      = raw ans_survey(@event.free_setting4, entry.free4)
-      = raw ans_survey(@event.free_setting5, entry.free5)
-      -# ここからインデント以下コメント
-        %td.indexTable= entry.received_to_s
-        %td.indexTable
-          - entry.received = 1
-          = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id} ) do |f|
-            = f.hidden_field :received
-            = f.submit '出席'
-          - entry.received = 2
-        %td.indexTable
-          = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id}) do |f|
-            = f.hidden_field :received
-            = f.submit '欠席'
-        %td.indexTable
-          - entry.received = 0
-          = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id}) do |f|
-            = f.hidden_field :received
-            = f.submit '未確認に戻す'
+        %th= fee.name
+      %th 合計費用
+      = raw que_survey(@event.select_setting1, @event.select1)
+      = raw que_survey(@event.select_setting2, @event.select2)
+      = raw que_survey(@event.select_setting3, @event.select3)
+      = raw que_survey(@event.select_setting4, @event.select4)
+      = raw que_survey(@event.select_setting5, @event.select5)
+      = raw que_survey(@event.free_setting1, @event.free1)
+      = raw que_survey(@event.free_setting2, @event.free2)
+      = raw que_survey(@event.free_setting3, @event.free3)
+      = raw que_survey(@event.free_setting4, @event.free4)
+      = raw que_survey(@event.free_setting5, @event.free5)
+    -# ここからインデント以下コメント
+      %th 出席状態
+      %th{colspan: 3} 出席状態の変更
+  %tbody
+    - @event.entries.each do |entry|
+      %tr
+        %td= link_to "受付", qr_receive_event_entries_path(@event, admin_token: @event.admin_token, qr_secret: entry.user.qr_secret)
+        %td= link_to entry.user.name, entry.user
+        - @event.event_fees.each do |fee|
+          %td
+            = (entry_fee = entry.entry_fees.find_by_event_fee_id(fee.id)) ? '○':'×'
+            - if entry_fee
+              - if entry_fee.paid
+                %span#paid 済
+              - else
+                %span#not_paid 未
+        %td= number_to_currency(entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
+        = raw ans_survey(@event.select_setting1, entry.select1)
+        = raw ans_survey(@event.select_setting2, entry.select2)
+        = raw ans_survey(@event.select_setting3, entry.select3)
+        = raw ans_survey(@event.select_setting4, entry.select4)
+        = raw ans_survey(@event.select_setting5, entry.select5)
+        = raw ans_survey(@event.free_setting1, entry.free1)
+        = raw ans_survey(@event.free_setting2, entry.free2)
+        = raw ans_survey(@event.free_setting3, entry.free3)
+        = raw ans_survey(@event.free_setting4, entry.free4)
+        = raw ans_survey(@event.free_setting5, entry.free5)
+        -# ここからインデント以下コメント
+          %td= entry.received_to_s
+          %td
+            - entry.received = 1
+            = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id} ) do |f|
+              = f.hidden_field :received
+              = f.submit '出席'
+            - entry.received = 2
+          %td
+            = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id}) do |f|
+              = f.hidden_field :received
+              = f.submit '欠席'
+          %td
+            - entry.received = 0
+            = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id}) do |f|
+              = f.hidden_field :received
+              = f.submit '未確認に戻す'
   %tr
-    %th.indexTable{colspan: 2} 集計
+    %th{colspan: 2} 集計
     - @event.event_fees.each do |fee|
-      %th.indexTable
+      %th
         = "#{fee.entry_fees.count} 人"
         %br
         = number_to_currency(fee.entry_fees_sum, unit: "円", precision: 0, format: "%n %u")
-    %th.indexTable= number_to_currency(@event.all_entry_fees_sum, unit: "円", precision: 0, format: "%n %u")
+    %th= number_to_currency(@event.all_entry_fees_sum, unit: "円", precision: 0, format: "%n %u")
 
 %p= link_to 'イベント管理者ページへ', admin_event_path(@event, admin_token: @event.admin_token)

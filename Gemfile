@@ -7,6 +7,8 @@ gem 'haml-rails'
 gem 'rails-i18n'
 gem 'rmagick'
 gem 'jquery-rails'
+gem 'twitter-bootstrap-rails'
+
 
 group :production do
 	gem 'mysql2'

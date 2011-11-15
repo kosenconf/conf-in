@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require twitter/bootstrap
 
 function remove_fields(link) {
   $(link).prev(":hidden").val("1");
@@ -15,3 +16,8 @@ function add_fields(link, association, content) {
   );
 }
 
+$('#top_bar').dropdown();
+
+$(document).ready(function(){
+  $("#myTable").tablesorter(); 
+});

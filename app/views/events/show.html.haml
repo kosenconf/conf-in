@@ -1,29 +1,30 @@
 = render partial: 'like_init'
 
-%h1.eventTitle= @event.name
-.maintable
+.page-header
+  %h1= @event.name
+.row
+  .span9
+    %h2 イベント概要
+    %hr
+    = sanitize @event.summary
+    = render partial: 'detail'
+    = render partial: 'sub_events'
   
-  %h2 イベント概要
-  %hr
-  = sanitize @event.summary
-  = render partial: 'detail'
-  = render partial: 'sub_events'
+    %h2 
+      このイベントに関連するツイート
+      = render partial: 'tweet_button'
+      = render partial: 'like_button'
   
-  %h2 
-    このイベントに関連するツイート
-    = render partial: 'tweet_button'
-    = render partial: 'like_button'
-  
-  %hr
-  -# TODO : 関連ツイートJavaScript埋め込み
-  = render partial: 'twitter_search_widget'
-  %hr
-  %br
-  = link_to 'イベント一覧ページに戻る', events_path
+    %hr
+    -# TODO : 関連ツイートJavaScript埋め込み
+    = render partial: 'twitter_search_widget'
+    %hr
+    %br
+    = link_to 'イベント一覧ページに戻る', events_path
 
-.sidetable
-  -# TODO : ツイートボタンの設置
-  = render(partial: "admin_link") if (!current_user.nil?) && (current_user.id == @event.owner_user_id)
-  = render partial: 'join_link'
-  = render partial: 'status'
-  = render partial: 'entries'
+  .span5
+    -# TODO : ツイートボタンの設置
+    = render(partial: "admin_link") if (!current_user.nil?) && (current_user.id == @event.owner_user_id)
+    = render partial: 'join_link'
+    = render partial: 'status'
+    = render partial: 'entries'

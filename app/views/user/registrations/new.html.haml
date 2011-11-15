@@ -3,24 +3,20 @@
   = devise_error_messages!
   %p
     = f.label :email
-    %br/
     = f.email_field :email
   %p
     = f.label :password
-    %br/
     = f.password_field :password
   %p
     = f.label :password_confirmation
-    %br/
     = f.password_field :password_confirmation
   %p
     = f.label :name
-    %br/
     = f.text_field :name
   %p
     = f.label :tw_id
-    %br/
-    @
-    = f.text_field :tw_id
+    .input-prepend
+      %span.add-on @
+      = f.text_field :tw_id
   %p= f.submit
 = render :partial => "user/shared/links"
