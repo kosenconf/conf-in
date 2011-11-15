@@ -1,13 +1,13 @@
 %table.indexTable
   -# 日時
   %tr  
-    %th.indexTable 日時
-    %td.indexTable= I18n.l @event.date, format: :long
+    %th 日時
+    %td= I18n.l @event.date, format: :long
 
   -# 場所
   %tr  
-    %th.indexTable 場所
-    %td.indexTable
+    %th 場所
+    %td
       = @event.place_name
       = @event.place_room
       %br
@@ -21,8 +21,8 @@
 
   -# 参加費
   %tr  
-    %th.indexTable 参加費
-    %td.indexTable
+    %th 参加費
+    %td
       -# EventFee
       %table
         - @event_fees.each do |fee|
@@ -32,31 +32,31 @@
 
   -# 定員
   %tr  
-    %th.indexTable 定員
-    %td.indexTable
+    %th 定員
+    %td
       = @event.capacity
       = ' 人'
 
   -# 申込期間
   %tr  
-    %th.indexTable 申し込み期間
-    %td.indexTable
+    %th 申し込み期間
+    %td
       = I18n.l @event.joinable_period_begin, format: :long
       〜
       = I18n.l @event.joinable_period_end, format: :long
 
   -# WebSite
   %tr  
-    %th.indexTable WebSite
-    %td.indexTable= link_to @event.website, @event.website
+    %th WebSite
+    %td= link_to @event.website, @event.website
 
   -# 主催者
   %tr  
-    %th.indexTable 主催ユーザー
-    %td.indexTable= link_to @owner_user.name, @owner_user
+    %th 主催ユーザー
+    %td= link_to @owner_user.name, @owner_user
 
   -# 連絡先
   %tr  
-    %th.indexTable 連絡先
-    %td.indexTable= mail_to(@event.hosting_email, @event.hosting_group,
+    %th 連絡先
+    %td= mail_to(@event.hosting_email, @event.hosting_group,
       subject: "[#{@event.name}]お問い合わせ", encode: "javascript")

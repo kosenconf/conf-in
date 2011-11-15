@@ -3,10 +3,10 @@
   %table.entryTable
     - @entries.each do |entry|
       %tr
-        %td.entryTable
+        %td
           / twicon
           = twicon_tag entry.user.tw_id, :mini
-        %td.entryTable
+        %td
           %b= link_to entry.user.name,   |
               user_path(id: entry.user_id) |
           %br

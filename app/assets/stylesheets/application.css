@@ -4,18 +4,12 @@
 */
 @charset "utf-8";
 
+/* [ここから]レイアウト */
 body {
 	margin: 0;
 	padding: 0;
 	background:#FFFFFF;
 	color: #000;
-}
-.img {
-	border: none;
-}
-.comments {
-	font-size: small;
-	color: #666;
 }
 .container {
 	width: 920px;
@@ -77,6 +71,8 @@ body {
 .footer {
 	text-align: center;
 }
+/* [ここまで]レイアウト */
+
 .topmain {
 	width: 80%;
 	float: left;
@@ -88,6 +84,50 @@ body {
 	width: 55%;
 	margin: 30px auto;
 }
+.img {
+	border: none;
+}
+.comments {
+	font-size: small;
+	color: #666;
+}
+
+/* 通知 */
 .flash {
 	background: yellow;
+}
+.notice {
+  background: yellow;
+}
+
+/* 必須入力 */
+span.required {
+  color: red;
+  font-weight: bold;
+}
+
+/* 一覧テーブル */
+table.indexTable {
+	text-align: left;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	border-collapse: collapse;
+}
+table.indexTable th {
+	padding-right: 5px;
+	text-align: center;
+	background:#EEEEEE;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	border-collapse: collapse;
+}
+table.indexTable td {
+	text-align: left;
+	padding: 5px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #000000;
+	border-collapse: collapse;
 }
