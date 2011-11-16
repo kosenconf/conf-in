@@ -3,9 +3,9 @@
 	new TWTR.Widget({
 		version: 2,
 		type: 'search',
-		search: 'http://conf-in.falconsrv.net/events/<%= @event.id %>',
+		search: '<%=raw event_url(@event) %>',
 		interval: 30000,
-		title: 'http://conf-in.falconsrv.net/events/<%= @event.id %>',
+		title: '<%=raw event_url(@event) %>',
 		subject: '<%= @event.name %>',
 		width: 'auto',
 		height: 300,
