@@ -19,5 +19,10 @@ function add_fields(link, association, content) {
 $('#top_bar').dropdown();
 
 $(document).ready(function(){
-  $("#myTable").tablesorter(); 
+  // tablesorter
+  $("#myTable").tablesorter();
+  
+  // バーメッセージのアニメーション
+  $(".alert-message").slideDown().delay(3000).slideUp();
+
 });

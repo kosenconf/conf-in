@@ -54,3 +54,12 @@ body {
 .topbar .btn {
   border: 0;
 }
+
+span.require {
+	color: red;
+	font-weight: bold;
+}
+
+label {
+	font-weight: bold;
+}

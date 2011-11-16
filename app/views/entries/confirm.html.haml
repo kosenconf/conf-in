@@ -1,7 +1,7 @@
 %h1 確認画面
 = render :partial => 'record'
 -#EventFee
-%table.attributes{:align => "center", :cellpadding => "5"}
+%table
   - @entry.entry_fees.each do |fee|
     %tr
       %th= fee.event_fee.name
@@ -10,5 +10,5 @@
     -#%th 合計
     -#%td= number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
 
-= render :partial => 'button_to_save'
+= render partial: 'button_to_save'
 = link_to 'イベントページに戻る', @event

@@ -1,13 +1,12 @@
-.sideTitle イベント参加者
-.side
-  %table.entryTable
-    - @entries.each do |entry|
-      %tr
-        %td
-          / twicon
-          = twicon_tag entry.user.tw_id, :mini
-        %td
-          %b= link_to entry.user.name,   |
-              user_path(id: entry.user_id) |
-          %br
-          = entry.comment
+%h3 イベント参加者
+%table.entryTable
+  - @entries.each do |entry|
+    %tr
+      %td
+        / twicon
+        = twicon_tag entry.user.tw_id, :mini
+      %td
+        %b= link_to entry.user.name,   |
+            user_path(id: entry.user_id) |
+        %br
+        = entry.comment

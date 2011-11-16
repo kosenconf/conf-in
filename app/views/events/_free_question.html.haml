@@ -3,8 +3,11 @@
   %th
   %th 質問
   %th 設定
-  - $free_form.each do |i|
+  - $free_form.each_with_index do |i, index|
     %tr
-      %th= f.label i[:question]
+      %th= index+1
       %td= f.text_field i[:question]
-      %td= f.select i[:setting], [["表示しない", 0], ["任意回答", 1], ["必須項目", 2]]
+      %td= f.select i[:setting],
+        [["表示しない", 0], ["任意回答", 1], ["必須項目", 2]],
+        {},
+        {class: :small}

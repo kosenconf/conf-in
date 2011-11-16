@@ -1,35 +1,38 @@
-.maintable
-  .bignickname
+
+.page-header
+  %h1
     = twicon_tag @user.tw_id, :bigger
-    = h @user.name
-  %hr/
-  %table{:align => "center", :cellpadding => "5", :width => "70%"}
-    %tr
-      %th{:align => "right", :scope => "row", :width => "21%"} 自己紹介
-      %td= h @user.memo
-    %tr
-      %th{:align => "right", :scope => "row"} Twitter
-      %td= link_to "@"+@user.tw_id,"http://twitter.com/#{@user.tw_id}",:target => '_blank' unless @user.tw_id.blank?
-    %tr
-      %th{:align => "right", :scope => "row"} Webサイト
-      %td= link_to h(@user.website), @user.website
-    %tr
-      %th{:align => "right", :scope => "row"} 職業
-      %td= h @user.job
-    %tr
-      %th{:align => "right", :scope => "row"} 勤務先・学校
-      %td= h @user.office
-  %iframe{src: "/users/#{@user.id}/map", height: 400, width: 400, frameborder: 0}
-.sidetable
-  %h3 このユーザが参加したイベント
-  %hr/
-  %ul
-    - unless @user.entries.blank?
-      - @user.entries.each do |entry|
-        %li= link_to entry.event.name, entry.event
-  %h3 このユーザが主催したイベント
-  %hr/
-  %ul
-    - unless @user.hosted_events.blank?
-      - @user.hosted_events.each do |hosted_event|
-        %li= link_to hosted_event.name, hosted_event
+    = @user.name
+
+.row
+  .span9
+    %table
+      %tr
+        %th 自己紹介
+        %td= h @user.memo
+      %tr
+        %th Twitter
+        %td= link_to "@"+@user.tw_id,"http://twitter.com/#{@user.tw_id}",:target => '_blank' unless @user.tw_id.blank?
+      %tr
+        %th Webサイト
+        %td= link_to h(@user.website), @user.website
+      %tr
+        %th 職業
+        %td= h @user.job
+      %tr
+        %th 勤務先・学校
+        %td= h @user.office
+    %iframe{src: "/users/#{@user.id}/map", height: 400, width: 400, frameborder: 0}
+  .span5
+    %h3 このユーザが参加したイベント
+    %hr/
+    %ul
+      - unless @user.entries.blank?
+        - @user.entries.each do |entry|
+          %li= link_to entry.event.name, entry.event
+    %h3 このユーザが主催したイベント
+    %hr/
+    %ul
+      - unless @user.hosted_events.blank?
+        - @user.hosted_events.each do |hosted_event|
+          %li= link_to hosted_event.name, hosted_event

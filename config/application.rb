@@ -51,5 +51,10 @@ module ConfInProcon
 
 		$SYSTEM_TITLE = 'カンファイン'
 		$ADMIN_EMAIL = 'webmaster@falconsrv.net'
+		
+		ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+      include ActionView::Helpers::OutputSafetyHelper
+      raw %(<div class="clearfix error">#{html_tag}</div>)
+    end
   end
 end

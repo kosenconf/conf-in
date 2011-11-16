@@ -1,19 +1,28 @@
 - if Time.now < @event.date
   - unless @entry.nil?
     = render(:partial => "entries/ticket")
-    = link_to 'QRコードを登録アドレスに送信する', resend_entry_mail_event_path(@event), confirm: '登録されているメールアドレスへQRコード付きの参加登録完了メールが再送信されます．よろしいですか？'
+    %p{align: :center}
+      = link_to 'QRコードを登録アドレスに送信する',
+        resend_entry_mail_event_path(@event),
+        confirm: '登録されているメールアドレスへQRコード付きの参加登録完了メールが再送信されます．よろしいですか？',
+        class: 'btn info'
     - if @event.joinable_period_begin < Time.now && Time.now < @event.joinable_period_end
-      %br
-      = link_to "キャンセルする", |
-            event_entry_path(:id => @entry, :event_id => @entry.event), |
-            { :method => :delete, |
-            :confirm => "本当にキャンセルしますか？ |
-          ※再度参加登録する際に，満員であっても優先されません。"} |
+      %p{align: :center}
+        = link_to "参加をキャンセルする", |
+          event_entry_path(:id => @entry, :event_id => @entry.event), |
+          { |
+            method: :delete, |
+            confirm: "本当にキャンセルしますか？※再度参加登録する際に，満員であっても優先されません。", |
+            class: 'btn danger' |
+          } |
   - else
     - if @event.joinable_period_begin < Time.now && Time.now < @event.joinable_period_end
       .joinLink
         - if @remain > 0 ##残り人数によって表示を変更
-          = link_to "このイベントに参加する", new_event_entry_path(@event), id: 'joinLink'
+          %div{align: :center}
+            = link_to "このイベントに参加する",
+              new_event_entry_path(@event),
+              class: 'btn primary large'
         - else
           %h3 このイベントの参加者は満員となりました。
 - else

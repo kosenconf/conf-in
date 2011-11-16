@@ -5,9 +5,12 @@
     %th 質問
     %th 項目（半角カンマで区切ってください）
     %th 設定
-  - $select_form.each do |i|
+  - $select_form.each_with_index do |i, index|
     %tr
-      %th= f.label i[:question]
+      %th= index+1
       %td= f.text_field i[:question]
       %td= f.text_field i[:content]
-      %td= f.select i[:setting], [["表示しない", 0], ["任意回答", 1], ["必須項目", 2]]
+      %td= f.select i[:setting],
+        [["表示しない", 0], ["任意回答", 1], ["必須項目", 2]],
+        {},
+        {class: :small}

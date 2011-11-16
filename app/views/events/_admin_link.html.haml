@@ -1,4 +1,5 @@
-.admin_link
-  %h3= link_to 'イベント管理者ページ',
-    admin_event_path(@event, admin_token: @event.admin_token)
-  %h3= link_to_edit_event 'このイベントを編集する'
+= link_to 'イベント管理者ページ',
+  admin_event_path(@event, admin_token: @event.admin_token),
+  class: 'btn success'
+= link_to_edit_event 'このイベントを編集する',
+  class: 'btn success'

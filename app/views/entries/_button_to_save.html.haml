@@ -4,4 +4,6 @@
     = f.hidden_field attr
   = f.fields_for :entry_fees do |i|
     = i.hidden_field :event_fee_id
-  = f.submit '登録', :disable_with => '処理中...'
+  .actions
+    = f.submit '登録', disable_with: '処理中...', class: 'btn primary'
+    = link_to_function '戻る', 'history.back()', class: :btn

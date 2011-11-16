@@ -27,7 +27,7 @@ module ApplicationHelper
 
 	# QRコードの生成
 	def qrimg_tag(str)
-	  image_tag url_for_qr(str)
+	  image_tag url_for_qr(str), width: 150
 	end
 
 	# JPGに変換したQRコードのバイナリを返す
@@ -52,17 +52,17 @@ module ApplicationHelper
 	end
 	
   # ネストしたフィールドを動的に削除
-  def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+  def link_to_remove_fields(name, f, html_options={})
+    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)", html_options)
   end
   
   # ネストしたフィールドを動的に追加
-  def link_to_add_fields(name, f, association)
+  def link_to_add_fields(name, f, association, html_options={})
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
-    link_to_function(name, "add_fields(this, '#{association}', '#{escape_javascript(fields)}')")
+    link_to_function(name, "add_fields(this, '#{association}', '#{escape_javascript(fields)}')",html_options)
   end
 
 	# htmlエスケープ後に改行コードを<br>に変換する

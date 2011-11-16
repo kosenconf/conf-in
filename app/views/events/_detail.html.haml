@@ -1,4 +1,4 @@
-%table.indexTable
+%table
   -# 日時
   %tr  
     %th 日時
@@ -8,7 +8,7 @@
   %tr  
     %th 場所
     %td
-      = @event.place_name
+      %h4= @event.place_name
       = @event.place_room
       %br
       住所：
@@ -38,11 +38,13 @@
       = ' 人'
 
   -# 申込期間
-  %tr  
-    %th 申し込み期間
+  %tr
+    %th 参加受付開始
     %td
       = I18n.l @event.joinable_period_begin, format: :long
-      〜
+  %tr
+    %th 参加受付終了
+    %td
       = I18n.l @event.joinable_period_end, format: :long
 
   -# WebSite
@@ -52,8 +54,10 @@
 
   -# 主催者
   %tr  
-    %th 主催ユーザー
-    %td= link_to @owner_user.name, @owner_user
+    %th 主催者
+    %td
+      = twicon_tag @owner_user.tw_id, :mini
+      = link_to @owner_user.name, @owner_user
 
   -# 連絡先
   %tr  
