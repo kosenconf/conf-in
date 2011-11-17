@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111030154228) do
+ActiveRecord::Schema.define(:version => 20111117163921) do
+
+  create_table "answers", :force => true do |t|
+    t.integer  "entry_id"
+    t.integer  "question_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -63,7 +71,6 @@ ActiveRecord::Schema.define(:version => 20111030154228) do
     t.text     "summary"
     t.string   "website"
     t.string   "place_name"
-    t.string   "place_room"
     t.string   "place_address"
     t.string   "place_website"
     t.integer  "capacity"
@@ -104,6 +111,15 @@ ActiveRecord::Schema.define(:version => 20111030154228) do
   end
 
   add_index "events", ["admin_token"], :name => "index_events_on_admin_token", :unique => true
+
+  create_table "questions", :force => true do |t|
+    t.integer  "event_id"
+    t.string   "text"
+    t.string   "content"
+    t.integer  "setting"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

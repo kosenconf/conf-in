@@ -38,7 +38,6 @@ ja:
         summary:  "イベント概要"
         website:  "イベント詳細URL"
         place_name:  "開催場所名"
-        place_room:  "部屋名"
         place_address: "住所"
         place_website: "開催場所ホームページ"
         capacity: "定員"
