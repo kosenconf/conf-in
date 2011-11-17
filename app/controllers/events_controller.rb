@@ -162,12 +162,5 @@ private
 			user == 'kc035NagaokaAdmin' && pass == 'A6JkSLxBg3EPTtPu'
 		end
 	end
-	
-	# Basic認証
-	def basic_auth
-		authenticate_or_request_with_http_basic do |user, pass|
-			user == 'kc035NagaokaAdmin' && pass == 'A6JkSLxBg3EPTtPu'
-		end
-	end
 end
 
