@@ -25,7 +25,9 @@
   %tbody
     - @event.entries.each do |entry|
       %tr
-        %td= link_to "受付", qr_receive_event_entries_path(@event, admin_token: @event.admin_token, qr_secret: entry.user.qr_secret)
+        %td= link_to "受付",
+          qr_receive_event_entries_path(@event, admin_token: @event.admin_token, qr_secret: entry.user.qr_secret),
+          class: 'btn primary'
         %td= link_to entry.user.name, entry.user
         - @event.event_fees.each do |fee|
           %td
@@ -72,4 +74,6 @@
         = number_to_currency(fee.entry_fees_sum, unit: "円", precision: 0, format: "%n %u")
     %th= number_to_currency(@event.all_entry_fees_sum, unit: "円", precision: 0, format: "%n %u")
 
-%p= link_to 'イベント管理者ページへ', admin_event_path(@event, admin_token: @event.admin_token)
+%p= link_to 'イベント管理者ページへ',
+  admin_event_path(@event, admin_token: @event.admin_token),
+  class: :btn

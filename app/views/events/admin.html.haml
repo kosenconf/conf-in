@@ -9,6 +9,6 @@
   %li= link_to_destroy_event 'このイベントを削除する'
 
 %h2 受付システム用API URL
-= text_field_tag '', qr_receive_event_entries_url(@event, admin_token: @event.admin_token), {size: 80}
-%p
-  = link_to 'イベントページに戻る', event_path(@event)
+= text_field_tag '', qr_receive_event_entries_url(@event, admin_token: @event.admin_token), {class: 'xlarge span9'}
+%br
+= link_to 'イベントページに戻る', event_path(@event), class: 'btn'

@@ -16,5 +16,5 @@
         %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
   -else
     %li= link_to 'ユーザ登録', new_user_registration_path
-    %li= link_to 'ログイン', new_user_session_path
-
+    %li.dropdown{data: {dropdown: :dropdown}}
+      = link_to 'ログイン', new_user_session_path

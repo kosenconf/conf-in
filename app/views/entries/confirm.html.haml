@@ -1,14 +1,33 @@
-%h1 確認画面
-= render :partial => 'record'
--#EventFee
-%table
-  - @entry.entry_fees.each do |fee|
-    %tr
-      %th= fee.event_fee.name
-      %td= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u")
-  -#%tr
-    -#%th 合計
-    -#%td= number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
-
-= render partial: 'button_to_save'
-= link_to 'イベントページに戻る', @event
+.page-header
+  %h1 確認画面
+.row
+  .span14
+    %p 登録内容を確認して「登録」ボタンをクリックしてください．
+    %table
+      %tr
+        %th= I18n.t 'activerecord.attributes.event.name'
+        %td= @entry.event.name
+      %tr
+        %th= I18n.t 'activerecord.attributes.entry.comment'
+        %td= @entry.comment
+      - @select_form.each do |f|
+        - if f[:setting] > 0
+          %tr
+            %th= f[:question]
+            %td= @entry[f[:answer]]
+      - @free_form.each do |f|
+        - if f[:setting] > 0
+          %tr
+            %th= f[:question]
+            %td= @entry[f[:answer]]
+    %h2 参加費
+    %table
+      - @entry.entry_fees.each do |fee|
+        %tr
+          %th= fee.event_fee.name
+          %td= number_to_currency(fee.event_fee.sum, unit: "円", precision: 0, format: "%n %u")
+      -#%tr
+        -#%th 合計
+        -#%td= number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
+    = render partial: 'button_to_save'
+    = link_to 'イベントページに戻る', @event

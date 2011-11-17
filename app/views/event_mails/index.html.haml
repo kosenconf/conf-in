@@ -1,7 +1,9 @@
 %h1= "#{@event.name} メール一斉送信"
 %hr
-%h2= link_to 'メールを送る', new_event_event_mail_path(@event, admin_token: @event.admin_token)
-  
+= link_to 'メールを送る',
+  new_event_event_mail_path(@event, admin_token: @event.admin_token),
+  class: 'btn primary'
+%hr  
 %h2 送信済みメール
 %table.indexTable
   %tr
@@ -12,4 +14,6 @@
       %td.indexTable= link_to mail.subject, event_event_mail_path(@event, mail, admin_token: @event.admin_token)
       %td.indexTable= mail.created_at
 %p
-  = link_to 'イベント管理者ページへ', admin_event_path(@event, admin_token: @event.admin_token)
+  = link_to 'イベント管理者ページへ',
+    admin_event_path(@event, admin_token: @event.admin_token),
+    class: 'btn'

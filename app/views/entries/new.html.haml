@@ -14,22 +14,26 @@
         .input
           = f.text_field :comment, class: 'span7'
           .help-inline 30文字以内
+      
       - @select_form.each do |i|
         - if i[:setting] >= 1 then
           - content = [''] + i[:content].split(',')
           %p
-            = "Q: #{i[:question]}"
+            .input= "Q: #{i[:question]}"
             %br
-            = "A:"
-            = f.select i[:answer], content
+            .input
+              = "A:"
+              = f.select i[:answer], content
+            %br
       - @free_form.each do |i|
         - if i[:setting] >= 1 then
           %p
-            = "Q:"
-            = i[:question]
+            .input= "Q: #{i[:question]}"
             %br
-            = "A:"
-            = f.text_area i[:answer]
+            .input
+              = "A:"
+              = f.text_area i[:answer], class: 'span7', rows: 10
+            %br
       .actions
         = f.submit f.object.new_record? ? '次へ' : '変更',
           disable_with: '処理中...',

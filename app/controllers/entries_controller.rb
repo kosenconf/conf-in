@@ -18,7 +18,9 @@ class EntriesController < ApplicationController
   # 受付期間内か？
   before_filter :can_entry,
     :only => [ :new, :create, :confirm, :complete, :destroy ]
-
+  
+  # 既に参加しているかどうか
+  before_filter :already_has_joined, only: [:new, :confirm, :complete]
   
   # GET /entries/new
   # イベント参加登録
@@ -114,10 +116,12 @@ class EntriesController < ApplicationController
     @entry.destroy
     #@entry.save!
     #イベントページへリダイレクト
-    redirect_to event_path(@event)
+    redirect_to event_path(@event),
+      notice: '参加をキャンセルしました。'
   rescue
     #トップページへリダイレクト
-    redirect_to root_path
+    redirect_to root_path,
+      alert: 'キャンセルに失敗しました。'
   end
   
   
@@ -136,14 +140,18 @@ class EntriesController < ApplicationController
     @page_title = "受付情報 | #{@event.name}"
 
   rescue
-    redirect_to root_path
+    redirect_to root_path,
+      alert: 'QRコードが間違っている、あるいは参加登録がされていません。'
   end
 
 private
   # パラメータからイベントを取得
   def find_event
     @event_id = params[:event_id]
-    return(redirect_to(events_path)) unless @event_id
+    unless @event_id
+      return redirect_to(events_path, 
+                         alert: 'イベントは削除されたもしくは存在しません。')
+    end
     @event = Event.find(@event_id)
     
     @select_form = [
@@ -190,19 +198,31 @@ private
   # 定員に達したか？
   def entries_filled
     if @event.entries.all.count >= @event.capacity
-      return (redirect_to (@event))
+      redirect_to @event,
+        alert: '既に定員に達しています。'
     end
   end
   
   # 受付期間内か？
   def can_entry
     unless @event.joinable_period_begin <= Time.now && Time.now <= @event.joinable_period_end
-      return redirect_back_or_default(@event)
+      redirect_back_or_default @event,
+        alert: '参加登録期間は開始していない、もしくは終了しています。'
     end
   end
   
   # イベント管理者ページのトークン認証
   def authenticate_by_admin_token!
-    redirect_to root_path unless @event.admin_token == params[:admin_token]
+    unless @event.admin_token == params[:admin_token]
+      redirect_to root_path, alert: 'アクセス権限がありません。'
+    end
   end
+
+  # 既に参加しているかどうか
+  def already_has_joined
+    if @event.entries.find_by_user_id(current_user.id)
+      redirect_to @event, alert: 'あなたは既にこのイベントに参加しています。'
+    end
+  end
+
 end
