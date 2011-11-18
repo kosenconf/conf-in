@@ -18,3 +18,10 @@
     %li= link_to 'ユーザ登録', new_user_registration_path
     %li.dropdown{data: {dropdown: :dropdown}}
       = link_to 'ログイン', new_user_session_path
+
+  %li.dropdown{data: {dropdown: :dropdown}}
+    = link_to 'ヘルプ', '#', class: 'dropdown-toggle'
+    %ul.dropdown-menu
+      %li= link_to '使い方', help_path
+      %li= link_to 'バグ報告', 'https://spreadsheets.google.com/spreadsheet/viewform?hl=ja&authkey=CLKJ6ZsF&formkey=dEVvcWF1cWJKTFpMSzZuSFVvcW9JZFE6MQ#gid=0'
+      %li= link_to 'カンファインについて', about_path

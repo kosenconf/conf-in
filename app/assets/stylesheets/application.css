@@ -55,6 +55,10 @@ body {
   border: 0;
 }
 
+section {
+	padding-top: 60px;
+}
+
 span.require {
 	color: red;
 	font-weight: bold;
