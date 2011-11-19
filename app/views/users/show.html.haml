@@ -9,20 +9,21 @@
     %table
       %tr
         %th 自己紹介
-        %td= h @user.memo
+        %td= hbr @user.memo
       %tr
         %th Twitter
-        %td= link_to "@"+@user.tw_id,"http://twitter.com/#{@user.tw_id}",:target => '_blank' unless @user.tw_id.blank?
+        %td= link_to "@"+@user.tw_id,"http://twitter.com/#{@user.tw_id}",
+          target: '_blank' unless @user.tw_id.blank?
       %tr
         %th Webサイト
-        %td= link_to h(@user.website), @user.website
+        %td= link_to h(@user.website), @user.website, target: '_blank'
       %tr
         %th 職業
-        %td= h @user.job
+        %td= @user.job
       %tr
         %th 勤務先・学校
-        %td= h @user.office
-    %h2 参加履歴マップ
+        %td= @user.office
+    %h2 参加履歴マップ（開発段階）
     %div{align: :center}
       %iframe{src: "/users/#{@user.id}/map", height: 400, width: 400, frameborder: 0}
   .span5
