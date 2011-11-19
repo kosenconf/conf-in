@@ -1,94 +1,107 @@
-.container
-  .content
-    .page-header
-      %h1 ヘルプ
-    .row
-      .span12
-        %h2 もくじ
-        %ul
-          %li
-            %a{:href => "#how_to_join"} どうやってイベントに参加するの？
-          %li
-            %a{:href => "#contact"} お問い合わせ
-    .row
-      .span12
-        %section#how_to_join
-          .page-header
-            %h2 どうやってイベントに参加するの？
-          .row
-            .span6
-              %p イベントに参加するには、
-              %ol
-                %li ユーザ登録
-                %li ログイン
-                %li イベント参加登録
-              %p の3つの手順が必要になります。
-          %section#sign_up
-            %h3 1. ユーザ登録
-            .row
-              .span6
-                %p
-                  = image_tag 'help/no_login_upper_right.png', width: 350
-                  図1：「ユーザ登録」，「ログイン」リンク
-                %p
-                  = image_tag "help/new_user.png", width: 350
-                  図2：「新規ユーザ登録」画面
-              .span6
-                %p カンファインは「ユーザ登録」を必要とするサービスです。まだ、「ユーザ登録」をしていない場合は、この手順に従って登録をしましょう！
-                %ol
-                  %li 画面右上の「ユーザ登録」をクリックします。
-                  %li 図2の様な画面が表示されたら、「※必須」の項目を入力します。
-                  %li 「登録する」ボタンをクリックします。
-                  %li 画面が遷移し「ユーザ登録が完了しました！」というメッセージが表示されたら、登録完了です！
-          %section#sign_in
-            %h3 2. ログイン
-            .row
-              .span6
-                %p
-                  = image_tag "help/log_in.png", width: 350
-              .span6
-                %p 「ユーザ登録」が済んだら「ログイン」しましょう！
-                %p 「ログイン」することで、イベントの参加登録ができたり、様々な機能を使ったりすることができます。
-                %p 画面右上の部分に「ニックネーム」が表示されていれば、既にログインしています。（※ユーザ登録後は自動的にログインされます）
-                %p まだ、ログインしていなければ次の手順でログインできます。
-                %ol
-                  %li 画面右上の「ログイン」をクリックします。
-                  %li 左図の様な画面が表示されたら、登録した「メールアドレス」と「パスワード」を入力します。
-                  %li 「ログイン」ボタンをクリックします。
-                  %li
-          %section#join_event
-            %h3 3. 参加登録
-            .row
-              .span6
-                %p
-                  = image_tag "help/join_link.png", width: 350
-                %p
-                  = image_tag "help/new_entry.png", width: 350
-              .span6
-                %p 参加可能なイベントページには、左図の様な「このイベントに参加する」ボタンがあります。
-                %ol
-                  %li 「このイベントに参加する」ボタンをクリックします。
-                  %li 参加登録画面で、必要な項目に入力して「次へ」をクリックします。
-                  %li 確認画面で、内容が正しいことを確認したら「登録」ボタンをクリックします。
-                  %li 登録完了画面が表示されたら、参加登録完了です。
-        %section#for_host
-          .page-header
-            %h2 イベントを告知するには
-          %section#create_event
-            .page-header
-              %h3 イベントの作成方法
-            .row
-              .span6
-                %p 現在準備中です。
-          %section#event_mailer
-            .page-header
-              %h3 メール一斉配信方法
-            .row
-              .span6
-                %p 現在準備中です。
-        %section#contact
-          .page-header
-            %h2 お問い合わせ
-          .row
-            .span12
-              %p カンファインについてのお問い合わせは、メールにてお願いします。
+.page-header
+  %h1 ヘルプ
+.row
+  .span12
+    %h2 もくじ
+    %ul
+      %li
+        %a{:href => "#how_to_join"} どうやってイベントに参加するの？
+      %li
+        %a{:href => "#contact"} お問い合わせ
+.row
+  .span14
+    %section#how_to_join
+      .page-header
+        %h2 どうやってイベントに参加するの？
+      .row
+        .span6
+          %p イベントに参加するには、
+          %ol
+            %li ユーザ登録
+            %li ログイン
+            %li イベント参加登録
+          %p の3つの手順が必要になります。
+      %section#sign_up
+        %h3 1. ユーザ登録
+        .row
+          .span6
+            %p
+              = image_tag 'help/no_login_upper_right.png', width: 340
+              -#図1：「ユーザ登録」、「ログイン」リンク
+            -#%p
+              = image_tag "help/new_user.png", width: 340
+              図2：「新規ユーザ登録」画面
+          .span7
+            %p カンファインは「ユーザ登録」を必要とするサービスです。まだ、「ユーザ登録」をしていない場合は、この手順に従って登録をしましょう！
+            %ol
+              %li 画面右上の「ユーザ登録」をクリックします。
+              %li 「新規ユーザ登録」画面が表示されたら、「※必須」の項目を入力します。
+              %li 「登録する」ボタンをクリックします。
+              %li 画面が遷移し「ユーザ登録が完了しました！」というメッセージが表示されたら、登録完了です。
+      %section#sign_in
+        %h3 2. ログイン
+        .row
+          .span6
+            %p
+              = image_tag "help/log_in.png", width: 340
+          .span7
+            %p 「ユーザ登録」が済んだら「ログイン」しましょう！
+            %p 「ログイン」することで、イベントの参加登録ができたり、様々な機能を使ったりすることができます。
+            %p 画面右上の部分に「ニックネーム」が表示されていれば、既にログインしています。（※ユーザ登録後は自動的にログインされます）
+            %p まだ、ログインしていなければ次の手順でログインできます。
+            %ol
+              %li 画面右上の「ログイン」をクリックします。
+              %li 左図の様な画面が表示されたら、登録した「メールアドレス」と「パスワード」を入力します。
+              %li 「ログイン」ボタンをクリックします。
+              %li 「ログインしました。」というメッセージが表示されたらログイン完了です。
+      %section#join_event
+        %h3 3. 参加登録
+        .row
+          .span6
+            %p
+              = image_tag "help/join_link.png", width: 340
+            -#%p
+              = image_tag "help/new_entry.png", width: 340
+          .span7
+            %p 参加可能なイベントページには、左図の様な「このイベントに参加する」ボタンがあります。
+            %ol
+              %li 「このイベントに参加する」ボタンをクリックします。
+              %li 参加登録画面で、必要な項目に入力して「次へ」をクリックします。
+              %li 確認画面で、内容が正しいことを確認したら「登録」ボタンをクリックします。
+              %li 登録完了画面が表示されたら、参加登録完了です。
+      %section#join_after
+        %h3 4. 参加登録後
+        .row
+          .span6
+            %p
+              = image_tag "help/ipod_mail.png", width: 320
+          .span7
+            %p
+              参加登録完了後には、ユーザ登録時に設定したメールアドレスに「QRコード」の添付されたメールが届きます。
+              イベント当日はこの「QRコード」を携帯電話やスマートフォンの画面に表示する、もしくは紙に印刷して提示できる形でお持ちください。
+    -#%section#for_host
+      .page-header
+        %h2 イベントを告知するには
+      %section#create_event
+        .page-header
+          %h3 イベントの作成方法
+        .row
+          .span6
+            %p 現在準備中です。
+      %section#event_mailer
+        .page-header
+          %h3 メール一斉配信方法
+        .row
+          .span6
+            %p 現在準備中です。
+    %section#contact
+      .page-header
+        %h2 お問い合わせ
+      .row
+        .span12
+          %p
+            お問い合わせは以下のフォームからどうぞ．
+            または，開発者のTwitterアカウント（
+            = link_to 'カンファインについて', about_path, target: '_new'
+            ）までリプライを飛ばしてください．
+          %iframe{:frameborder => "0", :height => "697", :marginheight => "0", :marginwidth => "0", :src => "https://docs.google.com/spreadsheet/embeddedform?formkey=dExtTzFlZGV0am5XZi1ENVpRZDdTdEE6MQ", :width => "760"} 読み込み中...
