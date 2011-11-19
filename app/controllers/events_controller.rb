@@ -12,7 +12,8 @@ class EventsController < ApplicationController
     except: [:index, :show, :new, :create, :destroy, :map, :resend_entry_mail]
 
   # BASIC認証
-	before_filter :basic_auth, only: [:new, :create] if ENV['RAILS_ENV'] == 'production'
+  # 試験公開する（11.20）
+	#before_filter :basic_auth, only: [:new, :create] if ENV['RAILS_ENV'] == 'production'
   
   # レスポンス
   respond_to :html
