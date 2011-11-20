@@ -15,7 +15,16 @@
     = f.label :summary
     %br
     (htmlタグを使えます。改行もhtmlタグを使用してください。)
-    .input= f.text_area :summary
+    %p.input
+      使えるタグ：
+      - ActionView::Base.sanitized_allowed_tags.each do |i|
+        = "#{i} "
+    %p.input
+      使える属性：
+      - ActionView::Base.sanitized_allowed_attributes.each do |i|
+        = "#{i} "
+
+    .input= f.text_area :summary, class: 'span10'
   %p
     = f.label :website
     .input= f.url_field :website
@@ -25,9 +34,6 @@
     .input
       = f.text_field :place_name
       %span.require ※必須
-  %p
-    = f.label :place_room
-    .input= f.text_field :place_room
   %p
     = f.label :place_address
     .input

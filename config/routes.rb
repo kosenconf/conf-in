@@ -44,4 +44,5 @@ ConfInProcon::Application.routes.draw do
 	end
 	
 	get 'about', to: 'home#about'
+	get 'help', to: 'help#index'
 end

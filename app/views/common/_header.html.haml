@@ -1,5 +1,6 @@
 = link_to 'カンファイン', root_path, class: 'brand'
 %ul.nav
+  %li= link_to '使い方', help_path
   %li= link_to 'イベント作成', new_event_path
   %li= link_to 'イベント一覧', events_path
   -if current_user
@@ -18,3 +19,13 @@
     %li= link_to 'ユーザ登録', new_user_registration_path
     %li.dropdown{data: {dropdown: :dropdown}}
       = link_to 'ログイン', new_user_session_path
+
+  %li.dropdown{data: {dropdown: :dropdown}}
+    = link_to 'ヘルプ', '#', class: 'dropdown-toggle'
+    %ul.dropdown-menu
+      %li= link_to '使い方', help_path
+      %li= link_to 'カンファインについて', about_path
+      %li.divider
+      %li= link_to 'お問い合わせ', help_path + '#contact'
+      %li= link_to 'バグ報告',
+        'https://spreadsheets.google.com/spreadsheet/viewform?hl=ja&authkey=CLKJ6ZsF&formkey=dEVvcWF1cWJKTFpMSzZuSFVvcW9JZFE6MQ#gid=0', target: '_blank'

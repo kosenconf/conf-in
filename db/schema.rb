@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111030154228) do
+ActiveRecord::Schema.define(:version => 20111117163921) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(:version => 20111030154228) do
     t.text     "summary"
     t.string   "website"
     t.string   "place_name"
-    t.string   "place_room"
     t.string   "place_address"
     t.string   "place_website"
     t.integer  "capacity"
