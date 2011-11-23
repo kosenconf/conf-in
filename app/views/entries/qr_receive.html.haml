@@ -10,7 +10,8 @@
     admin_token: @event.admin_token, qr_secret: @entry.user.qr_secret }, remote: true do |f|
   #entry_fees_table
     = render partial: 'entry_fees_table'
-  = f.submit disable_with: '処理中...'
+  .actions
+    = f.submit disable_with: '処理中...', class: 'btn primary'
 
 %h2 アンケートの回答状況
 %table.indexTable

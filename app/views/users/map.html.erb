@@ -20,7 +20,7 @@
         }
         map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-        var events = <%=raw @events.to_json %>;
+        var events = <%=raw @events.to_json(only: %w[name place_name place_address]) %>;
         var i;
         for(i = 0; i < events.length; i++) {
           (function() {
