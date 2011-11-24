@@ -34,7 +34,7 @@ task :production do
 	set :domain, "conf-in.com"
 	set :user, "falcon"
 	set :rvm_ruby_string, "ruby-1.9.2-p290@rails3.1.1"
-	set :branch, "release-conf-in-falconsrv"
+	set :branch, "release-main"
 	role :web, domain # 公開サーバ
 	role :app, domain # 設置サーバ
 	role :db,  domain, :primary => true # プライマリDBサーバ
