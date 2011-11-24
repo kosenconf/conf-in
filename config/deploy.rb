@@ -31,7 +31,7 @@ end
 
 # 本番環境
 task :production do
-	set :domain, "conf-in.falconsrv.net"
+	set :domain, "conf-in.com"
 	set :user, "falcon"
 	set :rvm_ruby_string, "ruby-1.9.2-p290@rails3.1.1"
 	set :branch, "release-conf-in-falconsrv"
