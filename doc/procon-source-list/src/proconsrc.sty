@@ -1,0 +1,97 @@
+%---------------------------------------------------------------------
+%
+%  プロコン ソース印刷用スタイルファイル
+%  Version 3.2
+%
+%  Notice:
+%    (1) \tableofcontents や \Lastpage を使用するため、
+%        2回か3回 platex で処理する必要がある。
+%    (2) LaTeX の都合でうまく組版されない場合もある。
+%        必ず全ページを目で確認すること。
+%    (3) listings, jlistings のインストールについては以下を参照。
+%        http://www.akita-nct.ac.jp/yamamoto/comp/latex/make_doc/source/source.html
+%  Last updated: October 13, 2008
+%  Compiled by Shoichi Ito
+%
+%---------------------------------------------------------------------
+
+\NeedsTeXFormat{pLaTeX2e}
+\ProvidesPackage{proconsrc}[2008/10/13 v3.2 by Ito]
+
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage{listings,jlisting}
+\usepackage{lastpage}
+
+%  目次や参考文献の見出し文字を変更する
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\refname}{References}
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+\renewcommand{\appendixname}{Appendixes}
+\renewcommand{\indexname}{Index}
+
+%  ページスタイルの設定
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyhead{}  %  すべてのフィールドをクリア
+\fancyfoot{}  %  すべてのフィールドをクリア
+\fancyhead[LE]{\Bumon 部門\ \Junban 番}
+\fancyhead[CE]{\School}
+\fancyhead[RE]{}
+\fancyfoot[CE]{\textbf{\Sakuhin}}
+\fancyfoot[LE]{\large \textit{\thepage\ / \pageref{LastPage}}}
+\fancyfoot[RE]{}
+\fancyhead[LO]{}
+\fancyhead[CO]{}
+\fancyhead[RO]{}  % ファイル名が入る
+\fancyfoot[LO]{}
+\fancyfoot[CO]{\textbf{\Sakuhin}}
+\fancyfoot[RO]{\large \textit{\thepage\ / \pageref{LastPage}}}
+
+%  ソースコード入力用のマクロ
+\newcommand{\InputSource}[2]{
+  \noindent\shadowbox{\sffamily \Large{#2}}
+  \addcontentsline{toc}{subsection}{#2}
+  \fancyhead[RO]{\sffamily #2}
+  \lstinputlisting{#1}\clearpage
+}
+
+%  表紙
+\newcommand{\MakeCoverPage}{
+\thispagestyle{empty}
+\begin{center}
+{\large 第\Kai 回プログラミングコンテスト \hfill プログラムソースリスト}\\
+
+\vspace*{3cm}
+
+{\Large \Bumon 部門 : 発表番号 \Junban}\\
+
+\vspace*{2cm}
+
+{\huge タイトル : \Sakuhin}\\
+
+\vspace*{2cm}
+
+
+{\Large
+\begin{tabular}{rl}
+学校名 : & \School \\
+&\\
+学生名 : & \MemberA \\
+         & \MemberB \\
+         & \MemberC \\
+         & \MemberD \\
+         & \MemberE \\
+&\\
+指導教員 : & \Teacher \\
+\end{tabular}
+}
+\end{center}
+\cleardoublepage}
+
+%  目次
+\newcommand{\MakeTOC}{\tableofcontents\cleardoublepage}
+
+%  [EOF]

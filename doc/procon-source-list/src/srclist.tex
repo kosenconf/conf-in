@@ -1,0 +1,129 @@
+%---------------------------------------------------------------------
+%
+%  プロコン ソースコード印刷(両面印刷用)のサンプル
+%
+%  Notice:
+%    (1) \tableofcontents や \Lastpage を使用するため、
+%        2回か3回 platex で処理する必要がある。
+%    (2) LaTeX の都合でうまく組版されない場合もある。
+%        必ず全ページを目で確認すること。
+%    (3) jsarticle は LaTeX で有名な奥村先生のパッケージである。
+%        角藤版W32TeXではすでにインストールされている。
+%        なければ以下から。
+%        http://oku.edu.mie-u.ac.jp/~okumura/jsclasses/
+%    (4) 両面印刷を前提としているため、たとえば表紙と目次の間のように、
+%        真っ白なページが挿入されることがあるが間違いではない。
+%
+%  Last updated: October 13, 2008
+%  Compiled by Shoichi Ito
+%
+%---------------------------------------------------------------------
+\documentclass[a4j]{jsarticle}
+
+\usepackage{proconsrc}
+
+%%%%%%%%%%%%%%%%%%%%%% ここを書き換える %%%%%%%%%%%%%%%%%%%%%%
+%  第何回?
+\newcommand{\Kai}{22}
+
+%  部門
+\newcommand{\Bumon}{課題}
+
+%  登録番号
+\newcommand{\TourokuBangou}{10034}
+
+%  プレゼンテーション順序
+\newcommand{\Junban}{null}
+
+%  作品名
+\newcommand{\Sakuhin}{カンファイン}
+
+%  メンバー5人分
+\newcommand{\MemberA}{奥本　隼}
+\newcommand{\MemberB}{若林　哲宇}
+\newcommand{\MemberC}{大和　優介}
+\newcommand{\MemberD}{宮崎　大智}
+\newcommand{\MemberE}{矢口　裕也}
+
+%  指導教員
+\newcommand{\Teacher}{伊藤　祥一}
+
+%  学校名
+\newcommand{\School}{長野工業高等専門学校}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%  ソースコードを引用するためのリスト環境の設定
+%
+%  各自の好みで設定する。
+%  設定内容については以下参照。
+%  http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/listings.html
+\lstset{language=ruby,
+  basicstyle=\ttfamily\small,
+  commentstyle=\textit,
+  classoffset=1,
+  keywordstyle=\bfseries,
+  frame=none,  % none → tRBL で上下左右の囲み
+  framesep=5pt,
+  showstringspaces=false,
+  numbers=left,
+  stepnumber=1,
+  numberstyle=\footnotesize,
+  tabsize=2,
+  breaklines=true
+}
+
+
+%----------------
+%  ここから本編
+%----------------
+\begin{document}
+
+%  表紙
+\MakeCoverPage
+
+%  目次
+\MakeTOC
+
+%%%%%%%%%%%%%%%%%%%%%% ここを書き換える %%%%%%%%%%%%%%%%%%%%%%
+%  以下、\InputSource{}の引数としてソースファイル名を並べる。
+%  必要に応じて改ページや LaTeX の命令を入れる。
+\InputSource{../tmp-source/app/controllers/application_controller.rb}{app/controllers/application\_controller.rb}
+\InputSource{../tmp-source/app/controllers/event_mails_controller.rb}{app/controllers/event\_mails\_controller.rb}
+\InputSource{../tmp-source/app/controllers/help_controller.rb}{app/controllers/help\_controller.rb}
+\InputSource{../tmp-source/app/controllers/users_controller.rb}{app/controllers/users\_controller.rb}
+\InputSource{../tmp-source/app/controllers/entries_controller.rb}{app/controllers/entries\_controller.rb}
+\InputSource{../tmp-source/app/controllers/events_controller.rb}{app/controllers/events\_controller.rb}
+\InputSource{../tmp-source/app/controllers/home_controller.rb}{app/controllers/home\_controller.rb}
+
+\InputSource{../tmp-source/config/boot.rb}{config/boot.rb}
+\InputSource{../tmp-source/config/routes.rb}{config/routes.rb}
+\InputSource{../tmp-source/config/environments/test.rb}{config/environments/test.rb}
+\InputSource{../tmp-source/config/environments/development.rb}{config/environments/development.rb}
+\InputSource{../tmp-source/config/environments/production.rb}{config/environments/production.rb}
+\InputSource{../tmp-source/config/deploy.rb}{config/deploy.rb}
+\InputSource{../tmp-source/config/application.rb}{config/application.rb}
+\InputSource{../tmp-source/config/environment.rb}{config/environment.rb}
+\InputSource{../tmp-source/db/seeds.rb}{db/seeds.rb}
+\InputSource{../tmp-source/db/schema.rb}{db/schema.rb}
+\InputSource{../tmp-source/app/models/user.rb}{app/models/user.rb}
+\InputSource{../tmp-source/app/models/event.rb}{app/models/event.rb}
+\InputSource{../tmp-source/app/models/entry_fee.rb}{app/models/entry\_fee.rb}
+\InputSource{../tmp-source/app/models/event_fee.rb}{app/models/event\_fee.rb}
+\InputSource{../tmp-source/app/models/entry.rb}{app/models/entry.rb}
+\InputSource{../tmp-source/app/models/event_mail.rb}{app/models/event\_mail.rb}
+\InputSource{../tmp-source/app/mailers/event_mailer.rb}{app/mailers/event\_mailer.rb}
+\InputSource{../tmp-source/app/mailers/entry_mailer.rb}{app/mailers/entry\_mailer.rb}
+\InputSource{../tmp-source/app/assets/javascripts/googleAnalytics.js}{app/assets/javascripts/googleAnalytics.js}
+\InputSource{../tmp-source/app/assets/javascripts/application.js}{app/assets/javascripts/application.js}
+\InputSource{../tmp-source/app/assets/javascripts/help.js}{app/assets/javascripts/help.js}
+\InputSource{../tmp-source/app/helpers/home_helper.rb}{app/helpers/home\_helper.rb}
+\InputSource{../tmp-source/app/helpers/help_helper.rb}{app/helpers/help\_helper.rb}
+\InputSource{../tmp-source/app/helpers/entries_helper.rb}{app/helpers/entries\_helper.rb}
+\InputSource{../tmp-source/app/helpers/application_helper.rb}{app/helpers/application\_helper.rb}
+\InputSource{../tmp-source/app/helpers/users_helper.rb}{app/helpers/users\_helper.rb}
+\InputSource{../tmp-source/app/helpers/events_helper.rb}{app/helpers/events\_helper.rb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
