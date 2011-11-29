@@ -45,7 +45,13 @@ module ApplicationHelper
 	# Twitterアイコンの表示
 	def twicon_tag(id, size = :default)
 	  unless id.blank?
-	    link_to image_tag("http://api.dan.co.jp/twicon/#{id}/#{SIZE[size]}", size: (size == :bigger ? '73x73' : '24x24')), "http://twitter.com/#{id}"
+	    link_to(
+        image_tag("http://api.dan.co.jp/twicon/#{id}/#{SIZE[size]}",
+                  size: (size == :bigger ? '73x73' : '24x24'),
+                  alt: id
+        ),
+        "http://twitter.com/#{id}"
+      )
 	  else
 	    image_tag( size == :bigger ? "73.png" : "24.png" )
 	  end
