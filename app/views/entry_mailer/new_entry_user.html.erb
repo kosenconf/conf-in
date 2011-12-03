@@ -42,7 +42,7 @@
 <h3><%= link_to 'カンファイン', root_url %></h3>
 <p>
 システムに関してのお問い合わせは，
-<%= mail_to $ADMIN_EMAIL %>
+<%= raw "#{help_url}#contact" %>
 までお願いいたします。
 </p>
 <p>
