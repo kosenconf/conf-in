@@ -1,3 +1,4 @@
+= render partial: 'map'
 
 .page-header
   %h1
@@ -25,7 +26,9 @@
         %td= @user.office
     %h2 参加履歴マップ（開発段階）
     %div{align: :center}
-      %iframe{src: "/users/#{@user.id}/map", height: 400, width: 400, frameborder: 0}
+      %div{id: "map_canvas", style: "width: 400px; height: 400px;"}
+      %div{id: "map", style: "display:none;"}
+        %p 住所より地図の特定が出来ませんでした
   .span5
     %h3= "#{@user.name}が参加したイベント"
     %ul
