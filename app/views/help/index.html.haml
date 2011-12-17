@@ -99,7 +99,8 @@
               %li
                 登録完了画面が表示されたら、参加登録完了です。
         %section#join_after
-          %h2 参加登録後はどうしたらいいの？
+          %h2
+            参加登録後はどうしたらいいの？
           .row
             .span6
               %p
@@ -108,20 +109,35 @@
               %p
                 参加登録完了後には、ユーザ登録時に設定したメールアドレスに「QRコード」の添付されたメールが届きます。
                 イベント当日はこの「QRコード」を携帯電話やスマートフォンの画面に表示する、もしくは紙に印刷して提示できる形でお持ちください。
-    -#%section#for_host
-      .page-header
-        %h2 イベントを告知するには
       %section#create_event
         .page-header
-          .page-header
-            %h2 イベントの作成方法
+          %h2
+            イベントの作成方法
+            %a.smooth{ href: '#'} ↑
         .row
           .span6
             %p 現在準備中です。
       %section#event_mailer
         .page-header
-          .page-header
-            %h2 メール一斉配信方法
+          %h2
+            参加者に向けて連絡するには？
+            %a.smooth{ href: '#'} ↑
+        .row
+          .span6
+            %p 現在準備中です。
+      %section#event_admin
+        .page-header
+          %h2
+            イベント管理者ページについて
+            %a.smooth{ href: '#'} ↑
+        .row
+          .span6
+            %p 現在準備中です。
+      %section#reception
+        .page-header
+          %h2
+            当日の受付システムについて
+            %a.smooth{ href: '#'} ↑
         .row
           .span6
             %p 現在準備中です。
@@ -136,5 +152,5 @@
             お問い合わせは以下のフォームからどうぞ．
             または，開発者のTwitterアカウント（
             = link_to 'カンファインについて', about_path, target: '_new'
-            ）までリプライを飛ばしてください．
+            ）までリプライをください．
           %iframe{:frameborder => "0", :height => "697", :marginheight => "0", :marginwidth => "0", :src => "https://docs.google.com/spreadsheet/embeddedform?formkey=dExtTzFlZGV0am5XZi1ENVpRZDdTdEE6MQ", :width => "760"} 読み込み中...
