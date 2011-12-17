@@ -125,11 +125,6 @@ class EventsController < ApplicationController
       notice: "イベント作成者以外はイベントを削除することはできません．"
   end
 
-	# Google Mapsによる地図表示
-  def map
-		render layout: false
-  end
-  
   # GET /events/:id/admin?admin_token=:admin_token
   # イベント管理者ページ
   # 機能としてはリンクページのみ
