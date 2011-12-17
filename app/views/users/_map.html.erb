@@ -1,0 +1,38 @@
+<link href="http://code.google.com/apis/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+  var geocoder;
+  var map;
+  $(function() {
+    geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 5,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    var events = <%=raw @events.to_json(only: %w[name place_name place_address]) %>;
+    var i;
+    for(i = 0; i < events.length; i++) {
+      (function() {
+        var event = events[i].event;
+        geocoder.geocode( { 'address': event.place_address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              title: event.name
+            });
+          } else {
+            //alert("Geocode was not successful for the following reason: " + status);
+            document.getElementById("map_canvas").style.display = "none";
+            document.getElementById("map").style.display = "block";
+          }
+        });
+      })();
+    }
+  });
+</script>
