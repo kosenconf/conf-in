@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 source 'http://gems.github.com'
 
 gem 'rails', '3.1.3'
-gem 'devise', '1.5.1'
+gem 'devise', '1.5.2'
 gem 'haml-rails', '0.3.4'
 gem 'rails-i18n', '0.1.11'
 gem 'rmagick', '2.13.1'
@@ -16,7 +16,7 @@ end
 
 group :development, :test do
 	gem 'sqlite3', '1.3.4'
-	gem 'ruby-debug19', require: 'ruby-debug'
+	#gem 'ruby-debug19', require: 'ruby-debug'
 end
 
 group :development do

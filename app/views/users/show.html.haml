@@ -1,5 +1,3 @@
-= render partial: 'map'
-
 .page-header
   %h1
     = twicon_tag @user.tw_id, :bigger
@@ -24,8 +22,9 @@
       %tr
         %th 勤務先・学校
         %td= @user.office
-    %h2 参加履歴マップ（開発段階）
+    %h2 旅のあしあと
     %div{align: :center}
+      = render partial: 'map'
       %div{id: "map_canvas", style: "width: 400px; height: 400px;"}
       %div{id: "map", style: "display:none;"}
         %p 住所より地図の特定が出来ませんでした
