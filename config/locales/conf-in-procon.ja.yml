@@ -1,4 +1,7 @@
 ja:
+  time:
+    formats:
+      onlyymd: "%Y/%m/%d"
   errors:
     template:
       header:
