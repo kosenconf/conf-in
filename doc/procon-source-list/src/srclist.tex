@@ -18,9 +18,25 @@
 %  Compiled by Shoichi Ito
 %
 %---------------------------------------------------------------------
-\documentclass[a4j]{jsarticle}
+\documentclass[a4paper]{jsarticle}
 
 \usepackage{proconsrc}
+
+\usepackage{atbegshi}
+\ifnum 42146=\euc"A4A2
+  \AtBeginShipoutFirst{\special{pdf:tounicode EUC-UCS2}}
+\else
+  \AtBeginShipoutFirst{\special{pdf:tounicode 90ms-RKSJ-UCS2}}
+\fi
+\usepackage{xcolor}
+\usepackage[dvipdfmx,
+	bookmarks=true,
+	bookmarksnumbered=true,
+	colorlinks=false,
+	linkbordercolor=blue,
+	pdftitle={カンファイン・ソースコードリスト},
+	pdfauthor={長野高専 課題部門 カンファイン},
+]{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%% ここを書き換える %%%%%%%%%%%%%%%%%%%%%%
 %  第何回?
@@ -33,7 +49,7 @@
 \newcommand{\TourokuBangou}{10034}
 
 %  プレゼンテーション順序
-\newcommand{\Junban}{null}
+\newcommand{\Junban}{6}
 
 %  作品名
 \newcommand{\Sakuhin}{カンファイン}
@@ -63,7 +79,7 @@
   commentstyle=\textit,
   classoffset=1,
   keywordstyle=\bfseries,
-  frame=none,  % none → tRBL で上下左右の囲み
+  frame=trbl,  % none → tRBL で上下左右の囲み
   framesep=5pt,
   showstringspaces=false,
   numbers=left,
@@ -74,8 +90,7 @@
 }
 
 
-%----------------
-%  ここから本編
+
 %----------------
 \begin{document}
 
@@ -88,42 +103,58 @@
 %%%%%%%%%%%%%%%%%%%%%% ここを書き換える %%%%%%%%%%%%%%%%%%%%%%
 %  以下、\InputSource{}の引数としてソースファイル名を並べる。
 %  必要に応じて改ページや LaTeX の命令を入れる。
-\InputSource{../tmp-source/app/controllers/application_controller.rb}{app/controllers/application\_controller.rb}
-\InputSource{../tmp-source/app/controllers/event_mails_controller.rb}{app/controllers/event\_mails\_controller.rb}
-\InputSource{../tmp-source/app/controllers/help_controller.rb}{app/controllers/help\_controller.rb}
-\InputSource{../tmp-source/app/controllers/users_controller.rb}{app/controllers/users\_controller.rb}
-\InputSource{../tmp-source/app/controllers/entries_controller.rb}{app/controllers/entries\_controller.rb}
-\InputSource{../tmp-source/app/controllers/events_controller.rb}{app/controllers/events\_controller.rb}
-\InputSource{../tmp-source/app/controllers/home_controller.rb}{app/controllers/home\_controller.rb}
+\section{はじめに}
+本システム（カンファイン）は，
+イベントへの参加登録などをする「Webシステム（サーバ）」と
+当日の受付でQRコードを読み取る「受付システム（クライアント）」の2つのシステムから成り立っている．
+それぞれ，「Ruby on Rails」と「C\#(.NET Framework 4)」で開発を行った．
 
-\InputSource{../tmp-source/config/boot.rb}{config/boot.rb}
-\InputSource{../tmp-source/config/routes.rb}{config/routes.rb}
-\InputSource{../tmp-source/config/environments/test.rb}{config/environments/test.rb}
-\InputSource{../tmp-source/config/environments/development.rb}{config/environments/development.rb}
-\InputSource{../tmp-source/config/environments/production.rb}{config/environments/production.rb}
-\InputSource{../tmp-source/config/deploy.rb}{config/deploy.rb}
-\InputSource{../tmp-source/config/application.rb}{config/application.rb}
-\InputSource{../tmp-source/config/environment.rb}{config/environment.rb}
-\InputSource{../tmp-source/db/seeds.rb}{db/seeds.rb}
+
+「Ruby on Rails」は，MVC（Model, View, Controller）パターンで成り立っている．
+そのため，Webシステムのソースコードリストでは，
+データ構造およびロジックに相当するModel, Controllerについて紹介する．
+また，「設定や定義」，「Viewに関わるロジック」についても紹介する．
+
+「受付システム」のソースコードについても同様に，フォームのソースコードについては省略する．
+
+\include{model}
+
+\section{データベース構造定義ファイル}
 \InputSource{../tmp-source/db/schema.rb}{db/schema.rb}
-\InputSource{../tmp-source/app/models/user.rb}{app/models/user.rb}
-\InputSource{../tmp-source/app/models/event.rb}{app/models/event.rb}
-\InputSource{../tmp-source/app/models/entry_fee.rb}{app/models/entry\_fee.rb}
-\InputSource{../tmp-source/app/models/event_fee.rb}{app/models/event\_fee.rb}
-\InputSource{../tmp-source/app/models/entry.rb}{app/models/entry.rb}
-\InputSource{../tmp-source/app/models/event_mail.rb}{app/models/event\_mail.rb}
+
+\include{controller}
+
+\include{javascript}
+
+\include{helper}
+
+\include{config}
+
+
+\section{メール送信に関するクラス}
+
+以下のコードは「メール一斉配信機能」と「参加登録完了通知」のメールに関する設定である．
+送信先や，添付ファイルなどの設定を行っている．
+
 \InputSource{../tmp-source/app/mailers/event_mailer.rb}{app/mailers/event\_mailer.rb}
 \InputSource{../tmp-source/app/mailers/entry_mailer.rb}{app/mailers/entry\_mailer.rb}
-\InputSource{../tmp-source/app/assets/javascripts/googleAnalytics.js}{app/assets/javascripts/googleAnalytics.js}
-\InputSource{../tmp-source/app/assets/javascripts/application.js}{app/assets/javascripts/application.js}
-\InputSource{../tmp-source/app/assets/javascripts/help.js}{app/assets/javascripts/help.js}
-\InputSource{../tmp-source/app/helpers/home_helper.rb}{app/helpers/home\_helper.rb}
-\InputSource{../tmp-source/app/helpers/help_helper.rb}{app/helpers/help\_helper.rb}
-\InputSource{../tmp-source/app/helpers/entries_helper.rb}{app/helpers/entries\_helper.rb}
-\InputSource{../tmp-source/app/helpers/application_helper.rb}{app/helpers/application\_helper.rb}
-\InputSource{../tmp-source/app/helpers/users_helper.rb}{app/helpers/users\_helper.rb}
-\InputSource{../tmp-source/app/helpers/events_helper.rb}{app/helpers/events\_helper.rb}
+
+\section{使用ライブラリ}
+「Webシステム」で利用しているGemライブラリは，以下のGemfileの内容の通りである．
+
+\InputSource{../tmp-source/Gemfile}{Gemfile}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{受付システム}
+受付システムは1つのフォームから成るシンプルなシステムである．
+Webカメラの画像を取得しQRコードをデコード，
+そしてブラウザを呼び出しWeb側の受付ページを表示させるシンプルな構成となっている．
+\InputSource{../SimpleReceptionSystem/SimpleReceptionSystem/Program.cs.euc}{SimpleReceptionSystem/Program.cs}
+
+以下のコードがメインのコードになる．
+QRコードのデコードにはZxingのライブラリを使用した．
+
+\InputSource{../SimpleReceptionSystem/SimpleReceptionSystem/MainWindow.cs.euc}{SimpleReceptionSystem/MainWindow.cs}
 
 \end{document}

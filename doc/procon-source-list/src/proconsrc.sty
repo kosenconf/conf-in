@@ -31,6 +31,20 @@
 \renewcommand{\appendixname}{Appendixes}
 \renewcommand{\indexname}{Index}
 
+
+% \leftmarkの大文字を防ぐ
+\makeatletter
+\def\ps@fancy{%
+\def\sectionmark##1{\markboth{\ifnum \c@secnumdepth>\z@ \thesection\hskip 1em\relax \fi ##1}{}}%
+\def\subsectionmark##1{\markright {\ifnum \c@secnumdepth >\@ne \thesubsection\hskip 1em\relax \fi ##1}}%
+\ps@@fancy
+\gdef\ps@fancy{\@fancyplainfalse\ps@@fancy}%
+\ifdim\headwidth<0sp 
+\global\advance\headwidth123456789sp\global\advance\headwidth\textwidth
+\fi
+}
+\makeatother
+
 %  ページスタイルの設定
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0.5pt}
@@ -43,9 +57,9 @@
 \fancyfoot[CE]{\textbf{\Sakuhin}}
 \fancyfoot[LE]{\large \textit{\thepage\ / \pageref{LastPage}}}
 \fancyfoot[RE]{}
-\fancyhead[LO]{}
+\fancyhead[LO]{\sffamily \leftmark}
 \fancyhead[CO]{}
-\fancyhead[RO]{}  % ファイル名が入る
+\fancyhead[RO]{\sffamily \rightmark}  % ファイル名が入る
 \fancyfoot[LO]{}
 \fancyfoot[CO]{\textbf{\Sakuhin}}
 \fancyfoot[RO]{\large \textit{\thepage\ / \pageref{LastPage}}}
@@ -53,8 +67,8 @@
 %  ソースコード入力用のマクロ
 \newcommand{\InputSource}[2]{
   \noindent\shadowbox{\sffamily \Large{#2}}
-  \addcontentsline{toc}{subsection}{#2}
-  \fancyhead[RO]{\sffamily #2}
+  %\addcontentsline{toc}{subsection}{#2}
+  %\fancyhead[RO]{\sffamily #2}
   \lstinputlisting{#1}\clearpage
 }
 

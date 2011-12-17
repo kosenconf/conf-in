@@ -1,6 +1,6 @@
 TEX = platex -kanji=euc -output-directory=../build
 DVIPDFMX = dvipdfmx -V 5
-PDFNAME = 10034.pdf
+PDFNAME = src10034.pdf
 FILE_NAME = srclist
 TEX_FILE = $(FILE_NAME).tex
 DVI_FILE = $(FILE_NAME).dvi
