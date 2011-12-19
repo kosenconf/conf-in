@@ -53,6 +53,9 @@ class EventsController < ApplicationController
         elsif Time.now < @event.date then "申込受付終了"
         else "イベント終了"
       end
+
+    #アクセスしているユーザ(ログインしている場合)
+    @user = current_user
     
     # レスポンス
     respond_with @event
