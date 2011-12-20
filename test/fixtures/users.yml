@@ -6,6 +6,8 @@ user01:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user1
+  tw_id: 'falcon_8823'
+  domicile: '鹿児島県鹿児島市'
   qr_secret: 0J5Ar+ihBRFFGllJJx4cuA==
 user02:
   id: 10002
@@ -15,6 +17,8 @@ user02:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user2
+  tw_id: 'yayugu'
+  domicile: '北海道網走市'
   qr_secret: vTNoqq/16+R9DNPEBXAqbA==
 user03:
   id: 10003
@@ -24,6 +28,8 @@ user03:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user3
+  tw_id: 'nsatohiro'
+  domicile: '大阪府大阪市'
   qr_secret: r6OVwsePLn0UUR+eOfhe2w==
 user04:
   id: 10004
@@ -33,4 +39,5 @@ user04:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user4
+  domicile: '秋田県秋田市'
   qr_secret: YDwqQdsx1riVtu8DsLpTGg==

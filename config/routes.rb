@@ -31,8 +31,6 @@ ConfInProcon::Application.routes.draw do
     
     
 		member do
-			# Google Maps
-			get :map # /events/:id/map
 			get :admin
 			get :resend_entry_mail
 		end

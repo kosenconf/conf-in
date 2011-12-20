@@ -53,6 +53,9 @@ class EventsController < ApplicationController
         elsif Time.now < @event.date then "申込受付終了"
         else "イベント終了"
       end
+
+    #アクセスしているユーザ(ログインしている場合)
+    @user = current_user
     
     # レスポンス
     respond_with @event
@@ -125,11 +128,6 @@ class EventsController < ApplicationController
       notice: "イベント作成者以外はイベントを削除することはできません．"
   end
 
-	# Google Mapsによる地図表示
-  def map
-		render layout: false
-  end
-  
   # GET /events/:id/admin?admin_token=:admin_token
   # イベント管理者ページ
   # 機能としてはリンクページのみ

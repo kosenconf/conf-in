@@ -16,7 +16,11 @@
       Web：
       = link_to @event.place_website, @event.place_website
       %br
-      <iframe src="/events/#{@event.id}/map" height=400 width=400 frameborder=0></iframe>
+      %div{align: :center}
+        = render partial: 'map'
+        %div{id: "map_canvas", style: "width: 430px; height: 500px;"}
+        %div{id: "map", style: "display:none;"}
+          %p 住所より地図の特定が出来ませんでした
 
   -# 参加費
   %tr  
