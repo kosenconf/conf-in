@@ -218,3 +218,14 @@ user20:
   tw_id: 'Himajin4869'
   domicile: '神奈川県鎌倉市'
   qr_secret: DNul6mwcOrbl2iuP5Rnmow==
+user21:
+  id: 10021
+  email: falcon+21@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user21
+  tw_id: 'fooyuta'
+  domicile: '新潟県長岡市'
+  qr_secret: TnPBMfkQ7I+KGvZcp/M2Mw==
