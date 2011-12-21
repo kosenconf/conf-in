@@ -32,8 +32,31 @@
             %span.add-on @
             = f.text_field :tw_id, placeholder: 'Twitter ID'
             %span 任意
+      %p
+        = f.label :domicile
+        .input
+          = f.text_field :domicile, placeholder: '居住地'
+          %span 任意
+
       .actions
         = f.submit '登録する', class: 'btn primary large'
         
     .well
       = render :partial => "user/shared/links"
+  .span6
+    %h3 メールアドレス
+    %p
+      カンファインでは，イベントに参加すると
+      QRコードを用いた「チケット」を発行します．
+      イベントの参加登録をすると，
+      ここで登録したメールアドレスに，
+      「チケット」が送られてきます．
+    %h3 Twitter ID
+    %p
+      カンファインではプロフィールとTwitterを関連付ける事ができます．
+      また，プロフィールアイコンをTwitterアイコンにすることができます．
+    %h3 居住地
+    %p
+      居住地を設定すると，便利な地図機能が使えるようになります．
+      一般公開されるので公開しても良い範囲で入力してください．
+      （例：長野県長野市）
