@@ -15,10 +15,11 @@
       %br
       Web：
       = link_to @event.place_website, @event.place_website
-      %br
+  %tr
+    %td{colspan: 2}
       %div{align: :center}
         = render partial: 'map'
-        %div{id: "map_canvas", style: "width: 430px; height: 500px;"}
+        %div{id: "map_canvas", style: "width: 520px; height: 500px;"}
         %div{id: "map", style: "display:none;"}
           %p 住所より地図の特定が出来ませんでした
 
