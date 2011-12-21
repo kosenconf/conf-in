@@ -41,3 +41,173 @@ user04:
   name: user4
   domicile: '秋田県秋田市'
   qr_secret: YDwqQdsx1riVtu8DsLpTGg==
+user05:
+  id: 10005
+  email: falcon+5@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user5
+  domicile: '長野県諏訪市'
+  qr_secret: Jw8IqJfgqjumK+xzVSZYgw==
+user06:
+  id: 10006
+  email: falcon+6@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user6
+  domicile: '青森県八戸市'
+  qr_secret: W82htjH+4RzW+51trcY7pQ==
+user07:
+  id: 10007
+  email: falcon+7@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user7
+  domicile: '青森県弘前市'
+  qr_secret: yXl1iAcIzi8g95EUMrE6+w==
+user08:
+  id: 10008
+  email: falcon+8@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user8
+  domicile: '岩手県奥州市'
+  qr_secret: 0JftVrM6IcVPvrgEc3FXgQ==
+user09:
+  id: 10009
+  email: falcon+9@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user9
+  domicile: '宮城県仙台市'
+  qr_secret: DfrBUDilMiL3kWgPrdMUxw==
+user10:
+  id: 10010
+  email: falcon+10@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user10
+  domicile: '秋田県横手市'
+  qr_secret: lU7vzUEyiY4ug8q/LIl65Q==
+user11:
+  id: 10011
+  email: falcon+11@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user11
+  domicile: '山形県新庄市'
+  qr_secret: DHnokoBYtADfzSi1p6Dsfg==
+user12:
+  id: 10012
+  email: falcon+12@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user12
+  domicile: '山形県鶴岡市'
+  qr_secret: /GqT/hTIWK7io//7JUkXdA==
+user13:
+  id: 10013
+  email: falcon+13@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user13
+  domicile: '福島県いわき市'
+  qr_secret: SIo0V3JFcuTMYAQxLin8bA==
+user14:
+  id: 10014
+  email: falcon+14@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user14
+  domicile: '茨城県水戸市'
+  qr_secret: Cegzqs/9EDStfEf/ogRxUA==
+user15:
+  id: 10015
+  email: falcon+15@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user15
+  domicile: '栃木県栃木市'
+  qr_secret: eUHa0Mh7Ji8hs2XXDc3F3A==
+user16:
+  id: 10016
+  email: falcon+16@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user16
+  domicile: '群馬県安中市'
+  qr_secret: G/K8MRTIddjFHhripZAZ1Q==
+user17:
+  id: 10017
+  email: falcon+17@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user17
+  domicile: '埼玉県さいたま市'
+  qr_secret: N3BZHTWeMGVRET0VIlPlUQ==
+user18:
+  id: 10018
+  email: falcon+18@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user18
+  domicile: '千葉県千葉市'
+  qr_secret: PKU/3U1zpW1zHCZc5iKFbA==
+user19:
+  id: 10019
+  email: falcon+19@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user19
+  domicile: '東京都千代田区'
+  qr_secret: EbTPFUeJKakQ3HmF3GUelg==
+user20:
+  id: 10020
+  email: falcon+20@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user20
+  domicile: '神奈川県鎌倉市'
+  qr_secret: DNul6mwcOrbl2iuP5Rnmow==
+user21:
+  id: 10021
+  email: falcon+21@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user21
+  domicile: '神奈川県鎌倉市'
+  qr_secret: DNul6mwcOrbl2iuP5Rnmow==
