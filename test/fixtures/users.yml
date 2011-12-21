@@ -218,4 +218,58 @@ user20:
   tw_id: 'Himajin4869'
   domicile: '神奈川県鎌倉市'
   qr_secret: DNul6mwcOrbl2iuP5Rnmow==
-  qr_secret: TnPBMfkQ7I+KGvZcp/M2Mw==
+user101:
+  id: 10101
+  email: falcon+101@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user101
+  tw_id: '8bit_res'
+  domicile: '宮崎県日向市‎'
+  qr_secret: 5ZmfGPbcX+Wo+dA1ckTZtQ==
+user102:
+  id: 10102
+  email: falcon+102@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user102
+  tw_id: 'mugenstorm'
+  domicile: '宮崎県日向市‎'
+  qr_secret: 3RurP/WvGua4yovvT+Gi/Q==
+user103:
+  id: 10103
+  email: falcon+103@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user103
+  tw_id: 'shinrobo'
+  domicile: '宮崎県日向市‎'
+  qr_secret: 0JBQCB9bVrmK6E+LGG9H5g==
+user104:
+  id: 10104
+  email: falcon+104@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user104
+  tw_id: 'shinrobo2'
+  domicile: '宮崎県日向市‎'
+  qr_secret: WYYGrKPCXlTRDitzYCTj9Q==
+user105:
+  id: 10105
+  email: falcon+105@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user105
+  tw_id: 'shinrobo3'
+  domicile: '宮崎県日向市‎'
+  qr_secret: dnGrvs0hzBW02WOwuAH2ng==
