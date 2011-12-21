@@ -13,22 +13,6 @@
     directionsDisplay.setMap(map);
     var directionsService = new google.maps.DirectionsService();
 
-    <% @event.entries.each do |entry| %>
-      <% user = entry.user %>
-      geocoder.geocode( { 'address': "<%= user.domicile %>"}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location,
-            title: "<%= user.name %>",
-            icon: "http://falconsrv.net/cgi-bin/twicon.pl/<%= user.tw_id %>/mini"
-          });
-        } else {
-          //alert("Geocode was not successful for the following reason: " + status);
-        }
-      });
-    <% end %>
-      
     var address = "<%= @event.place_address %>";
     var marker;
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -40,10 +24,27 @@
         });
       } else {
         //alert("Geocode was not successful for the following reason: " + status);
+        console.log(status);
         document.getElementById("map_canvas").style.display = "none";
         document.getElementById("map").style.display = "block";
       }
     });
+
+    <% @event.entries.each do |entry| %>
+      <% user = entry.user %>
+      geocoder.geocode( { 'address': "<%= user.domicile %>"}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            title: "<%= user.name %>",
+            icon: "<%= twicon_image user.tw_id, :mini %>"
+          });
+        } else {
+          //alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+    <% end %>
 
     <% if @user && @user.domicile %>
     address = "<%= @user.domicile %>";
