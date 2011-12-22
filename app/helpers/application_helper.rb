@@ -44,16 +44,20 @@ module ApplicationHelper
 
 	# Twitterアイコンの表示
 	def twicon_image(id, size = :default)
-	  unless id.blank?
+=begin
+    unless id.blank?
       "http://twicon.yayugu.net/#{id}/#{SIZE[size]}"
     else
 	    size == :bigger ? "#{root_url}/images/73.png" : "#{root_url}/images/24.png"
-	  end
+    end
+=end
+	  size == :bigger ? "#{root_url}/images/73.png" : "#{root_url}/images/24.png"
 	end
   
 	# Twitterアイコンの表示
 	def twicon_tag(id, size = :default)
-	  unless id.blank?
+=begin
+    unless id.blank?
 	    link_to(
         image_tag("http://twicon.yayugu.net/#{id}/#{SIZE[size]}",
                   size: (size == :bigger ? '73x73' : '24x24'),
@@ -64,6 +68,8 @@ module ApplicationHelper
 	  else
 	    image_tag( size == :bigger ? "73.png" : "24.png" )
 	  end
+=end
+	  image_tag( size == :bigger ? "73.png" : "24.png" )
 	end
 	
   # ネストしたフィールドを動的に削除
