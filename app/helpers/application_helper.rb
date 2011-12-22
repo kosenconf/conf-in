@@ -45,7 +45,7 @@ module ApplicationHelper
 	# Twitterアイコンの表示
 	def twicon_image(id, size = :default)
 	  unless id.blank?
-      "http://falconsrv.net/cgi-bin/twicon.pl/#{id}/#{SIZE[size]}"
+      "http://twicon.yayugu.net/#{id}/#{SIZE[size]}"
     else
 	    size == :bigger ? "#{root_url}/images/73.png" : "#{root_url}/images/24.png"
 	  end
