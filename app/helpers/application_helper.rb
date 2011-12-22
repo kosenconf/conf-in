@@ -55,7 +55,7 @@ module ApplicationHelper
 	def twicon_tag(id, size = :default)
 	  unless id.blank?
 	    link_to(
-        image_tag("http://falconsrv.net/cgi-bin/twicon.pl/#{id}/#{SIZE[size]}",
+        image_tag("http://twicon.yayugu.net/#{id}/#{SIZE[size]}",
                   size: (size == :bigger ? '73x73' : '24x24'),
                   alt: id
         ),
