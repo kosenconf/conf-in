@@ -39,6 +39,7 @@ user04:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user4
+  tw_id: 'flysaaach'
   domicile: '秋田県秋田市'
   qr_secret: YDwqQdsx1riVtu8DsLpTGg==
 user05:
@@ -49,6 +50,7 @@ user05:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user5
+  tw_id: 'Lepton314'
   domicile: '長野県諏訪市'
   qr_secret: Jw8IqJfgqjumK+xzVSZYgw==
 user06:
@@ -59,6 +61,7 @@ user06:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user6
+  tw_id: 'shoma_seki'
   domicile: '青森県八戸市'
   qr_secret: W82htjH+4RzW+51trcY7pQ==
 user07:
@@ -69,6 +72,7 @@ user07:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user7
+  tw_id: 'Nyakamyu'
   domicile: '青森県弘前市'
   qr_secret: yXl1iAcIzi8g95EUMrE6+w==
 user08:
@@ -79,6 +83,7 @@ user08:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user8
+  tw_id: 'rootre'
   domicile: '岩手県奥州市'
   qr_secret: 0JftVrM6IcVPvrgEc3FXgQ==
 user09:
@@ -89,6 +94,7 @@ user09:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user9
+  tw_id: 'step6steady'
   domicile: '宮城県仙台市'
   qr_secret: DfrBUDilMiL3kWgPrdMUxw==
 user10:
@@ -99,6 +105,7 @@ user10:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user10
+  tw_id: 'shiketano10'
   domicile: '秋田県横手市'
   qr_secret: lU7vzUEyiY4ug8q/LIl65Q==
 user11:
@@ -109,6 +116,7 @@ user11:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user11
+  tw_id: 'smile_chococo'
   domicile: '山形県新庄市'
   qr_secret: DHnokoBYtADfzSi1p6Dsfg==
 user12:
@@ -119,6 +127,7 @@ user12:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user12
+  tw_id: 'o00ty'
   domicile: '山形県鶴岡市'
   qr_secret: /GqT/hTIWK7io//7JUkXdA==
 user13:
@@ -129,6 +138,7 @@ user13:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user13
+  tw_id: '_mag31'
   domicile: '福島県いわき市'
   qr_secret: SIo0V3JFcuTMYAQxLin8bA==
 user14:
@@ -139,6 +149,7 @@ user14:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user14
+  tw_id: 'yoruironogensou'
   domicile: '茨城県水戸市'
   qr_secret: Cegzqs/9EDStfEf/ogRxUA==
 user15:
@@ -149,6 +160,7 @@ user15:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user15
+  tw_id: 'skrzer'
   domicile: '栃木県栃木市'
   qr_secret: eUHa0Mh7Ji8hs2XXDc3F3A==
 user16:
@@ -159,6 +171,7 @@ user16:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user16
+  tw_id: 'gnr_t'
   domicile: '群馬県安中市'
   qr_secret: G/K8MRTIddjFHhripZAZ1Q==
 user17:
@@ -169,6 +182,7 @@ user17:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user17
+  tw_id: 'tkt_94'
   domicile: '埼玉県さいたま市'
   qr_secret: N3BZHTWeMGVRET0VIlPlUQ==
 user18:
@@ -179,6 +193,7 @@ user18:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user18
+  tw_id: 'intake'
   domicile: '千葉県千葉市'
   qr_secret: PKU/3U1zpW1zHCZc5iKFbA==
 user19:
@@ -189,6 +204,7 @@ user19:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user19
+  tw_id: 'taku_eco'
   domicile: '東京都千代田区'
   qr_secret: EbTPFUeJKakQ3HmF3GUelg==
 user20:
@@ -199,15 +215,61 @@ user20:
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
   name: user20
+  tw_id: 'Himajin4869'
   domicile: '神奈川県鎌倉市'
   qr_secret: DNul6mwcOrbl2iuP5Rnmow==
-user21:
-  id: 10021
-  email: falcon+21@falconsrv.net
+user101:
+  id: 10101
+  email: falcon+101@falconsrv.net
   encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
   confirmation_token: !!null 
   confirmed_at: 2011-10-07 15:23:46.948988000Z
   confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
-  name: user21
-  domicile: '神奈川県鎌倉市'
-  qr_secret: DNul6mwcOrbl2iuP5Rnmow==
+  name: user101
+  tw_id: '8bit_res'
+  domicile: '宮崎県日向市‎'
+  qr_secret: 5ZmfGPbcX+Wo+dA1ckTZtQ==
+user102:
+  id: 10102
+  email: falcon+102@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user102
+  tw_id: 'mugenstorm'
+  domicile: '宮崎県日向市‎'
+  qr_secret: 3RurP/WvGua4yovvT+Gi/Q==
+user103:
+  id: 10103
+  email: falcon+103@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user103
+  tw_id: 'shinrobo'
+  domicile: '宮崎県日向市‎'
+  qr_secret: 0JBQCB9bVrmK6E+LGG9H5g==
+user104:
+  id: 10104
+  email: falcon+104@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user104
+  tw_id: 'shinrobo2'
+  domicile: '宮崎県日向市‎'
+  qr_secret: WYYGrKPCXlTRDitzYCTj9Q==
+user105:
+  id: 10105
+  email: falcon+105@falconsrv.net
+  encrypted_password: $2a$10$sMIZIvMw6v7BvOGN..KfEuHcDn9m5qeQpxEtw3uzc4QLLIr6aBx3C
+  confirmation_token: !!null 
+  confirmed_at: 2011-10-07 15:23:46.948988000Z
+  confirmation_sent_at: 2011-10-07 15:08:45.600743000Z
+  name: user105
+  tw_id: 'shinrobo3'
+  domicile: '宮崎県日向市‎'
+  qr_secret: dnGrvs0hzBW02WOwuAH2ng==
