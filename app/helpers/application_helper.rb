@@ -14,9 +14,9 @@ module ApplicationHelper
   # ページタイトルの連結
 	def title
 		if @page_title.nil? then
-			$SYSTEM_TITLE
+			"カンファイン"
 		else
-			"#{@page_title} | #{$SYSTEM_TITLE}"
+			"#{@page_title} | カンファイン"
 		end
 	end
 

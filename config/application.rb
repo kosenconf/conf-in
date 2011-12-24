@@ -49,7 +49,6 @@ module ConfIn
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-		$SYSTEM_TITLE = 'カンファイン'
 		$ADMIN_EMAIL = 'webmaster@falconsrv.net'
 		
 		ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
