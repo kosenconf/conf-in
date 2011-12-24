@@ -5,7 +5,5 @@ tmp/
 *~
 *.bak
 *.swp
-app2/
-doc/procon-source-list/
-vendor/bundler/
+vendor/bundle/
 
