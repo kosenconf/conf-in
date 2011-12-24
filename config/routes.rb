@@ -1,4 +1,4 @@
-ConfInProcon::Application.routes.draw do
+ConfIn::Application.routes.draw do
 	# root
 	root to: "home#index"
   

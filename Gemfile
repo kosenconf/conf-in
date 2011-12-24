@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-source 'http://gems.github.com'
 
 gem 'rails', '3.1.3'
 gem 'devise', '1.5.2'

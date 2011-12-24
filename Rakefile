@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-ConfInProcon::Application.load_tasks
+ConfIn::Application.load_tasks
