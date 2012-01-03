@@ -3,10 +3,14 @@ class EventMail < ActiveRecord::Base
   belongs_to :event
 
   # subjectフィールドの検証
-  validates :subject, presence: true
+  validates :subject,
+    presence: true,
+    length: { maximum: 30 }
 
   # textフィールドの検証
-  validates :text, presence: true
+  validates :text,
+    presence: true,
+    length: { maximum: 2000 }
 
   # 保護
   attr_protected :event_id
