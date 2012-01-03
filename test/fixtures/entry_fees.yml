@@ -1,18 +1,17 @@
-one:
-  id: 1
+<% (10001..10025).each do |i| %>
+fee<%= i %>:
+  id: <%= i %>
   event_fee_id: 10001
-  entry_id: 10001
+  entry_id: <%= i %>
   paid: false
+<% end %>
 
-two:
-  id: 2
-  event_fee_id: 10001
-  entry_id: 10002
+<% (10001..10025).each do |i| %>
+<% if i % 2 == 0 %>
+fee<%= i+100 %>:
+  id: <%= i+100 %>
+  event_fee_id: 10002
+  entry_id: <%= i %>
   paid: false
-
-three:
-  id: 3
-  event_fee_id: 10001
-  entry_id: 10003
-  paid: false
-
+<% end %>
+<% end %>

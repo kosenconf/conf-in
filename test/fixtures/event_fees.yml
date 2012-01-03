@@ -1,6 +1,12 @@
 one:
   id: 10001
-  name: MyString
+  name: 費用1
   sum: 100
-  summary: MyText
+  summary: 費用1です．
+  event_id: 10001
+two:
+  id: 10002
+  name: 費用2
+  sum: 10000
+  summary: 費用2です．
   event_id: 10001
