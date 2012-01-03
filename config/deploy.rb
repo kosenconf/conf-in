@@ -5,7 +5,7 @@ require "bundler/capistrano"
 # アプリケーション名
 set :application, "conf-in"
 # リポジトリの場所
-set :repository,  "ssh://git@falconsrv.net/home/conf-in/conf-in-procon.git"
+set :repository,  "ssh://git@falconsrv.net/home/conf-in/conf-in.git"
 # デプロイ先
 set :deploy_to,  "/var/www/rails/#{application}"
 
