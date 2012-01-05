@@ -5,6 +5,12 @@
   %li= link_to 'イベント一覧', events_path
   -if current_user
     %li= link_to 'プロフィール', user_path(current_user)
+    %li
+      %a{href: '#', data: {'controls-modal' => 'send_qr' }}
+        QRコードを取得
+-# QRコード送信フォーム
+#send_qr.modal.hide.fade
+  = render partial: 'users/send_qr'
 
 %ul.nav.secondary-nav
   -if current_user
@@ -29,3 +35,4 @@
       %li= link_to 'お問い合わせ', help_path + '#contact'
       %li= link_to '意見・バグ報告',
         'https://spreadsheets.google.com/spreadsheet/viewform?hl=ja&authkey=CLKJ6ZsF&formkey=dEVvcWF1cWJKTFpMSzZuSFVvcW9JZFE6MQ#gid=0', target: '_blank'
+

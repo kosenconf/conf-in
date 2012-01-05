@@ -16,13 +16,17 @@ function add_fields(link, association, content) {
   );
 }
 
-$('#top_bar').dropdown();
-
 $(document).ready(function(){
+  $('#top_bar').dropdown();
   // tablesorter
   $("#myTable").tablesorter();
   
   // バーメッセージのアニメーション
   $(".alert-message").slideDown().delay(3000).slideUp();
+  
+  // イベントページのQRコード送信フォーム
+  $("#send_qr").modal('hide');
 
 });
+
+  

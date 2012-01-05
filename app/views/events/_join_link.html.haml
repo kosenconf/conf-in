@@ -2,7 +2,7 @@
   - unless @entry.nil?
     = render(:partial => "entries/ticket")
     %p{align: :center}
-      = link_to 'QRコードを登録アドレスに送信する',
+      -#= link_to 'QRコードを登録アドレスに送信する',
         resend_entry_mail_event_path(@event),
         confirm: '登録されているメールアドレスへQRコード付きの参加登録完了メールが再送信されます．よろしいですか？',
         class: 'btn info'

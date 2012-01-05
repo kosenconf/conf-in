@@ -3,7 +3,11 @@ ConfIn::Application.routes.draw do
 	root to: "home#index"
   
   # Userリソース
-  resources :users, only: [ :show ]
+  resources :users, only: [ :show, :send_qr ] do
+    collection do
+      post :send_qr
+    end
+  end
 
 	# deviseの設定
 	devise_for :user
