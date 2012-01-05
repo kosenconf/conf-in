@@ -22,7 +22,7 @@ $(document).ready(function(){
   $("#myTable").tablesorter();
   
   // バーメッセージのアニメーション
-  $(".alert-message").slideDown().delay(3000).slideUp();
+  $(".alert-message").slideDown().delay(5000).slideUp();
   
   // イベントページのQRコード送信フォーム
   $("#send_qr").modal('hide');
