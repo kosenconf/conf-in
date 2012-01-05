@@ -2,7 +2,7 @@
   %a.close{href: '#'} &times;
   %h3 受付QRコードを送信
 
-= form_tag controller: :users, action: :send_qr, method: :post do
+= form_tag controller: :'/users', action: :send_qr, method: :post do
   .modal-body
     %p 受付用QRコードを送るメールアドレスを入力してください。
     = label_tag 'メールアドレス'

@@ -9,8 +9,9 @@
       %a{href: '#', data: {'controls-modal' => 'send_qr' }}
         QRコードを取得
 -# QRコード送信フォーム
-#send_qr.modal.hide.fade
-  = render partial: 'users/send_qr'
+- if current_user
+  #send_qr.modal.hide.fade
+    = render partial: 'users/send_qr'
 
 %ul.nav.secondary-nav
   -if current_user
