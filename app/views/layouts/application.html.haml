@@ -12,6 +12,9 @@
     -if alert
       .alert-message.warning.hide
         = alert
+    -if danger = flash[:danger]
+      .alert-message.danger.hide
+        = danger
 
     .topbar
       .fill
