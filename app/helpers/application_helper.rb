@@ -22,7 +22,7 @@ module ApplicationHelper
 
   # QRコードのURL生成
   def url_for_qr(str)
-    "http://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=#{CGI.escape(str)}"
+    "http://chart.apis.google.com/chart?chs=500x500&cht=qr&chl=#{CGI.escape(str)}"
   end
 
 	# QRコードの生成
