@@ -9,11 +9,9 @@ class EventsController < ApplicationController
   # admin_tokenによる認証
   # ミス防止のために，フィルタしないものを指定
   before_filter :authenticate_by_admin_token!,
-    except: [:index, :show, :new, :create, :destroy, :map, :resend_entry_mail]
-
-  # BASIC認証
-  # 試験公開する（11.20）
-	#before_filter :basic_auth, only: [:new, :create] if ENV['RAILS_ENV'] == 'production'
+    except: [
+      :index, :show, :new, :create, :destroy, :map, :resend_entry_mail
+    ]
   
   # レスポンス
   respond_to :html
@@ -152,14 +150,10 @@ private
   
   # イベント管理者ページのトークン認証
   def authenticate_by_admin_token!
-    redirect_to root_path unless @event.admin_token == params[:admin_token]
+    unless @event.admin_token == params[:admin_token]
+      redirect_to root_path, notice: '管理者トークンが間違っています。'
+    end
   end
 	
-	# Basic認証
-	def basic_auth
-		authenticate_or_request_with_http_basic do |user, pass|
-			user == 'kc035NagaokaAdmin' && pass == 'A6JkSLxBg3EPTtPu'
-		end
-	end
 end
 
