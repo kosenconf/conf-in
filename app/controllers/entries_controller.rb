@@ -160,6 +160,7 @@ class EntriesController < ApplicationController
 
           # 1行目
           csv << [
+            '登録日時',
             '登録名', 'Twitter ID', '職業', '勤務先・学校', 'コメント',
             fee_name, '合計参加費用',
             selects, free
@@ -187,6 +188,7 @@ class EntriesController < ApplicationController
             end
             user = entry.user
             csv << [
+              entry.created_at.strftime('%Y/%m/%d %H:%M:%S'),
               user.name, user.tw_id, user.job, user.office, entry.comment,
               fees_paid, entry.fees_sum,
               selects, free
