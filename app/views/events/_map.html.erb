@@ -30,24 +30,6 @@
       }
     });
 
-    <% @event.entries.each do |entry| %>
-      <% user = entry.user %>
-      <% unless user.domicile.blank? %>
-        geocoder.geocode( { 'address': "<%= user.domicile %>"}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-              title: "<%= user.name %>",
-              icon: "<%= twicon_image user.tw_id, :mini %>"
-            });
-          } else {
-            //alert("Geocode was not successful for the following reason: " + status);
-          }
-        });
-      <% end %>
-    <% end %>
-    
     <% if @user && !@user.domicile.blank? %>
     address = "<%= @user.domicile %>";
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -72,5 +54,24 @@
       }
     });
     <% end %>
+
+    <% @event.entries.each do |entry| %>
+      <% user = entry.user %>
+      <% unless user.domicile.blank? %>
+        geocoder.geocode( { 'address': "<%= user.domicile %>"}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              title: "<%= user.name %>",
+              icon: "<%= twicon_image user.tw_id, :mini %>"
+            });
+          } else {
+            //alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      <% end %>
+    <% end %>
+    
   });
 </script>
