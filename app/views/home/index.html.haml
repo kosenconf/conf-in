@@ -4,7 +4,8 @@
   %p 締切り間近のカンファ
   = render partial: 'top_events', locals: { |
      events: @near_closing_events } |
-  %p お知らせ
   %p 近日開催されるカンファ
   = render partial: 'top_events', locals: { |
-          events: @near_events } |
+    events: @near_events } |
+  %h3 カンファインTwitterアカウント
+  = render partial: 'official_tweets'
