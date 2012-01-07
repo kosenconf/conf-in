@@ -9,19 +9,14 @@
       - @event.event_fees.each do |fee|
         %th= fee.name
       %th 合計費用
-      = raw que_survey(@event.select_setting1, @event.select1)
-      = raw que_survey(@event.select_setting2, @event.select2)
-      = raw que_survey(@event.select_setting3, @event.select3)
-      = raw que_survey(@event.select_setting4, @event.select4)
-      = raw que_survey(@event.select_setting5, @event.select5)
-      = raw que_survey(@event.free_setting1, @event.free1)
-      = raw que_survey(@event.free_setting2, @event.free2)
-      = raw que_survey(@event.free_setting3, @event.free3)
-      = raw que_survey(@event.free_setting4, @event.free4)
-      = raw que_survey(@event.free_setting5, @event.free5)
-    -# ここからインデント以下コメント
-      %th 出席状態
-      %th{colspan: 3} 出席状態の変更
+      -# 選択式アンケートの項目名
+      - (1..5).each do |i|
+        = raw que_survey(@event.send("select_setting#{i}"),
+          @event.send("select#{i}"))
+      -# フリー入力アンケートの項目名
+      - (1..5).each do |i|
+        = raw que_survey(@event.send("free_setting#{i}"),
+          @event.send("free#{i}"))
   %tbody
     - @event.entries.each do |entry|
       %tr
@@ -38,33 +33,14 @@
               - else
                 %span#not_paid 未
         %td= number_to_currency(entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
-        = raw ans_survey(@event.select_setting1, entry.select1)
-        = raw ans_survey(@event.select_setting2, entry.select2)
-        = raw ans_survey(@event.select_setting3, entry.select3)
-        = raw ans_survey(@event.select_setting4, entry.select4)
-        = raw ans_survey(@event.select_setting5, entry.select5)
-        = raw ans_survey(@event.free_setting1, entry.free1)
-        = raw ans_survey(@event.free_setting2, entry.free2)
-        = raw ans_survey(@event.free_setting3, entry.free3)
-        = raw ans_survey(@event.free_setting4, entry.free4)
-        = raw ans_survey(@event.free_setting5, entry.free5)
-        -# ここからインデント以下コメント
-          %td= entry.received_to_s
-          %td
-            - entry.received = 1
-            = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id} ) do |f|
-              = f.hidden_field :received
-              = f.submit '出席'
-            - entry.received = 2
-          %td
-            = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id}) do |f|
-              = f.hidden_field :received
-              = f.submit '欠席'
-          %td
-            - entry.received = 0
-            = form_for([@event, entry], url: {action: :update, admin_token: @event.admin_token, id: entry.id}) do |f|
-              = f.hidden_field :received
-              = f.submit '未確認に戻す'
+        -# 選択式アンケート
+        - (1..5).each do |i|
+          = raw ans_survey(@event.send("select_setting#{i}"),
+            entry.send("select#{i}"))
+        -# フリー入力アンケート
+        - (1..5).each do |i|
+          = raw ans_survey(@event.send("free_setting#{i}"),
+            entry.send("free#{i}"))
   %tr
     %th{colspan: 2} 集計
     - @event.event_fees.each do |fee|
