@@ -7,7 +7,7 @@ gem 'rails-i18n', '0.1.11'
 gem 'rmagick', '2.13.1'
 gem 'jquery-rails', '1.0.19'
 gem 'twitter-bootstrap-rails', '1.4.1'
-
+gem 'mongrel', '1.2.0.pre2'
 
 group :production do
 	gem 'mysql2', '0.3.10'
