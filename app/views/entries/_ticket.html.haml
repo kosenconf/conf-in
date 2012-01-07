@@ -1,18 +1,17 @@
-%h3 チケット
+%h3 あなたの登録情報
 %table
   %tr
-    %th= I18n.t 'activerecord.attributes.event.name'
-    %td= @event.name
-  %tr
-    %th= I18n.t 'activerecord.attributes.user.name'
+    %th 参加費用
     %td
-      = User.find(@entry.user_id).name
-      様
-  %tr
-    %th 合計参加費用
-    %td
-      = number_to_currency(@entry.fees_sum, unit: "円", precision: 0, format: "%n %u")
+      %table
+        - @entry.event_fees.each do |fee|
+          %tr
+            %th= fee.name
+            %td= number_to_currency fee.sum, precision: 0
+    %tr
+      %th 合計参加費用
+      %td= number_to_currency @entry.fees_sum, precision: 0
   %tr
     %th= I18n.t 'activerecord.attributes.user.qr_secret'
     %td
-      = qrimg_tag User.find(@entry.user_id).qr_secret
+      = qrimg_tag current_user.qr_secret
