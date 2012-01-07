@@ -1,4 +1,5 @@
 # coding: utf-8
+require 'csv'
 class EntriesController < ApplicationController
   # 認証要求
   before_filter :authenticate_user!, except: [ :qr_receive, :update, :index ]
@@ -131,6 +132,72 @@ class EntriesController < ApplicationController
   # filterを通してイベント取得
   def index
     @page_title = "参加者一覧 | #{@event.name}"
+    @entries = @event.entries
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        CSV.generate(output = "") do |csv|
+          @event_fees = @event.event_fees
+
+          # 参加費用名
+          fee_name = []
+          @event_fees.each do |fee|
+            fee_name << fee.name
+          end
+
+          # 選択アンケートの項目名
+          selects  = []
+          (1..5).each do |i|
+            selects << @event.send("select#{i}")
+          end
+
+          # フリーアンケートの項目名
+          free = []
+          (1..5).each do |i|
+            free << @event.send("free#{i}")
+          end
+
+          # 1行目
+          csv << [
+            '登録名', 'Twitter ID', '職業', '勤務先・学校', 'コメント',
+            fee_name, '合計参加費用',
+            selects, free
+          ].flatten
+
+          @entries.each do |entry|
+            # 参加費用ごとの徴収状況
+            fees_paid = []
+            @event_fees.each do |fee|
+              if entry_fee = entry.entry_fees.find_by_event_fee_id(fee.id)
+                fees_paid << (entry_fee.paid ? '済':'未')
+              else
+                fees_paid << ''
+              end
+            end
+            # 選択アンケートの回答
+            selects  = []
+            (1..5).each do |i|
+              selects << entry.send("select#{i}")
+            end
+            # フリーアンケートの回答
+            free = []
+            (1..5).each do |i|
+              free << entry.send("free#{i}")
+            end
+            user = entry.user
+            csv << [
+              user.name, user.tw_id, user.job, user.office, entry.comment,
+              fees_paid, entry.fees_sum,
+              selects, free
+            ].flatten
+          end
+        end
+ 
+        send_data output, type: 'text/csv',
+          filename: "#{@event.id}(#{Time.now.strftime('%Y%m%d-%H%M')}).csv"
+      end
+    end
   end
   
   def qr_receive
@@ -152,7 +219,7 @@ private
       return redirect_to(events_path, 
                          alert: 'イベントは削除されたもしくは存在しません。')
     end
-    @event = Event.find(@event_id)
+    @event = Event.includes(:entries).find(@event_id)
     
     @select_form = [
       { :answer => :select1,

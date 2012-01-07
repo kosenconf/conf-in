@@ -1,6 +1,10 @@
 %h1
   = "#{@event.name} 参加者一覧"
 %hr
+= link_to 'CSV形式で保存',
+  event_entries_path(@event, admin_token: @event.admin_token, format: 'csv'),
+  class: 'btn'
+  
 %table.zebra-striped#myTable
   %thead
     %tr
