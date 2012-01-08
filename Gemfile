@@ -18,12 +18,6 @@ group :development, :test do
 	#gem 'ruby-debug19', require: 'ruby-debug'
 end
 
-group :development do
-	gem 'heroku', require: nil
-	gem 'capistrano', require: nil
-end
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
