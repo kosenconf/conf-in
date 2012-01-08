@@ -49,7 +49,7 @@ module ConfIn
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-		$ADMIN_EMAIL = 'webmaster@falconsrv.net'
+		$ADMIN_EMAIL = ENV['GMAIL_USER']
 		
 		ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
       include ActionView::Helpers::OutputSafetyHelper

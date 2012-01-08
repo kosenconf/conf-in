@@ -19,13 +19,14 @@ ConfIn::Application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "falconsrv.net",
-    user_name: "webmaster@falconsrv.net",
-    password: "fSrvMaster",
+    domain: ENV['GMAIL_DOMAIN'],
+    user_name: ENV['GMAIL_USER'],
+    password: ENV['GMAIL_PASSWORD'],
     authentication: :plain,
     enable_starttls_auto: true
   }
-	config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
