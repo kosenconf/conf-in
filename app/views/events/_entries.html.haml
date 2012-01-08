@@ -8,3 +8,6 @@
         %b= link_to entry.user.name, entry.user
         %br
         = entry.comment
+        - unless entry.user.tw_id.blank?
+          = render partial: 'tw_forrow_btn', locals: {user: entry.user}
+= render partial: 'tw_forrow_script'
