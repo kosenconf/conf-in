@@ -202,6 +202,7 @@ class EntriesController < ApplicationController
     end
   end
   
+  # 受付ページ
   def qr_receive
     @user = @event.users.find_by_qr_secret(params[:qr_secret])
     @entry = @event.entries.find_by_user_id(@user.id)
@@ -275,7 +276,7 @@ private
   # 受付期間内か？
   def can_entry
     unless @event.joinable_period_begin <= Time.now && Time.now <= @event.joinable_period_end
-      redirect_back_or_default @event,
+      redirect_to @event,
         alert: '参加登録期間は開始していない、もしくは終了しています。'
     end
   end
