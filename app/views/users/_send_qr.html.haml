@@ -5,7 +5,7 @@
 = form_tag controller: :'/users', action: :send_qr, method: :post do
   .modal-body
     %p 受付用QRコードを送るメールアドレスを入力してください。
-    = label_tag 'メールアドレス'
+    = label_tag :email, 'メールアドレス'
     .input
       = text_field_tag :email
       = submit_tag '送信', class: :'btn primary'
