@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103065816) do
+ActiveRecord::Schema.define(:version => 20120114055206) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20120103065816) do
 
   create_table "entry_fees", :force => true do |t|
     t.integer  "entry_id"
-    t.boolean  "paid"
+    t.boolean  "paid",         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "event_fee_id"

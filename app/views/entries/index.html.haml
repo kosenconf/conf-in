@@ -46,7 +46,17 @@
           = raw ans_survey(@event.send("free_setting#{i}"),
             entry.send("free#{i}"))
   %tr
-    %th{colspan: 2} 集計
+    %th{colspan: 2} 未受付
+    - @event.event_fees.each do |fee|
+      %th
+        = "#{fee.entry_fees.count(:all, conditions: ['entry_fees.paid = ?', false])} 人"
+  %tr
+    %th{colspan: 2} 受付済
+    - @event.event_fees.each do |fee|
+      %th
+        = "#{fee.entry_fees.count(:all, conditions: ['entry_fees.paid = ?', true])} 人"
+  %tr
+    %th{colspan: 2} 合計
     - @event.event_fees.each do |fee|
       %th
         = "#{fee.entry_fees.count} 人"
