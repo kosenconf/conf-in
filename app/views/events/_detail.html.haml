@@ -29,10 +29,17 @@
     %td
       -# EventFee
       %table
+        %tr
+          %th 参加費
+          %th 金額
+          %th 未受付
+          %th 受付済
         - @event_fees.each do |fee|
           %tr
             %th= fee.name
             %td= number_to_currency(fee.sum, unit: "円", precision: 0, format: "%n %u")
+            %td= "#{fee.entry_fees.count(:all, conditions: ['entry_fees.paid = ?', false])} 人"
+            %td= "#{fee.entry_fees.count(:all, conditions: ['entry_fees.paid = ?', true])} 人"
 
   -# 定員
   %tr  
