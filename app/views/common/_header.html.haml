@@ -15,8 +15,8 @@
 
 %ul.nav.secondary-nav
   -if current_user
+    %li= link_to image_tag(twicon_image(current_user.tw_id, :mini)), current_user, style: 'padding: 8px 0 0;'
     %li.dropdown{data: {dropdown: :dropdown}}
-      -#= twicon_tag current_user.tw_id, :mini
       = link_to "#{current_user.name}", '#', class: 'dropdown-toggle'
       %ul.dropdown-menu
         %li= link_to '設定', edit_user_registration_path
