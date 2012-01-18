@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'csv'
+require 'kconv'
 class EntriesController < ApplicationController
   # 認証要求
   before_filter :authenticate_user!, except: [ :qr_receive, :update, :index ]
@@ -137,7 +138,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html
       format.csv do
-        CSV.generate(output = "") do |csv|
+        CSV.generate(output = "", row_sep: "\r\n") do |csv|
           @event_fees = @event.event_fees
 
           # 参加費用名
@@ -196,7 +197,7 @@ class EntriesController < ApplicationController
           end
         end
  
-        send_data output, type: 'text/csv',
+        send_data NKF.nkf('-sxm0', output), type: 'text/csv',
           filename: "#{@event.id}(#{Time.now.strftime('%Y%m%d-%H%M')}).csv"
       end
     end
