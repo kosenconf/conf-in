@@ -145,7 +145,7 @@ class EventsController < ApplicationController
 private
   # イベントIDからイベントを取得
   def find_event
-    @event = Event.find(params[:id])
+    @event = Event.includes(:entries, :users).find(params[:id])
   end
   
   # イベント管理者ページのトークン認証
