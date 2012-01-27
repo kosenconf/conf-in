@@ -42,30 +42,27 @@ module ApplicationHelper
     return img.to_blob
 	end
 
-	# Twitterアイコンの表示
-	def twicon_image(id, size = :default)
-	  unless id.blank?
-      "http://twicon.yayugu.net/#{id}/#{SIZE[size]}"
+	# TwiconのURL
+  def twicon_url(user, size = :bigger)
+    unless user.tw_id.blank?
+      unless user.twicon_url.blank?
+        # tw_idとtwicon_urlが空じゃなければそのまま返する
+        twicon_url_with_size(user.twicon_url, size)
+      else
+        # twicon_urlが無ければAPIに任せる
+        icon_user_url(user, size: size)
+      end
     else
+      # tw_idが無ければデフォルトアイコンを表示
 	    size == :bigger ? "#{root_url}/images/73.png" : "#{root_url}/images/24.png"
-	  end
-	end
+    end
+  end
   
-	# Twitterアイコンの表示
-	def twicon_tag(id, size = :default)
-	  unless id.blank?
-	    link_to(
-        image_tag("http://twicon.yayugu.net/#{id}/#{SIZE[size]}",
-                  size: (size == :bigger ? '73x73' : '24x24'),
-                  alt: id
-        ),
-        "http://twitter.com/#{id}"
-      )
-	  else
-	    image_tag( size == :bigger ? "73.png" : "24.png" )
-	  end
-	end
-	
+  # Twicon の画像タグ
+  def twicon_tag(user, size = :bigger)
+    image_tag twicon_url(user, size), size: (size == :bigger ? '73x73':'24x24'), alt: user.name
+  end
+
   # ネストしたフィールドを動的に削除
   def link_to_remove_fields(name, f, html_options={})
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)", html_options)
@@ -85,4 +82,57 @@ module ApplicationHelper
 		str = html_escape(str)
 		raw str.gsub(/\r\n|\r|\n/, "<br />")
 	end
+  
+
+  # TwiconURLを生で取得
+  def get_raw_url(id)
+    begin
+      n = Nokogiri::HTML(open("http://twitter.com/#{id}").read)
+      n = n.css('img').first
+      url = n['src'].to_s
+
+      # 読み込み中アイコンであれば，nilを返す
+      if /loader\.gif$/ =~ url
+        nil
+      else
+        url
+      end
+    rescue => e
+      nil
+    end
+  end
+
+  # 名前と拡張子に分ける
+  def split_ext(str)
+    str.split(/\.(jpg|jpeg|jpe|png|gif|bmp|)$/i)
+  end
+  
+  # 生からオリジナルサイズのURLに変換
+  def original(url)
+    split_url = split_ext(url)
+    orig_name = split_url[0].gsub(/_reasonably_small$/, '')
+
+    if split_url[1]
+      [orig_name, split_url[1]].join('.')
+    else
+      orig_name
+    end
+  end
+  
+  # オリジナルURLからサイズ入りURLに変換
+  def twicon_url_with_size(url, size = :bigger)
+    # 名前と拡張子に分ける
+    spl = split_ext(url)
+
+    # 名前とサイズでつなげる
+    ret = size ? [spl[0], size].join('_') : spl[0]
+    
+    if spl.count == 1
+      # 拡張子無し
+      ret
+    elsif spl.count == 2
+      # 拡張子をつなげる
+      [ret, spl[1]].join('.')
+    end
+  end
 end

@@ -3,7 +3,7 @@
   - @entries.each do |entry|
     %tr
       %td
-        = twicon_tag entry.user.tw_id, :mini
+        = twicon_tag entry.user, :mini
       %td
         %b= link_to entry.user.name, entry.user
         %br

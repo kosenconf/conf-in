@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114055206) do
+ActiveRecord::Schema.define(:version => 20120127120328) do
 
   create_table "entries", :force => true do |t|
     t.integer  "event_id"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20120114055206) do
     t.string   "tw_id"
     t.float    "lat"
     t.float    "lng"
+    t.string   "twicon_url"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

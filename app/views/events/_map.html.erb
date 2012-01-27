@@ -64,7 +64,7 @@
               map: map,
               position: results[0].geometry.location,
               title: "<%= user.name %>",
-              icon: "<%= twicon_image user.tw_id, :mini %>"
+              icon: "<%= twicon_url user, :mini %>"
             });
           } else {
             //alert("Geocode was not successful for the following reason: " + status);

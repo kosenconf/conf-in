@@ -4,6 +4,9 @@ ConfIn::Application.routes.draw do
   
   # Userリソース
   resources :users, only: [ :show, :send_qr ] do
+    member do
+      get :icon
+    end
     collection do
       post :send_qr
     end

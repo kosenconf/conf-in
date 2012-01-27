@@ -1,7 +1,7 @@
 - if user_signed_in?
   #user-bar-greeting
     Logged in as
-    = twicon_tag current_user.tw_id, :mini
+    = twicon_tag current_user, :mini
     = link_to current_user.name, user_path(current_user.id), content_method: :login
   #user-bar-action
     = link_to 'ユーザ設定', edit_user_registration_path
