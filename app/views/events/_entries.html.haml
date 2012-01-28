@@ -2,6 +2,6 @@
 %ul.media-grid
   - @entries.each do |entry|
     %li
-      = link_to(twicon_tag(entry.user, :normal),
-        entry.user.tw_id.blank? ? entry.user : "http://twitter.com/#{entry.user.tw_id}",
-        class: :thumbnail)
+      %a{href: (entry.user.tw_id.blank? ? user_path(entry.user) : "http://twitter.com/#{entry.user.tw_id}"),
+      class: :thumbnail, data: {content: entry.comment, :'original-title' => entry.user.name, placement: :left}, rel: 'popover'}
+        = twicon_tag entry.user, :normal

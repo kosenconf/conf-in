@@ -27,6 +27,11 @@ $(document).ready(function(){
   // イベントページのQRコード送信フォーム
   $("#send_qr").modal('hide');
 
+  $("a[rel=popover]")
+    .popover({
+      offset: 10,
+      placement: 'left'
+    });
 });
 
   
