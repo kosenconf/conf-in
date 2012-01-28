@@ -32,7 +32,7 @@ module ApplicationHelper
 
 	# JPGに変換したQRコードのバイナリを返す
 	def qr_jpg_binary(qr_str)
-	  qr_url = url_for_qr(qr_str)
+    qr_url = "http://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=#{CGI.escape(qr_str)}"
 
 	  blob = Net::HTTP.get_response(URI.parse(qr_url)).body
     img = Magick::ImageList.new
