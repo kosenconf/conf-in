@@ -4,7 +4,7 @@
     = @user.name
 
 .row
-  .span9
+  .span10
     %table
       %tr
         %th 自己紹介
@@ -28,7 +28,7 @@
       %div{id: "map_canvas", style: "width: 500px; height: 600px;"}
       %div{id: "map", style: "display:none;"}
         %p 住所より地図の特定が出来ませんでした
-  .span5
+  .span6
     %h3= "#{@user.name}が参加したイベント"
     %ul
       - unless @user.entries.blank?

@@ -1,8 +1,8 @@
 .page-header
   %h1 プロフィール編集
-.row
-  .span9
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+  .row
+    .span8
       = devise_error_messages!
       %p
         = f.label :email
@@ -16,6 +16,7 @@
       %p
         = f.label :website
         .input= f.text_field :website
+    .span8
       %p
         = f.label :job
         .input= f.text_field :job
@@ -25,12 +26,13 @@
       %p
         = f.label :domicile
         .input= f.text_field :domicile
+  .row
+    .span8
       %p
         = f.label :memo
-        .input= f.text_area :memo
-      %p
-        = f.label :qr_secret
-        .input= qrimg_tag resource.qr_secret
+        .input= f.text_area :memo, rows: 10
+    .span8  
+
       %p
         %b パスワードを変更する場合は入力してください．
       %p （変更しない場合は空欄のままにしてください．）
@@ -40,7 +42,6 @@
       %p
         = f.label :password_confirmation
         .input= f.password_field :password_confirmation
-      
       .well
         %p
           %b 変更を保存するには，現在のパスワードを入力してください
@@ -49,7 +50,8 @@
           .input= f.password_field :current_password
         %p{align: :right}
           = f.submit '変更を保存', class: 'btn primary'
-    %hr
+.row
+  .span8
     %h1 登録を解除する
     = link_to "登録解除", registration_path(resource_name), |
       class: 'btn danger large', method: :delete, |

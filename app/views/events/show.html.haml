@@ -10,7 +10,7 @@
       = render(partial: "admin_link")
 
 .row
-  .span9
+  .span10
     %h2 イベント概要
     = sanitize @event.summary
     = render partial: 'detail'
@@ -20,7 +20,7 @@
     -# 関連ツイートJavaScript
     = render partial: 'twitter_search_widget'
 
-  .span5
+  .span6
     = render partial: 'status'
     = render partial: 'join_link'
 

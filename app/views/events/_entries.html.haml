@@ -1,10 +1,7 @@
 %h3 イベント参加者
-%table.entryTable
+%ul.media-grid
   - @entries.each do |entry|
-    %tr
-      %td
-        = twicon_tag entry.user, :mini
-      %td
-        %b= link_to entry.user.name, entry.user
-        %br
-        = entry.comment
+    %li
+      = link_to(twicon_tag(entry.user, :normal),
+        entry.user.tw_id.blank? ? entry.user : "http://twitter.com/#{entry.user.tw_id}",
+        class: :thumbnail)
