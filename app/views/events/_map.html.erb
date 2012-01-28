@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
   $(function() {
     var geocoder = new google.maps.Geocoder();
@@ -37,7 +37,7 @@
         new google.maps.Marker({
           map: map,
           position: results[0].geometry.location,
-          icon: "http://maps.google.com/mapfiles/kml/pal2/icon10.png"
+          icon: "https://maps.google.com/mapfiles/kml/pal2/icon10.png"
         });
         directionsService.route({
             origin: "<%= @user.domicile %>",

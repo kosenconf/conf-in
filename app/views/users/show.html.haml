@@ -11,7 +11,7 @@
         %td= hbr @user.memo
       %tr
         %th Twitter
-        %td= link_to "@"+@user.tw_id,"http://twitter.com/#{@user.tw_id}",
+        %td= link_to "@"+@user.tw_id,"https://twitter.com/#{@user.tw_id}",
           target: '_blank' unless @user.tw_id.blank?
       %tr
         %th Webサイト

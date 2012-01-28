@@ -51,12 +51,12 @@ class UsersController < ApplicationController
           redirect_to view_context.twicon_url_with_size(@user.twicon_url, size)
         else
           # 取得失敗時
-          redirect_to size == :bigger ? "#{root_url}/images/73.png" : "#{root_url}/images/24.png"
+          redirect_to size == :bigger ? "#{root_url}images/73.png" : "#{root_url}images/24.png"
         end
       end
     else
       # tw_idが無ければデフォルトアイコンを表示
-	    redirect_to size == :bigger ? "#{root_url}/images/73.png" : "#{root_url}/images/24.png"
+	    redirect_to size == :bigger ? "#{root_url}images/73.png" : "#{root_url}images/24.png"
     end
   end
 

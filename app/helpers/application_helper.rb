@@ -22,7 +22,7 @@ module ApplicationHelper
 
   # QRコードのURL生成
   def url_for_qr(str)
-    "http://chart.apis.google.com/chart?chs=500x500&cht=qr&chl=#{CGI.escape(str)}"
+    "https://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=#{CGI.escape(str)}"
   end
 
 	# QRコードの生成
@@ -54,7 +54,7 @@ module ApplicationHelper
       end
     else
       # tw_idが無ければデフォルトアイコンを表示
-	    size == :bigger ? "#{root_url}/images/73.png" : "#{root_url}/images/24.png"
+	    size == :bigger ? "#{root_url}images/73.png" : "#{root_url}images/24.png"
     end
   end
   
@@ -87,7 +87,7 @@ module ApplicationHelper
   # TwiconURLを生で取得
   def get_raw_url(id)
     begin
-      n = Nokogiri::HTML(open("http://twitter.com/#{id}").read)
+      n = Nokogiri::HTML(open("https://twitter.com/#{id}").read)
       n = n.css('img').first
       url = n['src'].to_s
 
