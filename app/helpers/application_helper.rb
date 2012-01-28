@@ -26,8 +26,8 @@ module ApplicationHelper
   end
 
 	# QRコードの生成
-	def qrimg_tag(str)
-	  image_tag url_for_qr(str), width: 150
+	def qrimg_tag(str, options={width: 150})
+	  image_tag url_for_qr(str), options
 	end
 
 	# JPGに変換したQRコードのバイナリを返す
