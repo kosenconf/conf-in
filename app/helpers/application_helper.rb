@@ -5,10 +5,10 @@ require 'net/http'
 
 module ApplicationHelper
   SIZE = {
-      mini: 'mini',
-      normal: 'normal',
-      bigger: 'bigger',
-      default: ''
+      mini: {size:'24x24', def_url: "images/24.png"},
+      normal: {size: '48x48', def_url: "images/48.png"},
+      bigger: {size: '73x73', def_url: "images/73.png"},
+      default: {size:'', def_url: ''}
   }
 
   # ページタイトルの連結
@@ -43,7 +43,7 @@ module ApplicationHelper
 	end
 
 	# TwiconのURL
-  def twicon_url(user, size = :bigger)
+  def twicon_url(user, size = :normal)
     unless user.tw_id.blank?
       unless user.twicon_url.blank?
         # tw_idとtwicon_urlが空じゃなければそのまま返する
@@ -54,13 +54,13 @@ module ApplicationHelper
       end
     else
       # tw_idが無ければデフォルトアイコンを表示
-	    size == :bigger ? "#{root_url}images/73.png" : "#{root_url}images/24.png"
+      root_url + SIZE[size][:def_url]
     end
   end
   
   # Twicon の画像タグ
-  def twicon_tag(user, size = :bigger)
-    image_tag twicon_url(user, size), size: (size == :bigger ? '73x73':'24x24'), alt: user.name
+  def twicon_tag(user, size = :normal)
+    image_tag twicon_url(user, size), alt: user.name, size: SIZE[size][:size]
   end
 
   # ネストしたフィールドを動的に削除
