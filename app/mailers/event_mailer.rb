@@ -10,10 +10,7 @@ class EventMailer < ActionMailer::Base
   def all_entry_users(mail)
     @mail = mail
     @event = @mail.event
-    bcc = []
-    @event.users.each do |u|
-      bcc << u.email
-    end
+    bcc = @event.users.map{|u| u.email}
     
     subject = "[カンファイン] #{@mail.subject}"
 

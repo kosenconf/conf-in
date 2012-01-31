@@ -33,10 +33,7 @@ class EntriesController < ApplicationController
     
     # EventFeeを取得
     @event_fees = @event.event_fees
-    @fee_ids = []
-    @entry.entry_fees.each do |f|
-      @fee_ids << f.event_fee_id
-    end
+    @fee_ids = @entry.entry_fees.map{|f| f.event_fee_id}
   end
   
   # POST /entries/confirm
@@ -50,10 +47,8 @@ class EntriesController < ApplicationController
 
     # EventFeeを取得
     @event_fees = @event.event_fees
-    @fee_ids = []
-    @entry.entry_fees.each do |f|
-      @fee_ids << f.event_fee_id
-    end
+    @fee_ids = @entry.entry_fees.map{|f| f.event_fee_id}
+
     
     if @entry.valid?
       render :action => 'confirm'
@@ -142,22 +137,13 @@ class EntriesController < ApplicationController
           @event_fees = @event.event_fees
 
           # 参加費用名
-          fee_name = []
-          @event_fees.each do |fee|
-            fee_name << fee.name
-          end
+          fee_name = @event_fees.map{|fee| fee.name}
 
           # 選択アンケートの項目名
-          selects  = []
-          (1..5).each do |i|
-            selects << @event.send("select#{i}")
-          end
+          selects = (1..5).map{|i| @event.send("select#{i}")}
 
           # フリーアンケートの項目名
-          free = []
-          (1..5).each do |i|
-            free << @event.send("free#{i}")
-          end
+          free = (1..5).map{|i| @event.send("free#{i}")}
 
           # 1行目
           csv << [
@@ -178,15 +164,10 @@ class EntriesController < ApplicationController
               end
             end
             # 選択アンケートの回答
-            selects  = []
-            (1..5).each do |i|
-              selects << entry.send("select#{i}")
-            end
+            selects = (1..5).map{|i| entry.send("select#{i}")}
             # フリーアンケートの回答
-            free = []
-            (1..5).each do |i|
-              free << entry.send("free#{i}")
-            end
+            free = (1..5).map{|i| entry.send("free#{i}")}
+
             user = entry.user
             csv << [
               entry.created_at.strftime('%Y/%m/%d %H:%M:%S'),
