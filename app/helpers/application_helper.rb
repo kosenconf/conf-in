@@ -1,6 +1,5 @@
 # coding: utf-8
 require 'rubygems'
-require 'RMagick'
 require 'net/http'
 
 module ApplicationHelper
@@ -30,16 +29,13 @@ module ApplicationHelper
 	  image_tag url_for_qr(str), options
 	end
 
-	# JPGに変換したQRコードのバイナリを返す
-	def qr_jpg_binary(qr_str)
-    qr_url = "http://chart.googleapis.com/chart?chs=500x500&cht=qr&chl=#{CGI.escape(qr_str)}"
+	# GIFのQRコードのバイナリを返す
+	def qr_gif_binary(qr_str)
+    qr_url = "http://chart.googleapis.com/chart?chof=gif&chs=500x500&cht=qr&chl=#{CGI.escape(qr_str)}"
 
 	  blob = Net::HTTP.get_response(URI.parse(qr_url)).body
-    img = Magick::ImageList.new
-    img.from_blob(blob)
-    img.format = "JPG"
 
-    return img.to_blob
+    return blob
 	end
 
 	# TwiconのURL

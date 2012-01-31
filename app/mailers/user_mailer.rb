@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
     
     # QRコードの添付
     # 添付ファイル
-    attachments["#{@user.id}.jpg"] = qr_jpg_binary(@user.qr_secret)
+    attachments["#{@user.id}.gif"] = qr_gif_binary(@user.qr_secret)
 
     mail to: email,
       subject: "[カンファイン]当日受付QRコード"
