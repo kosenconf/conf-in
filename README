@@ -1,3 +1,0 @@
-= 開発者向け
-* 環境変数GMAIL_DOMAIN, GMAIL_USER, GMAIL_PASSWORDを設定すること．
-** 開発環境でメール送信の確認をするためです．
