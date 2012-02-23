@@ -1,6 +1,8 @@
 # coding: utf-8
 require 'rubygems'
 require 'net/http'
+require 'uri'
+require 'nokogiri'
 
 module ApplicationHelper
   SIZE = {
@@ -83,16 +85,15 @@ module ApplicationHelper
   # TwiconURLを生で取得
   def get_raw_url(id)
     begin
-      n = Nokogiri::HTML(open("https://twitter.com/#{id}").read)
-      n = n.css('img').first
-      url = n['src'].to_s
+      api = "http://api.twitter.com/1/users/profile_image/#{id}"
 
-      # 読み込み中アイコンであれば，nilを返す
-      if /loader\.gif$/ =~ url
-        nil
-      else
-        url
-      end
+      url = URI.parse api
+      res = Net::HTTP.get_response url
+
+      n = Nokogiri::HTML res.body
+      twicon = n.css('a').first['href']
+
+
     rescue => e
       nil
     end
@@ -102,11 +103,11 @@ module ApplicationHelper
   def split_ext(str)
     str.split(/\.(jpg|jpeg|jpe|png|gif|bmp|)$/i)
   end
-  
+
   # 生からオリジナルサイズのURLに変換
   def original(url)
     split_url = split_ext(url)
-    orig_name = split_url[0].gsub(/_reasonably_small$/, '')
+    orig_name = split_url[0].gsub(/_normal$/, '')
 
     if split_url[1]
       [orig_name, split_url[1]].join('.')
@@ -114,7 +115,7 @@ module ApplicationHelper
       orig_name
     end
   end
-  
+
   # オリジナルURLからサイズ入りURLに変換
   def twicon_url_with_size(url, size = :bigger)
     # 名前と拡張子に分ける
@@ -122,7 +123,7 @@ module ApplicationHelper
 
     # 名前とサイズでつなげる
     ret = size ? [spl[0], size].join('_') : spl[0]
-    
+
     if spl.count == 1
       # 拡張子無し
       ret
