@@ -3,6 +3,7 @@ require 'rubygems'
 require 'net/http'
 require 'uri'
 require 'nokogiri'
+require 'open-uri'
 
 module ApplicationHelper
   SIZE = {
@@ -85,14 +86,12 @@ module ApplicationHelper
   # TwiconURLを生で取得
   def get_raw_url(id)
     begin
-      api = "http://api.twitter.com/1/users/profile_image/#{id}"
+      api = "https://api.twitter.com/1/users/profile_image/#{id}"
 
       url = URI.parse api
-      res = Net::HTTP.get_response url
-
-      n = Nokogiri::HTML res.body
-      twicon = n.css('a').first['href']
-
+      res = url.open
+      
+      twicon = res.base_uri.to_s
 
     rescue => e
       nil
