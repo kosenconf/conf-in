@@ -1,0 +1,10 @@
+!!!
+%html{lang: :ja}
+  %head
+    = render partial: 'layouts/head'
+  %body
+    .container
+      .contents
+        = yield
+    
+    = javascript_include_tag "application"
