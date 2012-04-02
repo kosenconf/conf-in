@@ -3,6 +3,13 @@
   %head
     = render partial: 'layouts/head'
   %body
+    - if notice
+      .alert.alert-info
+        = notice
+    - if alert
+      .alert
+        = alert
+
     .container-fluid
       .contents
         = yield
