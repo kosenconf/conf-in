@@ -1,9 +1,0 @@
-one:
-  event_id: 10001
-  subject: "テストメール１"
-  text: "本文ほげほげ"
-
-two:
-  event_id: 10001
-  subject: "テストメール２"
-  text: "本文ふがふが"

@@ -1,7 +1,0 @@
-%h3 イベント参加者
-%ul.media-grid
-  - @entries.each do |entry|
-    %li
-      %a{href: (entry.user.tw_id.blank? ? user_path(entry.user) : "http://twitter.com/#{entry.user.tw_id}"),
-      class: :thumbnail, data: {content: entry.comment, :'original-title' => entry.user.name, placement: :left}, rel: 'popover'}
-        = twicon_tag entry.user, :normal

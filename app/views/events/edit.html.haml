@@ -1,8 +1,0 @@
-.page-header
-  %h1
-    イベント編集：
-    = @event.name
--# イベント管理者のみ削除ボタンを表示
-%div{align: :right}
-  = link_to_destroy_event 'このイベントを削除する', class: 'btn danger'
-= render partial: 'form'

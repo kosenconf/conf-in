@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /events/new
-Disallow: /events/*/edit
-Disallow: /events/*/admin
-Disallow: /events/*/event_mails
-Disallow: /events/*/entries/
-Disallow: /users/*
