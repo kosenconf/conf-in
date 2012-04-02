@@ -1,0 +1,8 @@
+.row
+  .span12
+    .page-header
+      %h1 <%= singular_table_name %> を作成
+
+    = render 'form'
+    
+    = link_to '戻る', <%= index_helper %>_path, class: 'btn'

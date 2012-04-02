@@ -1,0 +1,26 @@
+.row
+  .span12
+    .page-header
+      %h1 <%= plural_table_name %> 一覧
+
+    %table.table.table-striped.table-condensed
+      %thead
+        %tr
+<% for attribute in attributes -%>
+          %th <%= attribute.human_name %>
+<% end -%>
+          %th
+          %th
+          %th
+      %tbody
+        - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+          %tr
+<% for attribute in attributes -%>
+            %td= <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+            %td= link_to '表示', <%= singular_table_name %>, class: 'btn btn-primary'
+            %td= link_to '編集', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-success'
+            %td= link_to '削除', <%= singular_table_name %>, :confirm => '本当に削除しますか？', :method => :delete, class: 'btn btn-danger'
+    %br
+
+    = link_to '作成', new_<%= singular_table_name %>_path, class: 'btn btn-primary'

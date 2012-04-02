@@ -1,0 +1,10 @@
+.row
+  .span12
+<% for attribute in attributes -%>
+    %p
+      %b <%= attribute.human_name %>:
+      = @<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+
+    = link_to '編集', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-primary'
+    = link_to '戻る', <%= index_helper %>_path, class: 'btn'

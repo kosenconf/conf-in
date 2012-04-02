@@ -1,0 +1,9 @@
+.row
+  .span12
+    .page-header
+      %h1 <%= singular_table_name %> を編集
+
+    = render 'form'
+
+    = link_to '表示', @<%= singular_table_name %>, class: 'btn btn-success'
+    = link_to '戻る', <%= index_helper %>_path, class: 'btn'
