@@ -28,15 +28,15 @@ ActiveRecord::Schema.define(:version => 20120127120328) do
     t.text     "free5"
     t.text     "comment"
     t.integer  "received"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "entry_fees", :force => true do |t|
     t.integer  "entry_id"
     t.boolean  "paid",         :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "event_fee_id"
   end
 
@@ -45,16 +45,16 @@ ActiveRecord::Schema.define(:version => 20120127120328) do
     t.string   "name"
     t.integer  "sum"
     t.text     "summary"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "event_mails", :force => true do |t|
     t.integer  "event_id"
     t.string   "subject"
     t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(:version => 20120127120328) do
     t.integer  "free_setting3"
     t.integer  "free_setting4"
     t.integer  "free_setting5"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
     t.string   "admin_token"
   end
 
@@ -107,8 +107,8 @@ ActiveRecord::Schema.define(:version => 20120127120328) do
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
     t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
@@ -128,8 +128,8 @@ ActiveRecord::Schema.define(:version => 20120127120328) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
     t.string   "name"
     t.text     "memo"
     t.string   "website"
