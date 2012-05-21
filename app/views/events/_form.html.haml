@@ -82,6 +82,15 @@
       .input= f.text_field :main_event_id
   = render partial: 'select_question', locals: { f: f }
   = render partial: 'free_question', locals: { f: f }
+
+  %h2 QRコードを用いた受付
+  %p
+    = f.label :qr_use, 'QRコードを使う'
+    .input
+      = f.check_box :qr_use
+      %span （参加者に受付に関する案内が表示されるようになります。）
+  
+
   .actions
     = f.submit f.object.new_record? ? '作成':'変更を保存',
       disable_with: '処理中...',

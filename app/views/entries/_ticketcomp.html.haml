@@ -4,10 +4,11 @@
       %h1= @event.name
       %br
       %h2
-        %U= User.find(@entry.user_id).name
+        %U= @entry.user.name
         様
-    %th
-      %br
-        = qrimg_tag User.find(@entry.user_id).qr_secret
-      %br
-      %small= I18n.t 'activerecord.attributes.user.qr_secret'
+    - if @event.qr_use
+      %th
+        %br
+          = qrimg_tag @entry.user.qr_secret
+        %br
+        %small= I18n.t 'activerecord.attributes.user.qr_secret'

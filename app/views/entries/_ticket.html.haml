@@ -11,8 +11,9 @@
     %tr
       %th 合計参加費用
       %td= number_to_currency @entry.fees_sum, precision: 0
-  %tr
-    %th= I18n.t 'activerecord.attributes.user.qr_secret'
-    %td
-      %a{href: '#', data: {'controls-modal' => :'send_qr' }}
-        = qrimg_tag current_user.qr_secret
+  - if @event.qr_use
+    %tr
+      %th= I18n.t 'activerecord.attributes.user.qr_secret'
+      %td
+        %a{href: '#', data: {'controls-modal' => :'send_qr' }}
+          = qrimg_tag current_user.qr_secret
